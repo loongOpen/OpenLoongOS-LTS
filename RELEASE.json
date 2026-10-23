@@ -214,7 +214,7 @@
       "obstacle traversal",
       "teleoperation"
     ],
-    "status": "phase-one release; repository write access verified; remote checkout verification pending",
+    "status": "published; independent remote Git and LFS checkout verified on 2026-10-23",
     "packaging_changes": [
       "Removed old runtime logs and editor settings",
       "Added roadmap and demonstration media",
