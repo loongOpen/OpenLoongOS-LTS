@@ -1,5 +1,7 @@
 # mjlab_amp_ovision
 
+中文教程：[从训练到全链仿真](../docs/training-to-simulation.md) · [技术架构与策略接口](../docs/architecture.md) · [项目首页](../README.md)
+
 A minimal [mjlab](https://github.com/mujocolab/mjlab)-based demo for training
 the **LingLong 20-DoF humanoid** with **AMP (Adversarial Motion Priors)** on
 MuJoCo-Warp. This is a stripped-down distribution: one robot, one reference
@@ -32,7 +34,7 @@ uv sync --locked --extra cu128 --group dev
 
 ```bash
 # AMP on flat terrain (adjust --env.scene.num-envs to fit your GPU;
-# ~1024 envs needs about 6 GB of VRAM for this robot)
+# run the small-scale check in the Chinese tutorial before a full run)
 uv run --locked --extra cu128 train Mjlab-Amp-Flat-LingLong --env.scene.num-envs 1024 --agent.logger tensorboard
 
 # Rough-terrain variant
@@ -44,8 +46,10 @@ uv run --locked --extra cu128 train Mjlab-Velocity-Flat-LingLong --env.scene.num
 
 ## Play / visualize a checkpoint
 
+Replace `<run>` and the checkpoint filename with an existing training output.
+
 ```bash
-uv run --locked --extra cu128 play Mjlab-Amp-Flat-LingLong --checkpoint-file logs/rsl_rl/linglong_amp/<run>/model_1000.pt
+uv run --locked --extra cu128 play Mjlab-Amp-Flat-LingLong --checkpoint-file 'logs/rsl_rl/linglong_amp/<run>/model_1000.pt'
 ```
 
 List all registered tasks:

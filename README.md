@@ -6,6 +6,16 @@
 
 第一阶段版本已经完成依赖与基础运行检查；GUI 的第三方分发许可依据仍待核实，详见 [LICENSES.md](LICENSES.md)。
 
+## 文档导航
+
+| 想做什么 | 从这里开始 |
+| --- | --- |
+| 下载项目，用现成策略完成第一次仿真 | [快速入门与行走 Demo](docs/quickstart.md) |
+| 学习界面、速度控制、曲线与日志回放 | [全链仿真 UI 使用手册](loong_gui_sim/README.md) |
+| 训练、续训、回放，并把策略接入仿真 | [从训练到全链仿真](docs/training-to-simulation.md) |
+| 理解 AMP、观测协议、关节映射和控制链 | [技术架构与策略接口](docs/architecture.md) |
+| 查看已验证项目和当前限制 | [发布验证记录](VALIDATION.md) |
+
 ## 整体愿景与发布范围
 
 ![LTS 整体愿景：四套算法与统一全链仿真框架](docs/media/vision.png)
@@ -42,7 +52,8 @@ LoongMC-2026-LTS/
 ├── mjlab_amp_ovision/   # 行走训练源码、20 轴机器人、动作数据、uv.lock
 ├── loong_gui_sim/       # 全链仿真 UI、26 轴模型、SDK 与控制插件运行包
 ├── models/             # 示例 policy.onnx 与策略元数据
-├── docs/media/         # 整体愿景、演示视频与预览图
+├── docs/               # 快速入门、训练到仿真、技术架构
+│   └── media/          # 整体愿景、演示视频与预览图
 ├── licenses/           # 第三方依赖许可材料
 ├── start_sim.sh         # 仿真 UI 入口
 ├── train.sh             # 训练入口
@@ -72,12 +83,9 @@ python3 -B check_release.py
 
 运行平台：Ubuntu 22.04、Linux x86_64、X11 / XWayland 桌面。程序内置 Python 和 PyQt5，仍需要系统图形库；Ubuntu 20.04 的 glibc 不满足此二进制要求。
 
+先按 [快速入门](docs/quickstart.md) 安装系统依赖，然后在仓库根目录执行：
+
 ```bash
-sudo apt update
-sudo apt install x11-utils libgl1 libegl1 libgl1-mesa-dri libx11-6 \
-  libxcb-xinerama0 libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 \
-  libxcb-keysyms1 libxcb-render-util0 libxcb-randr0 libxcb-shape0 \
-  libxcb-xkb1 libfontconfig1 libdbus-1-3 libglib2.0-0 libstdc++6
 ./start_sim.sh
 ```
 
@@ -105,15 +113,17 @@ cd ..
   --env.scene.num-envs 1024 --agent.logger tensorboard
 ```
 
-回放检查点：
+回放检查点（把路径中的 `<run>` 和检查点文件名替换为实际值）：
 
 ```bash
 cd mjlab_amp_ovision
 uv run --locked --extra cu128 play Mjlab-Amp-Flat-LingLong \
-  --checkpoint-file logs/rsl_rl/linglong_amp/<run>/model_1000.pt
+  --checkpoint-file 'logs/rsl_rl/linglong_amp/<run>/model_1000.pt'
 ```
 
 更多任务和动作数据格式见 [训练说明](mjlab_amp_ovision/README.md)。训练引擎为 MuJoCo-Warp；UI 运行包内的 MuJoCo 为独立的原生运行时，两者版本不同，应分别安装和使用。
+
+小规模检查、续训、TensorBoard、ONNX 自动导出及策略替换的完整步骤见 [从训练到全链仿真](docs/training-to-simulation.md)。
 
 ## 模型与复现边界
 
