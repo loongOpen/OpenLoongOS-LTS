@@ -14,6 +14,7 @@
 - UI 测试边界：两次自检均返回 `native_window_embedded=false`、`native_camera_follow=false`；本次没有据此确认实际 MuJoCo 窗口嵌入、镜头跟随、完整多进程控制链或实机运行。
 - 平台边界：宿主机 Ubuntu 20.04 运行 UI 复现 `GLIBC_2.35 not found`；这个预编译 UI 应按 Ubuntu 22.04 平台要求运行，不能仅安装 Python 包来解决系统 ABI 差异。
 - 发布清理：仅在独立发布副本清理旧运行日志、编辑器配置；原压缩包保持不变。视频原件保留，并附网页兼容副本。
+- 本地 Git 检出：通过独立克隆、恢复本地 LFS 对象与 `git lfs checkout`，420 个文件哈希检查通过，`git lfs fsck` 通过；两个原视频与输入文件逐字节一致。该检查不代表 AtomGit 服务器已接收文件。
 
 小规模 GPU 训练检查通过：单张 RTX 4070、16 个环境、2 次 PPO 迭代，完成 768 个采样步，生成 `model_0.pt`、`model_1.pt` 和 ONNX 导出文件，进程以 0 退出，测试后 GPU 进程已释放。为限制资源占用，将 AMP 预加载量设为 256、回放缓存设为 4096、判别器 mini-batch 数设为 2。
 
