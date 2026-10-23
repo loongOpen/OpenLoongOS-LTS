@@ -204,8 +204,9 @@
     "prepared_date": "2026-10-23",
     "repository": "https://atomgit.com/openloong/LoongMC-2026-LTS",
     "scope": [
-      "walking algorithm source",
-      "prebuilt simulation UI runtime"
+      "open-source walking training code",
+      "prebuilt full-chain simulation runtime",
+      "GUI binary without GUI source"
     ],
     "roadmap": [
       "walking",
@@ -219,6 +220,8 @@
       "Added roadmap and demonstration media",
       "Made integrity checker work with Git checkout and optional controller",
       "Documented Git LFS and locked CUDA training commands"
-    ]
+    ],
+    "gui_source_public": false,
+    "gui_distribution_license_status": "PyQt commercial licensing and Qt distribution conditions not yet confirmed"
   }
 }
