@@ -18,7 +18,6 @@
     "loong_gui_sim": {
       "branch": "main",
       "commit": "fcb12a782b42ad206f65fcc2309ddaf1e0425f04",
-      "source_included": false,
       "binary": "loong_gui_sim/loong_gui_sim",
       "sha256": "e04cc5f8f22777fe7a4f99740644aa373ebea9e9f572c94cab7f0eb9197c4f9c",
       "exported_runtime_files": 169,
@@ -120,7 +119,6 @@
     "loong_gui_ctrl": {
       "branch": "master",
       "commit": "27a58dd47d731d2bae4c53cbb304496bcfbdc76c",
-      "source_included": false,
       "binary": "loong_gui_ctrl/loong_gui_ctrl",
       "sha256": "9d19947c743b3abf4876be71eaa5919a1994e701a08b8ce38b29f55e68f3d993",
       "compiled_modules": 22,
@@ -206,7 +204,7 @@
     "scope": [
       "open-source walking training code",
       "prebuilt full-chain simulation runtime",
-      "GUI binary without GUI source"
+      "GUI application"
     ],
     "roadmap": [
       "walking",
@@ -221,7 +219,6 @@
       "Made integrity checker work with Git checkout and optional controller",
       "Documented Git LFS and locked CUDA training commands"
     ],
-    "gui_source_public": false,
     "gui_distribution_license_status": "PyQt commercial licensing and Qt distribution conditions not yet confirmed"
   }
 }
