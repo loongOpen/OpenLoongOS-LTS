@@ -214,7 +214,7 @@
       "obstacle traversal",
       "teleoperation"
     ],
-    "status": "local candidate; SSH account bjwwww authenticated; target repository write permission denied (CH.00905401)",
+    "status": "phase-one release; repository write access verified; remote checkout verification pending",
     "packaging_changes": [
       "Removed old runtime logs and editor settings",
       "Added roadmap and demonstration media",
