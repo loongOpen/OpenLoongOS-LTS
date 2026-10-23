@@ -1,0 +1,13 @@
+wandb/
+logs/
+onnx/
+videos/
+__pycache__/
+MUJOCO_LOG.TXT
+debug.py
+.vscode/
+*.ipynb_checkpoints/
+*_rerun*
+artifacts/
+.venv/
+benchmark_results/

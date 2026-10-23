@@ -1,0 +1,15 @@
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.onnx filter=lfs diff=lfs merge=lfs -text
+*.so filter=lfs diff=lfs merge=lfs -text
+*.so.* filter=lfs diff=lfs merge=lfs -text
+*.so_bk filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text
+loong_gui_sim/loong_gui_sim filter=lfs diff=lfs merge=lfs -text
+loong_gui_sim/runtime/bin/* filter=lfs diff=lfs merge=lfs -text
+*.sh text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.STL binary
+*.stl binary
+*.urdf -text
+*.xml -text
