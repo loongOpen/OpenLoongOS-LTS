@@ -64,22 +64,33 @@ LoongOS-LTS/
 
 本阶段不包含独立的机器人 SSH / OTA 控制台。仿真采用 26 轴模型，策略使用 20 个动作输出，其余 6 个腕关节保持默认姿态；两套模型的关节映射已经显式配置，并非可以任意互换。
 
-## 获取项目
+## 1.获取项目
 
-视频、策略和预编译运行文件使用 Git LFS。首次克隆前安装 Git LFS：
+两个平台的发布内容一致，按网络环境任选其一：
 
 ```bash
-sudo apt install git git-lfs
+# GitHub
+git clone https://github.com/loongOpen/OpenLoongOS-LTS.git
+
+# AtomGit
+git clone https://atomgit.com/openloong/OpenLoongOS-LTS.git
+```
+
+进入目录（两个平台克隆出来的目录名不同）：
+
+```bash
+cd OpenLoongOS-LTS        # GitHub 克隆得到
+# 或 cd LoongMC-2026-LTS  # AtomGit 克隆得到
+
 git lfs install
-git clone https://atomgit.com/openloong/LoongMC-2026-LTS.git
-cd LoongMC-2026-LTS
 git lfs pull
 python3 -B check_release.py
 ```
 
 请使用 Git LFS 完整检出。平台生成的源码 ZIP 若只包含 LFS 指针，将无法直接运行。
+```
 
-## 启动全链仿真 UI
+## 2.启动全链仿真 UI
 
 运行平台：Ubuntu 22.04、Linux x86_64、X11 / XWayland 桌面。程序内置 Python 和 PyQt5，仍需要系统图形库；Ubuntu 20.04 的 glibc 不满足此二进制要求。
 
@@ -97,7 +108,7 @@ python3 -B check_release.py
 QT_QPA_PLATFORM=offscreen ./start_sim.sh --self-test
 ```
 
-## 安装与训练行走算法
+## 3.安装与训练行走算法
 
 需要 NVIDIA CUDA GPU、可用的 NVIDIA 驱动和 [uv](https://docs.astral.sh/uv/getting-started/installation/)。Python 及 Python/CUDA 用户态依赖由 uv 根据锁文件安装，GPU 驱动和系统图形库仍由操作系统提供。首次安装需联网下载数 GB 依赖。
 
@@ -125,13 +136,13 @@ uv run --locked --extra cu128 play Mjlab-Amp-Flat-LingLong \
 
 小规模检查、续训、TensorBoard、ONNX 自动导出及策略替换的完整步骤见 [从训练到全链仿真](docs/training-to-simulation.md)。
 
-## 模型与复现边界
+## 4.模型与复现边界
 
 示例策略接口为 float32 `obs[1,700] → actions[1,20]`，10 帧观测历史。关节顺序、默认角度、动作缩放和训练 PD 元数据见 [模型说明](models/README.md)。仿真驱动采用固定 PD，不能仅凭训练元数据推断其动力学完全一致。
 
 本次提供行走算法与演示资源；完整速度范围的稳定行走、全链实时性能及真机效果应通过对应场景的测试确认。已验证与尚未验证的项目统一记录在 [VALIDATION.md](VALIDATION.md)。
 
-## 许可与贡献
+## 5.许可与贡献
 
 训练框架保留 [Apache-2.0](mjlab_amp_ovision/LICENSE) 许可及上游版权声明。其他组件按各自许可材料适用，参见 [LICENSES.md](LICENSES.md)；训练框架的许可不自动覆盖 UI 二进制、模型、动作数据或演示素材的全部权利。
 
