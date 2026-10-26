@@ -1,4 +1,4 @@
-# LoongMC 2026 LTS
+# OpenLoongOS LTS
 
 面向人形机器人的运动控制算法与全链仿真框架。
 
