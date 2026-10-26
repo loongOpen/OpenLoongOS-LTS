@@ -1,4 +1,4 @@
-# 快速入门与行走 Demo
+# 快速入门教程
 
 [返回首页](../README.md) · [UI 使用手册](../loong_gui_sim/README.md) · [训练到仿真](training-to-simulation.md) · [技术架构](architecture.md)
 
@@ -30,13 +30,13 @@ sudo apt install git git-lfs python3 x11-utils libgl1 libegl1 libgl1-mesa-dri \
 
 ```bash
 git lfs install
-git clone https://atomgit.com/openloong/LoongMC-2026-LTS.git
-cd LoongMC-2026-LTS
+git clone https://atomgit.com/openloong/OpenLoongOS-LTS.git
+cd OpenLoongOS-LTS
 git lfs pull
 python3 -B check_release.py
 ```
 
-已有仓库时进入其根目录，不必重新克隆。后续命令除特别说明外均在 `LoongMC-2026-LTS/` 执行。
+已有仓库时进入其根目录，不必重新克隆。后续命令除特别说明外均在 `OpenLoongOS-LTS/` 执行。
 
 成功时检查器输出 `OK:`，包含哈希数量、模型和运行组件检查结果。出现 `Git LFS pointer` 表示大文件尚未下载完整；先完成 `git lfs pull`。不要用只有 LFS 指针的 ZIP 代替完整检出。
 
