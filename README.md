@@ -49,6 +49,7 @@ GUI 与全链仿真运行组件共同位于 `loong_gui_sim/`，启动时需保�
 
 | 我想…… | 从这里开始 | 内容 |
 | ------- | --------------- | -------------------------------- |
+| 第一次跑起来 | [快速开始](docs/quickstart.md)  | 第一次运行指南 |
 | 操作仿真界面  | [技术说明第 8 章](docs/technical-guide.md#8-仿真界面使用)  | 界面分区、控制链启动、模式切换、辅助力、速度控制、曲线与日志回放 |
 | 训练自己的策略 | [技术说明第 5 – 7 章](docs/technical-guide.md#5-行走策略训练)  | 行走策略训练 → 检查点回放与续训 → 策略接入仿真 |
 | 出问题了 | [技术说明第 9 章](docs/technical-guide.md#9-故障排查)   | 按阶段分类的故障排查 |
@@ -80,8 +81,8 @@ OpenLoongOS-LTS/
 │   ├── media/                    # 项目愿景图、演示视频及预览图
 │   ├── technical-guide.md        # 用户使用指南（主文档）
 │   ├── architecture.md           # 技术架构与策略接口
-│   ├── quickstart.md             # 跳转页：内容已并入技术说明文档
-│   └── training-to-simulation.md # 跳转页：内容已并入技术说明文档
+│   ├── quickstart.md             # 快速开始指南
+│   └── training-to-simulation.md # 从训练到仿真
 ├── licenses/                     # 第三方依赖许可材料
 ├── start_sim.sh                  # 仿真 UI 启动入口
 ├── train.sh                      # 训练启动入口
