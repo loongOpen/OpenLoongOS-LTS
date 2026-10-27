@@ -1,6 +1,6 @@
 # 从训练到全链仿真
 
-[返回首页](../README.md) · [快速 Demo](quickstart.md) · [技术架构](architecture.md) · [UI 使用手册](../loong_gui_sim/README.md)
+[返回首页](../README.md) ·[技术说明文档](technical-guide.md) · [快速开始](quickstart.md) · [技术架构](architecture.md) · [UI 使用手册](../loong_gui_sim/README.md)
 
 流程为：安装训练环境 → 小规模检查 → 正式训练 → 回放检查点 → 获取 ONNX → 核对接口 → 在全链仿真中验证。本教程以 `Mjlab-Amp-Flat-LingLong` 为例，使用当前仓库的任务和配置。
 
@@ -71,7 +71,7 @@ mjlab_amp_ovision/logs/rsl_rl/linglong_amp/<运行目录>/
 └── events.out.tfevents.*    # TensorBoard 日志
 ```
 
-另开终端，进入 `LoongMC-2026-LTS/mjlab_amp_ovision/`：
+另开终端，进入 `OpenLoongOS-LTS/mjlab_amp_ovision/`：
 
 ```bash
 uv run --locked --extra cu128 tensorboard --logdir logs/rsl_rl --host 127.0.0.1
@@ -172,7 +172,7 @@ PY
 
 ```bash
 cd ..
-backup_dir="$(mktemp -d ../LoongMC-policy-backup.XXXXXX)"
+backup_dir="$(mktemp -d ../OpenLoongOS-policy-backup.XXXXXX)"
 cp loong_gui_sim/runtime/model/onnx/policy.onnx "$backup_dir/policy.onnx"
 cp loong_gui_sim/runtime/config/plan_rl.ini "$backup_dir/plan_rl.ini"
 cp "$policy_file" loong_gui_sim/runtime/model/onnx/policy.onnx
