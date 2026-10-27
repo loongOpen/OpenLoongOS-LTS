@@ -1,6 +1,6 @@
 # 全链仿真 UI 使用手册
 
-[返回首页](../README.md) · [快速入门与 Demo](../docs/quickstart.md) · [训练到仿真](../docs/training-to-simulation.md) · [技术架构](../docs/architecture.md)
+[返回首页](../README.md) ·[技术说明文档](technical-guide.md) · [快速开始](../docs/quickstart.md) · [训练到仿真](../docs/training-to-simulation.md) · [技术架构](../docs/architecture.md)
 
 面向 Ubuntu 22.04 / Linux x86_64，需 X11 或 XWayland 图形桌面。程序已包含 Python 和 PyQt5，无需编译。
 默认采用原仓库灵龙 **26 轴模型**（双腿 12＋双臂 14，头腰不参与仿真），RL 使用内置 `policy.onnx`。
@@ -13,7 +13,7 @@
 进入整合包根目录运行：
 
 ```bash
-cd LoongMC-2026-LTS
+cd OpenLoongOS-LTS
 ./start_sim.sh
 ```
 
