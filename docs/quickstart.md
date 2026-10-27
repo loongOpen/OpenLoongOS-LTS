@@ -1,6 +1,6 @@
 # 快速入门教程
 
-[返回首页](../README.md) · [UI 使用手册](../loong_gui_sim/README.md) · [训练到仿真](training-to-simulation.md) · [技术架构](architecture.md)
+[返回首页](../README.md) ·[技术说明文档](technical-guide.md) · [UI 使用手册](../loong_gui_sim/README.md) · [训练到仿真](training-to-simulation.md) · [技术架构](architecture.md)
 
 本教程使用仓库自带的 `policy.onnx`，从下载开始完成启动、恢复、RL 控制、速度指令和停止操作，无需先训练。演示操作限定在本机仿真；愿景中的真机部署属于后续接入流程。
 
