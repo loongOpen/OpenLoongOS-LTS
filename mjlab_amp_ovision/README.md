@@ -1,6 +1,6 @@
 # mjlab_amp_ovision
 
-中文教程：[从训练到全链仿真](../docs/training-to-simulation.md) · [技术架构与策略接口](../docs/architecture.md) · [项目首页](../README.md)
+中文教程：[技术说明文档](technical-guide.md) · [从训练到全链仿真](../docs/training-to-simulation.md) · [技术架构与策略接口](../docs/architecture.md) · [项目首页](../README.md)
 
 A minimal [mjlab](https://github.com/mujocolab/mjlab)-based demo for training
 the **LingLong 20-DoF humanoid** with **AMP (Adversarial Motion Priors)** on
