@@ -17,11 +17,10 @@
   "components": {
     "loong_gui_sim": {
       "branch": "main",
-      "commit": "fcb12a782b42ad206f65fcc2309ddaf1e0425f04",
       "binary": "loong_gui_sim/loong_gui_sim",
-      "sha256": "e04cc5f8f22777fe7a4f99740644aa373ebea9e9f572c94cab7f0eb9197c4f9c",
+      "sha256": "bdc0960b890336127c26fb2ceec4b66f4eb738fe6c2554c3ca77bd85651203fa",
       "exported_runtime_files": 169,
-      "compiled_modules": 21,
+      "compiled_modules": 23,
       "sim_bytecode_in_archive": false,
       "native_helpers": [
         "liblog_replay.so",
@@ -113,8 +112,20 @@
         "Qt surplus signal argument handling",
         "replay supports rigid torso and joint name suffixes on LingLong1.4",
         "self-test queries model qpos count",
-        "explicit pose space for untagged direct-joint simulation logs"
-      ]
+        "explicit pose space for untagged direct-joint simulation logs",
+        "PyQt5 to PySide6 migration",
+        "external LGPL Python entries and shared libraries",
+        "Qt widget metric name conflict resolved",
+        "PySide signal forwarding and splitter ownership adapted",
+        "third-party notices dialog"
+      ],
+      "previous_build_commit": "fcb12a782b42ad206f65fcc2309ddaf1e0425f04",
+      "source_snapshot_commit": "ac7b6d335d940a0e210a3d3f358d4226e681a140",
+      "source_note": "Supplied loong_gui_sim.zip source ported to PySide6, with release 26-axis adaptations; not asserted to be the exact source of the previous binary.",
+      "binding": "PySide6",
+      "binding_version": "6.11.3",
+      "qt_version": "6.11.3",
+      "packaging": "PyInstaller onedir; external replaceable LGPL bindings and libraries"
     },
     "loong_gui_ctrl": {
       "branch": "master",
@@ -192,15 +203,14 @@
   "gui_build_packages": {
     "Cython": "3.3.0",
     "PyInstaller": "6.22.3",
-    "PyQt5": "5.15.11",
-    "PyQt5-Qt5": "5.15.19",
-    "paramiko": "3.5.1"
+    "PySide6-Essentials": "6.11.3",
+    "shiboken6": "6.11.3"
   },
   "publication": {
-    "name": "LoongMC 2026 LTS",
+    "name": "OpenLoongOS-LTS",
     "stage": 1,
     "prepared_date": "2026-10-23",
-    "repository": "https://atomgit.com/openloong/LoongMC-2026-LTS",
+    "repository": "https://github.com/loongOpen/OpenLoongOS-LTS",
     "scope": [
       "open-source walking training code",
       "prebuilt full-chain simulation runtime",
@@ -212,13 +222,14 @@
       "obstacle traversal",
       "teleoperation"
     ],
-    "status": "published; independent remote Git and LFS checkout verified on 2026-10-23",
+    "status": "local candidate; not published; project-owned GUI license and historical distribution handling pending",
     "packaging_changes": [
       "Removed old runtime logs and editor settings",
       "Added roadmap and demonstration media",
       "Made integrity checker work with Git checkout and optional controller",
       "Documented Git LFS and locked CUDA training commands"
     ],
-    "gui_distribution_license_status": "PyQt commercial licensing and Qt distribution conditions not yet confirmed"
-  }
+    "gui_distribution_license_status": "PySide6/Qt LGPL runtime sources and replaceability prepared and tested; project-owned GUI distribution license pending owner decision"
+  },
+  "candidate_prepared_date": "2026-11-02"
 }

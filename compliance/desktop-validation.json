@@ -1,0 +1,20 @@
+{
+  "binding": "PySide6",
+  "native_window_embedded": true,
+  "native_camera_follow": true,
+  "control_chain_running": true,
+  "plot_frames": 804,
+  "plot_panes": 3,
+  "commands_sent": [
+    "EN",
+    "RC",
+    "RL (zero velocity)"
+  ],
+  "walking_performance_tested": false,
+  "errors": [],
+  "replay_opengl": true,
+  "replay_log_frames": 817,
+  "command_buttons": true,
+  "licenses_dialog": true,
+  "owned_processes_stopped": true
+}

@@ -1,0 +1,1424 @@
+{
+  "schema": 1,
+  "format": "PyInstaller onedir",
+  "executable_sha256": "bdc0960b890336127c26fb2ceec4b66f4eb738fe6c2554c3ca77bd85651203fa",
+  "executable_size": 1714352,
+  "outer_entries": [
+    "PYZ.pyz",
+    "launcher",
+    "pyi_rth_inspect",
+    "pyi_rth_multiprocessing",
+    "pyi_rth_pkgutil",
+    "pyi_rth_pyside6",
+    "pyiboot01_bootstrap",
+    "pyimod01_archive",
+    "pyimod02_importers",
+    "pyimod03_ctypes",
+    "struct"
+  ],
+  "pyz_modules": [
+    "__future__",
+    "_compat_pickle",
+    "_compression",
+    "_py_abc",
+    "_pydecimal",
+    "_pyi_rth_utils",
+    "_pyi_rth_utils.qt",
+    "_strptime",
+    "_threading_local",
+    "argparse",
+    "ast",
+    "asyncio",
+    "asyncio.base_events",
+    "asyncio.base_futures",
+    "asyncio.base_subprocess",
+    "asyncio.base_tasks",
+    "asyncio.constants",
+    "asyncio.coroutines",
+    "asyncio.events",
+    "asyncio.exceptions",
+    "asyncio.format_helpers",
+    "asyncio.futures",
+    "asyncio.locks",
+    "asyncio.log",
+    "asyncio.mixins",
+    "asyncio.proactor_events",
+    "asyncio.protocols",
+    "asyncio.queues",
+    "asyncio.runners",
+    "asyncio.selector_events",
+    "asyncio.sslproto",
+    "asyncio.staggered",
+    "asyncio.streams",
+    "asyncio.subprocess",
+    "asyncio.tasks",
+    "asyncio.threads",
+    "asyncio.transports",
+    "asyncio.trsock",
+    "asyncio.unix_events",
+    "asyncio.windows_events",
+    "asyncio.windows_utils",
+    "base64",
+    "bisect",
+    "bz2",
+    "calendar",
+    "camera_follow",
+    "concurrent",
+    "concurrent.futures",
+    "concurrent.futures._base",
+    "concurrent.futures.process",
+    "concurrent.futures.thread",
+    "configparser",
+    "contextlib",
+    "contextvars",
+    "control_panel",
+    "control_protocol",
+    "copy",
+    "csv",
+    "ctypes",
+    "ctypes._aix",
+    "ctypes._endian",
+    "ctypes.util",
+    "dataclasses",
+    "datetime",
+    "decimal",
+    "difflib",
+    "dis",
+    "email",
+    "email._encoded_words",
+    "email._header_value_parser",
+    "email._parseaddr",
+    "email._policybase",
+    "email.base64mime",
+    "email.charset",
+    "email.contentmanager",
+    "email.encoders",
+    "email.errors",
+    "email.feedparser",
+    "email.generator",
+    "email.header",
+    "email.headerregistry",
+    "email.iterators",
+    "email.message",
+    "email.parser",
+    "email.policy",
+    "email.quoprimime",
+    "email.utils",
+    "fnmatch",
+    "fractions",
+    "ftplib",
+    "getopt",
+    "getpass",
+    "gettext",
+    "gzip",
+    "hashlib",
+    "hmac",
+    "http",
+    "http.client",
+    "http.cookiejar",
+    "importlib",
+    "importlib._abc",
+    "importlib._bootstrap",
+    "importlib._bootstrap_external",
+    "importlib.abc",
+    "importlib.machinery",
+    "importlib.metadata",
+    "importlib.metadata._adapters",
+    "importlib.metadata._collections",
+    "importlib.metadata._functools",
+    "importlib.metadata._itertools",
+    "importlib.metadata._meta",
+    "importlib.metadata._text",
+    "importlib.readers",
+    "importlib.util",
+    "inspect",
+    "ipaddress",
+    "json",
+    "json.decoder",
+    "json.encoder",
+    "json.scanner",
+    "live_plot",
+    "live_plot_data",
+    "log_replay_data",
+    "log_replay_panel",
+    "logging",
+    "lzma",
+    "main_window",
+    "mimetypes",
+    "multiprocessing",
+    "multiprocessing.connection",
+    "multiprocessing.context",
+    "multiprocessing.dummy",
+    "multiprocessing.dummy.connection",
+    "multiprocessing.forkserver",
+    "multiprocessing.heap",
+    "multiprocessing.managers",
+    "multiprocessing.pool",
+    "multiprocessing.popen_fork",
+    "multiprocessing.popen_forkserver",
+    "multiprocessing.popen_spawn_posix",
+    "multiprocessing.popen_spawn_win32",
+    "multiprocessing.process",
+    "multiprocessing.queues",
+    "multiprocessing.reduction",
+    "multiprocessing.resource_sharer",
+    "multiprocessing.resource_tracker",
+    "multiprocessing.shared_memory",
+    "multiprocessing.sharedctypes",
+    "multiprocessing.spawn",
+    "multiprocessing.synchronize",
+    "multiprocessing.util",
+    "netrc",
+    "nturl2path",
+    "numbers",
+    "opcode",
+    "optparse",
+    "pathlib",
+    "pickle",
+    "pkgutil",
+    "platform",
+    "plugin_catalog",
+    "plugin_command_panel",
+    "pprint",
+    "process_manager",
+    "process_panel",
+    "py_compile",
+    "queue",
+    "quopri",
+    "random",
+    "replay_ankle",
+    "replay_clock",
+    "replay_view",
+    "runpy",
+    "secrets",
+    "selectors",
+    "shlex",
+    "shutil",
+    "signal",
+    "sim_desktop_checks",
+    "sim_gui",
+    "sim_gui_config",
+    "sim_gui_styles",
+    "sim_plot_checks",
+    "sim_replay_checks",
+    "simulator_view",
+    "socket",
+    "ssl",
+    "statistics",
+    "string",
+    "stringprep",
+    "subprocess",
+    "tarfile",
+    "tempfile",
+    "textwrap",
+    "threading",
+    "token",
+    "tokenize",
+    "tracemalloc",
+    "typing",
+    "unittest",
+    "unittest._log",
+    "unittest.async_case",
+    "unittest.case",
+    "unittest.loader",
+    "unittest.main",
+    "unittest.mock",
+    "unittest.result",
+    "unittest.runner",
+    "unittest.signals",
+    "unittest.suite",
+    "unittest.util",
+    "urllib",
+    "urllib.error",
+    "urllib.parse",
+    "urllib.request",
+    "urllib.response",
+    "uu",
+    "x11_window",
+    "xml",
+    "xml.etree",
+    "xml.etree.ElementInclude",
+    "xml.etree.ElementPath",
+    "xml.etree.ElementTree",
+    "xml.etree.cElementTree",
+    "xml.parsers",
+    "xml.parsers.expat",
+    "xml.sax",
+    "xml.sax._exceptions",
+    "xml.sax.expatreader",
+    "xml.sax.handler",
+    "xml.sax.saxutils",
+    "xml.sax.xmlreader",
+    "xmlrpc",
+    "xmlrpc.client",
+    "zipfile",
+    "zipimport"
+  ],
+  "base_library_entries": [
+    "_collections_abc.pyc",
+    "_weakrefset.pyc",
+    "abc.pyc",
+    "codecs.pyc",
+    "collections/__init__.pyc",
+    "collections/abc.pyc",
+    "copyreg.pyc",
+    "encodings/__init__.pyc",
+    "encodings/aliases.pyc",
+    "encodings/ascii.pyc",
+    "encodings/base64_codec.pyc",
+    "encodings/big5.pyc",
+    "encodings/big5hkscs.pyc",
+    "encodings/bz2_codec.pyc",
+    "encodings/charmap.pyc",
+    "encodings/cp037.pyc",
+    "encodings/cp1006.pyc",
+    "encodings/cp1026.pyc",
+    "encodings/cp1125.pyc",
+    "encodings/cp1140.pyc",
+    "encodings/cp1250.pyc",
+    "encodings/cp1251.pyc",
+    "encodings/cp1252.pyc",
+    "encodings/cp1253.pyc",
+    "encodings/cp1254.pyc",
+    "encodings/cp1255.pyc",
+    "encodings/cp1256.pyc",
+    "encodings/cp1257.pyc",
+    "encodings/cp1258.pyc",
+    "encodings/cp273.pyc",
+    "encodings/cp424.pyc",
+    "encodings/cp437.pyc",
+    "encodings/cp500.pyc",
+    "encodings/cp720.pyc",
+    "encodings/cp737.pyc",
+    "encodings/cp775.pyc",
+    "encodings/cp850.pyc",
+    "encodings/cp852.pyc",
+    "encodings/cp855.pyc",
+    "encodings/cp856.pyc",
+    "encodings/cp857.pyc",
+    "encodings/cp858.pyc",
+    "encodings/cp860.pyc",
+    "encodings/cp861.pyc",
+    "encodings/cp862.pyc",
+    "encodings/cp863.pyc",
+    "encodings/cp864.pyc",
+    "encodings/cp865.pyc",
+    "encodings/cp866.pyc",
+    "encodings/cp869.pyc",
+    "encodings/cp874.pyc",
+    "encodings/cp875.pyc",
+    "encodings/cp932.pyc",
+    "encodings/cp949.pyc",
+    "encodings/cp950.pyc",
+    "encodings/euc_jis_2004.pyc",
+    "encodings/euc_jisx0213.pyc",
+    "encodings/euc_jp.pyc",
+    "encodings/euc_kr.pyc",
+    "encodings/gb18030.pyc",
+    "encodings/gb2312.pyc",
+    "encodings/gbk.pyc",
+    "encodings/hex_codec.pyc",
+    "encodings/hp_roman8.pyc",
+    "encodings/hz.pyc",
+    "encodings/idna.pyc",
+    "encodings/iso2022_jp.pyc",
+    "encodings/iso2022_jp_1.pyc",
+    "encodings/iso2022_jp_2.pyc",
+    "encodings/iso2022_jp_2004.pyc",
+    "encodings/iso2022_jp_3.pyc",
+    "encodings/iso2022_jp_ext.pyc",
+    "encodings/iso2022_kr.pyc",
+    "encodings/iso8859_1.pyc",
+    "encodings/iso8859_10.pyc",
+    "encodings/iso8859_11.pyc",
+    "encodings/iso8859_13.pyc",
+    "encodings/iso8859_14.pyc",
+    "encodings/iso8859_15.pyc",
+    "encodings/iso8859_16.pyc",
+    "encodings/iso8859_2.pyc",
+    "encodings/iso8859_3.pyc",
+    "encodings/iso8859_4.pyc",
+    "encodings/iso8859_5.pyc",
+    "encodings/iso8859_6.pyc",
+    "encodings/iso8859_7.pyc",
+    "encodings/iso8859_8.pyc",
+    "encodings/iso8859_9.pyc",
+    "encodings/johab.pyc",
+    "encodings/koi8_r.pyc",
+    "encodings/koi8_t.pyc",
+    "encodings/koi8_u.pyc",
+    "encodings/kz1048.pyc",
+    "encodings/latin_1.pyc",
+    "encodings/mac_arabic.pyc",
+    "encodings/mac_croatian.pyc",
+    "encodings/mac_cyrillic.pyc",
+    "encodings/mac_farsi.pyc",
+    "encodings/mac_greek.pyc",
+    "encodings/mac_iceland.pyc",
+    "encodings/mac_latin2.pyc",
+    "encodings/mac_roman.pyc",
+    "encodings/mac_romanian.pyc",
+    "encodings/mac_turkish.pyc",
+    "encodings/mbcs.pyc",
+    "encodings/oem.pyc",
+    "encodings/palmos.pyc",
+    "encodings/ptcp154.pyc",
+    "encodings/punycode.pyc",
+    "encodings/quopri_codec.pyc",
+    "encodings/raw_unicode_escape.pyc",
+    "encodings/rot_13.pyc",
+    "encodings/shift_jis.pyc",
+    "encodings/shift_jis_2004.pyc",
+    "encodings/shift_jisx0213.pyc",
+    "encodings/tis_620.pyc",
+    "encodings/undefined.pyc",
+    "encodings/unicode_escape.pyc",
+    "encodings/utf_16.pyc",
+    "encodings/utf_16_be.pyc",
+    "encodings/utf_16_le.pyc",
+    "encodings/utf_32.pyc",
+    "encodings/utf_32_be.pyc",
+    "encodings/utf_32_le.pyc",
+    "encodings/utf_7.pyc",
+    "encodings/utf_8.pyc",
+    "encodings/utf_8_sig.pyc",
+    "encodings/uu_codec.pyc",
+    "encodings/zlib_codec.pyc",
+    "enum.pyc",
+    "functools.pyc",
+    "genericpath.pyc",
+    "heapq.pyc",
+    "io.pyc",
+    "keyword.pyc",
+    "linecache.pyc",
+    "locale.pyc",
+    "ntpath.pyc",
+    "operator.pyc",
+    "os.pyc",
+    "posixpath.pyc",
+    "re.pyc",
+    "reprlib.pyc",
+    "sre_compile.pyc",
+    "sre_constants.pyc",
+    "sre_parse.pyc",
+    "stat.pyc",
+    "traceback.pyc",
+    "types.pyc",
+    "warnings.pyc",
+    "weakref.pyc"
+  ],
+  "external_files": [
+    {
+      "path": "_internal/PySide6/Qt/lib/libQt6Core.so.6",
+      "size": 7541032,
+      "sha256": "aef0838479909adda17ffe51119c5750ceb56444e0a04f8f659b90a5c407c452"
+    },
+    {
+      "path": "_internal/PySide6/Qt/lib/libQt6DBus.so.6",
+      "size": 894184,
+      "sha256": "e716ee0a85eaa1753a15af22b9eef55dc1bbe818a5725235d558117be7a95127"
+    },
+    {
+      "path": "_internal/PySide6/Qt/lib/libQt6Gui.so.6",
+      "size": 11498552,
+      "sha256": "cd892d76e9d6eeab0a04db33bcc9fa7e6819ba4a9680ff5773fe28837e7568bc"
+    },
+    {
+      "path": "_internal/PySide6/Qt/lib/libQt6Network.so.6",
+      "size": 2149512,
+      "sha256": "d19f38938321cd546630be758af2b855b35d28351d54eb48957e720e7aad27d1"
+    },
+    {
+      "path": "_internal/PySide6/Qt/lib/libQt6OpenGL.so.6",
+      "size": 706664,
+      "sha256": "285821cdf290c4d294eb4b5d1def79f0b0c3f608991a8808fc65ea03a54b4ac7"
+    },
+    {
+      "path": "_internal/PySide6/Qt/lib/libQt6Svg.so.6",
+      "size": 691176,
+      "sha256": "69a1c9df78cff39d410c2ad8b349be36ad576e6f36540e29faf2ff653f08ebe9"
+    },
+    {
+      "path": "_internal/PySide6/Qt/lib/libQt6Test.so.6",
+      "size": 478720,
+      "sha256": "c3faf0073f4ca6da3a5b03f0c3e08f5c0543e14c5972ff8c33a9b7d4aee61384"
+    },
+    {
+      "path": "_internal/PySide6/Qt/lib/libQt6Widgets.so.6",
+      "size": 8159592,
+      "sha256": "690cd8c67b6e90d02e4ad7ebc38cea5bde29f61f08aa44d7d1b4f7bc932720fe"
+    },
+    {
+      "path": "_internal/PySide6/Qt/lib/libQt6XcbQpa.so.6",
+      "size": 779720,
+      "sha256": "9f6fa9c5174c38184dec23365096140be0f648483e9ce3afd83489cb81375ff8"
+    },
+    {
+      "path": "_internal/PySide6/Qt/lib/libicudata.so.73",
+      "size": 32035888,
+      "sha256": "4d24b3a908dd838bea23414e16aa830d05a2a306c475246ab11ef0a00c3037e9"
+    },
+    {
+      "path": "_internal/PySide6/Qt/lib/libicui18n.so.73",
+      "size": 4477136,
+      "sha256": "ad5410f3e4eb4f01f91d10ddb3780cdbcbeb902ed04a3bc4d3f562b956578d52"
+    },
+    {
+      "path": "_internal/PySide6/Qt/lib/libicuuc.so.73",
+      "size": 2571736,
+      "sha256": "8ce3427af0d2bf566bb422ce80a12014137d12ed452fe2dd9ed481ee46181168"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/iconengines/libqsvgicon.so",
+      "size": 68152,
+      "sha256": "2d9693e83c03066848e8dc419bdb9edb5014f118089d68a16601a579f5a98c20"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/imageformats/libqgif.so",
+      "size": 43576,
+      "sha256": "3f3b8a7c213aaa2a504039829a99948c2efd252d1e9ffe0cba8bcaeb68297c3e"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/imageformats/libqicns.so",
+      "size": 47672,
+      "sha256": "66aeb9f25d4f5063be9ef10bd6231929592174bbe5b66be6f4a17816fd45b4e3"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/imageformats/libqico.so",
+      "size": 39480,
+      "sha256": "8a7e5b5586958146c76ec38c5ce0fbbaf69a3e36ac7e0b7addebdeca86a14453"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/imageformats/libqjpeg.so",
+      "size": 539192,
+      "sha256": "913293cf5400f587ddc2f6ab8d6e32aa5890ff09e65a483696386392ac3af408"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/imageformats/libqsvg.so",
+      "size": 27192,
+      "sha256": "5154a0471d30e1d2570b74c6d54d7b623ee0c82c65e94fab3ec619494043dc5d"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/imageformats/libqtga.so",
+      "size": 27192,
+      "sha256": "ef26805a7f6fb5410a0204646d25201b3334e5663b84c324a7e770fc74d4d1fe"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/imageformats/libqtiff.so",
+      "size": 510536,
+      "sha256": "9595327529b6277245dd9d1cafcf0f412616d13e7853464b0f7c831fea415a9a"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/imageformats/libqwbmp.so",
+      "size": 27192,
+      "sha256": "176132f6318fd6be0ebfaa3d946f5b90d83324660fcb9b8ce7a6ce7930b91e25"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/imageformats/libqwebp.so",
+      "size": 523000,
+      "sha256": "852eb27eb60977416b2ec021dd92d9b7f7a00248696e5f313bbbfa0b04a49b7d"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so",
+      "size": 31440,
+      "sha256": "f268255827b3821ab69ea095c5652de059809d6da50e33d820f4d92940f60012"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so",
+      "size": 185296,
+      "sha256": "4b860351f1c65d5f375226fad90259ae16d7ef0555ec9dd64206aca1d1a694e0"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/platforms/libqoffscreen.so",
+      "size": 117312,
+      "sha256": "88139214a1f4f7491047231c1b970dad4d108fc3d8002dc78c74ac0d4fe47c52"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/platforms/libqvkkhrdisplay.so",
+      "size": 229184,
+      "sha256": "12a34c3b4d6882661152f5e410d8fb72373f0ca38ac812b9fdddf0d8c7a9d625"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/platforms/libqxcb.so",
+      "size": 19000,
+      "sha256": "a3b756cbbf6c5ada642648fe12b5e79d5285b76b0f12ab5f9231378df87a36e2"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/xcbglintegrations/libqxcb-egl-integration.so",
+      "size": 55880,
+      "sha256": "5b1361a67629d65da6b8ad83c20bb0c32ec0b01dc0f6939195f60f92c359a9d6"
+    },
+    {
+      "path": "_internal/PySide6/Qt/plugins/xcbglintegrations/libqxcb-glx-integration.so",
+      "size": 76392,
+      "sha256": "d7bf6d1ce91e07c6cf8623b8e13de2d34f85d24aff29ccbdde67bdabb15d0173"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_ar.qm",
+      "size": 104,
+      "sha256": "b11333c520ccd8e375cde20985df402d586a1a95e0796313bbeb9f717d4db22e"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_bg.qm",
+      "size": 91,
+      "sha256": "1e22ee126ec9f76031d880285a907b3a0c4510392319ff700dcdee964abbb1ad"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_ca.qm",
+      "size": 91,
+      "sha256": "17ab2623c7f6e8def44b3dbcb517544185817d65f1298ddb10ef71136f232bdc"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_cs.qm",
+      "size": 95,
+      "sha256": "c585918fb1d4821a054ea40bdcf279f275ca76c88a5793f433dac6a611ac7e8f"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_da.qm",
+      "size": 91,
+      "sha256": "f6773c672acb73fdef6e092060d69d1e5dfee840012bac912d1e92de28714386"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_de.qm",
+      "size": 91,
+      "sha256": "0401c316aa3b50a172eb44a4ff1ec384924073beec7c928ef888ec48e4612688"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_en.qm",
+      "size": 33,
+      "sha256": "494ac9a2b2cb2fdeced353f4a9f898ed8dcf616e9bc667438c62681e3f7f79cf"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_es.qm",
+      "size": 91,
+      "sha256": "648ed4519bc45d7a4779479a7626ea16cf9aa23e93a0b178546cc47bea0591ab"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_fa.qm",
+      "size": 84,
+      "sha256": "3f4c989c6b2990d80cc6299408214b31698923b52f154483b3371875de91f88e"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_fi.qm",
+      "size": 91,
+      "sha256": "342d01c7eeb234e431d0506821c4cd03c0433115d8d63fee3357be2331858879"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_fr.qm",
+      "size": 91,
+      "sha256": "c896a38892a92346b033793d56440993236b23e47e06f3974afdb0552f628387"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_gd.qm",
+      "size": 70,
+      "sha256": "49df855a004a17950338af3146466f6df4d5852410bd0b58ea80e0d0203a9d24"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_gl.qm",
+      "size": 323590,
+      "sha256": "204a01ac7deb6b5bae193afecbd1e50d18c73bf7d94badeb2bbfdf6123c4ed93"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_he.qm",
+      "size": 57,
+      "sha256": "36f01fff2f25e116d4b7af78097b7e49520fd5b7fb6fb120e40be228c05c045f"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_ar.qm",
+      "size": 8743,
+      "sha256": "222088c9752d1cc3bab985ef2dc77e5ae78578dce18a61ec15b39f02e588163d"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_bg.qm",
+      "size": 10599,
+      "sha256": "cbcdd1e0bbae332d80ddb0a286056f17c824fa28d353d7fdf12fc97d9f6fe054"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_ca.qm",
+      "size": 7435,
+      "sha256": "fe40962c814a9f489e18d033e4aaabe435232c9bcf760830c6165af507cca80e"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_cs.qm",
+      "size": 15297,
+      "sha256": "4ac56fc63e400943bab13f1d4c418502138908e1d488c24aee6131d3d17552aa"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_da.qm",
+      "size": 4795,
+      "sha256": "6bb092552a398687119f6d52145f04bf8373977446d8f00c0dcbd56b96829f0f"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_de.qm",
+      "size": 7569,
+      "sha256": "037bc99abf98571ae9375c2513536c15b571d66406c36c1de447b547ff539c07"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_en.qm",
+      "size": 33,
+      "sha256": "494ac9a2b2cb2fdeced353f4a9f898ed8dcf616e9bc667438c62681e3f7f79cf"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_es.qm",
+      "size": 10704,
+      "sha256": "fd16b279f8cf69077f75e94d90c9c07a2afff3948a579e3789f5ffb5e5f4202d"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_fr.qm",
+      "size": 3573,
+      "sha256": "875ee2dcdc64e3dea888d84048e382d3921a175f12847de2e6b1cb12ad9add50"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_gl.qm",
+      "size": 10891,
+      "sha256": "7399a248609974773f60866c87b78ea7dfbc4f750313d692f7886cd763883c9f"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_hr.qm",
+      "size": 5170,
+      "sha256": "8c8cc3c5b1ab2b074f82937001b896603420ef75592b3b78172177360dd7ea61"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_hu.qm",
+      "size": 7255,
+      "sha256": "7be32e015119c969453abb6e8f3fb377963a69fafb10c27b796737b5eb283eaf"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_it.qm",
+      "size": 10612,
+      "sha256": "316fe8d0815e2b4b396895beb38ef1a40431915b5e054df80f4c0cd556f26e4b"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_ja.qm",
+      "size": 7917,
+      "sha256": "ae603b2c0d434d40cde433ffcba65f9ee27978a9e19316007be7fe782a5b8b47"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_ka.qm",
+      "size": 7091,
+      "sha256": "159c74f94b384b5ee6afdf38b6cfc4806bc99ecf73be02d4a7021d4ceba7ec7e"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_kk.qm",
+      "size": 6971,
+      "sha256": "de92b7bc46998da4becb07f810e7947f0e22d5f7bf152b8bd7be90375027dfa0"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_ko.qm",
+      "size": 5708,
+      "sha256": "f11c64694e8e34e1d2c46c1a1d15d6ba9f2db7b61de4fdf54eca5ab977c3e052"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_nl.qm",
+      "size": 5087,
+      "sha256": "44a8a0daf775d14352180052d13f623814d7bdf98e2c5c80144b7bf74214e3b0"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_nn.qm",
+      "size": 6934,
+      "sha256": "4c8a7213942078e4f72f5babd26c41b77ace70189714a58b5504a7d5ad0193dc"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_pl.qm",
+      "size": 9673,
+      "sha256": "cc6cb4d8c54086224672f2e49e623c8cb7c0c1cd65b8d5ecd42fc9ba3a6065bd"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_pt_BR.qm",
+      "size": 16030,
+      "sha256": "b4015c5d519b4fe93c00bf734d1742e4f0094d89862664d548eb64a46a2feae7"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_ru.qm",
+      "size": 7288,
+      "sha256": "557b644e6da5f1ec720ef93965617087e4d1f40b2494cc5aa524cf3796108de7"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_sk.qm",
+      "size": 10388,
+      "sha256": "f41e33e1d790bd0d3eb180f1f875bc191fe74773628f25c2cad95e1402e66867"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_sl.qm",
+      "size": 10363,
+      "sha256": "2ec955e662407ebcd8dcdae5aaa21e4108e0b5b0aee0e9db712c27072943535f"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_sv.qm",
+      "size": 6934,
+      "sha256": "95bdb03dbaa6dbdfda46c249e9ccce9a353f71ddb8b112961e8b005b2c60b13c"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_tr.qm",
+      "size": 6723,
+      "sha256": "81da2f88cd624097581f2d29b10311796bcd9ab289e65883346d276110542d28"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_uk.qm",
+      "size": 9750,
+      "sha256": "497cfc473684692ee44d7a3795e8fb2270c57069fd9eb98a615dd29ab9be8a7c"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_zh_CN.qm",
+      "size": 5115,
+      "sha256": "e256d1f6034a5a5521c62f129f91731216e474f71e1d9caea3d3dcb11b670deb"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_help_zh_TW.qm",
+      "size": 5160,
+      "sha256": "40112812abb43853d678cc6d97729f21f21b3a7321c827fc9d18f6c936447d1e"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_hr.qm",
+      "size": 102,
+      "sha256": "fc9e4146f33be3d09b234be01e56235d3037d8d82d64f0700b4d4a6e253a61a7"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_hu.qm",
+      "size": 84,
+      "sha256": "c2fa649f167cdb801d1cc0cb69c1d93594fd5bf8c0b7e79b969935da5c3e19aa"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_it.qm",
+      "size": 91,
+      "sha256": "9e7a18bc20ebeec54baaaf41c918a74534511271f796dffffd0f9b9ec31c68d3"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_ja.qm",
+      "size": 84,
+      "sha256": "0f5fe50452947d1ee9755249d860354bff6977279b4c496a5bc77e5b89dd745e"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_ka.qm",
+      "size": 94,
+      "sha256": "00b67c6dfc255079b5b98a5640f82519c96b2520a028682fba4078b39d743eaa"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_kk.qm",
+      "size": 86,
+      "sha256": "23f7ccad75b8b2d70eb0ed0fc910dacc667e9ff65ed1e328c65263ad2d172cda"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_ko.qm",
+      "size": 84,
+      "sha256": "1d254b535e1cb35cbcad8210b15b89f4488159826bf35b4504696263dd102fa3"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_lg.qm",
+      "size": 57,
+      "sha256": "6ba668501f4c040c66da1bdc022362da3c8cf663da6aa484cbdb599028da98ed"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_lt.qm",
+      "size": 165383,
+      "sha256": "47eb5f97467df769261421d54a5bea1131c9fb9b6388791d38bb6574335b64bf"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_lv.qm",
+      "size": 63,
+      "sha256": "addeca285282338294f24ca50d37d08a5f68d3785d0a94af86dd4ec8f2a3b449"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_nl.qm",
+      "size": 91,
+      "sha256": "39e870cbd25c0f97fa9b1828d5ea1ed9849857a2e26c5321b3f13c76be8f0548"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_nn.qm",
+      "size": 91,
+      "sha256": "4e544e23f75eafe1553dc896973db23b5795cd243786d5c653cc0f36a46ca74f"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_pl.qm",
+      "size": 99,
+      "sha256": "e6890afa0caf0f6db0248e4c94f6016b8ec8bc266f1e0e9b8f01e8ea912cf968"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_pt_BR.qm",
+      "size": 106,
+      "sha256": "0e24c58e35271853f8cdfb3f0f7b0741b5a9a588e43cdec62ae85a3842771e0a"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_pt_PT.qm",
+      "size": 70334,
+      "sha256": "2c1e7bbf5168a64b43752dd4c547601c0bde6d610f8671fa3e3af38597e84783"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_ru.qm",
+      "size": 102,
+      "sha256": "1b388e2d6d1bd405603e794e498c6d7ec5f5a5ad819243546f6399181da36758"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_sk.qm",
+      "size": 95,
+      "sha256": "840c3b01c89df976fc1d2e5bfc6fc84b65666b8a3ceb4cbf5aa0c22af3d2a383"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_sl.qm",
+      "size": 228428,
+      "sha256": "c44e0313a9414cc0e490b65b0c036fa11bca959353b228886547bc2c8492034f"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_sv.qm",
+      "size": 91,
+      "sha256": "daaae448e0814b469ac3d7a91096fde15491600a6b8bc6c01508425fb5e8b3ec"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_tr.qm",
+      "size": 84,
+      "sha256": "59e8a0c411be3b0802a68561b090f182099d6b75c4fe46f398e55f11528e11b9"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_uk.qm",
+      "size": 102,
+      "sha256": "053ec1f677c4dba48c6a97eb28f4fc78c1511324d1843d7f4cec2c7c00a66145"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_zh_CN.qm",
+      "size": 99,
+      "sha256": "c0e29d32c9540a7e78643b74214e633c56f6ab11f018e516629f2c11b1fb09fc"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qt_zh_TW.qm",
+      "size": 99,
+      "sha256": "24e226954491689549a1a1990db3b8cb78888008d8163b2fd2442b772b6d1b5f"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_ar.qm",
+      "size": 160017,
+      "sha256": "e03fe68d83201543698fd7fe267dd5dfc5bfd195147e74ff2f19ac3491401263"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_bg.qm",
+      "size": 165337,
+      "sha256": "e448ac9e3f16c29eb27af3012efe21052daa78fabfb34cd6dff2f69ee3bd3cdb"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_ca.qm",
+      "size": 269007,
+      "sha256": "5298532fc52ffbc4e2c549f277151a61e741921c834286f7c04d3753677b6b04"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_cs.qm",
+      "size": 174701,
+      "sha256": "03028b42df5479270371e4c3bdc7df2f56cbbe6dda956a2864ac6f6415861fe8"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_da.qm",
+      "size": 181387,
+      "sha256": "7d1e5ca3310b54d104c19bf2abd402b38e584e87039a70e153c4a9af74b25c22"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_de.qm",
+      "size": 223282,
+      "sha256": "ed828a83dfaa51944f166c842155b48ab3bd7cb2c46dcd96269eb5d48af4f63f"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_en.qm",
+      "size": 33,
+      "sha256": "494ac9a2b2cb2fdeced353f4a9f898ed8dcf616e9bc667438c62681e3f7f79cf"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_es.qm",
+      "size": 165170,
+      "sha256": "4ffda56ba3bb5414ab0482d1dde64a6f226e3488f6b7f3f11a150e01f53fa4c8"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_fa.qm",
+      "size": 148156,
+      "sha256": "f78e59b5bdd586181a999034ba418868ed17fe9c05707fb65e523f70e92253d2"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_fi.qm",
+      "size": 179941,
+      "sha256": "e47fe13713e184d07fa4495dde0c589b0e8f562e91574a3558a9363443a4fa72"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_fr.qm",
+      "size": 159463,
+      "sha256": "314243a55c32679ad473fdfe48dc7d66e973ad0fc8bf2164480c58dddb50c1a7"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_gd.qm",
+      "size": 189580,
+      "sha256": "63b439dd44139aa3aed54c2ebe03fa9bc77f22c14ed8fba8eff2608445bb233d"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_he.qm",
+      "size": 138690,
+      "sha256": "e1ebca16afe8994356f81ca007fbdb9ddf865842010fe908923d873b687cad3f"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_hr.qm",
+      "size": 149711,
+      "sha256": "bb9eec9a9a652c1340dc75eb2e749be50df00f885b3d6900dfc76799c45b244d"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_hu.qm",
+      "size": 205885,
+      "sha256": "98463295539d769c8645a0b7fb95ad38454cfd0b14f36af485513f036ddbbbc6"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_it.qm",
+      "size": 161166,
+      "sha256": "7808ed542a7833c4bd94ec8bdfbbca00bb4f2fe15979b9121ce3249323687300"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_ja.qm",
+      "size": 129913,
+      "sha256": "2b9581c69b975f59be505b127cd3c19d403ef3d12e0e8386fb97238223e9c1df"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_ka.qm",
+      "size": 201105,
+      "sha256": "e55e4b72fa620bebee5297ca59dfe2f49894a1e544f2b7485b1cfd8829289d6f"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_kk.qm",
+      "size": 259281,
+      "sha256": "8bab72c453e87489d76cc7efffc57e947cbfa239dee4d6fa113f7b7b8cbd5b86"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_ko.qm",
+      "size": 156799,
+      "sha256": "0179ed1b136e1cb3f583351eaa2c545ba3d83a6ee3f82c32505926a1a5f5f183"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_lg.qm",
+      "size": 315764,
+      "sha256": "31c0cc4ce13b1d74fe0c19ed0b47638fb31e20c93ee08092533e884007aebfb5"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_lv.qm",
+      "size": 153608,
+      "sha256": "846e047573ae40c83671c3ba7f73e27efc24b98c82701da0df9973e574178bb2"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_nl.qm",
+      "size": 202861,
+      "sha256": "f61513bcdbb6ad800585f9437a95d018aab17fa12ee414aa31462ff279d8240e"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_nn.qm",
+      "size": 196411,
+      "sha256": "f9f2fb7c60e7fcb38bbd3c1314ef122145594265e20b0659ff00004baab13ac7"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_pl.qm",
+      "size": 162962,
+      "sha256": "3cf6b5c14d5eb0cf81e9af2066e66b3aa579a6b9b3c323ed670761f6254a8c54"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_pt_BR.qm",
+      "size": 290955,
+      "sha256": "3475d61604b938d459949801a906dbd34a8ca824ade94120015d676e208da859"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_ru.qm",
+      "size": 203767,
+      "sha256": "3da6605668f9178d11a838c4515478084dcfb4f9cf22f99d7a92b492db9c224b"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_sk.qm",
+      "size": 125763,
+      "sha256": "d586ae2c314074cf398417fdecb40709d5478dfeb0a67c2fe60d509ee9b59ed7"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_sv.qm",
+      "size": 249963,
+      "sha256": "5a2178dd2c03cc4516697f1fb0049649c9ed53f5cde6b937786733dae06aeda8"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_tr.qm",
+      "size": 248720,
+      "sha256": "353fdfd7165659a49212e7a25bf91c0a71588e52c836f7496640f26782414634"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_uk.qm",
+      "size": 158274,
+      "sha256": "51b8ff55b37dc5907d637a8ddda12fbe816852b0244c74eb4f0fb84867a786e0"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_zh_CN.qm",
+      "size": 147222,
+      "sha256": "0481a9b92a6f0578400e960a7d5ee70217a6a450eaf7f98b7d32b8dbd0d58616"
+    },
+    {
+      "path": "_internal/PySide6/Qt/translations/qtbase_zh_TW.qm",
+      "size": 126185,
+      "sha256": "21012b2b427f8d09d31ce9cae582ca27955b478ca3dc2ec18a3068d808638c6a"
+    },
+    {
+      "path": "_internal/PySide6/QtCore.abi3.so",
+      "size": 4044680,
+      "sha256": "86983078c955379caa5f50ad2d36be7e658662c7996e0f3ecbbd78633f25e6b6"
+    },
+    {
+      "path": "_internal/PySide6/QtDBus.abi3.so",
+      "size": 332168,
+      "sha256": "f75e2b51db6fa32e7f47c6f69fba66a2610bba87f7d89ae5a56e90d39e3056d4"
+    },
+    {
+      "path": "_internal/PySide6/QtGui.abi3.so",
+      "size": 4786248,
+      "sha256": "6ab1280b8d8ff21971bf316f811933b7f774d619b3415439e96d8983e26da1b2"
+    },
+    {
+      "path": "_internal/PySide6/QtNetwork.abi3.so",
+      "size": 1229688,
+      "sha256": "b336cede3d468eb0eae3b95e86ecd29218b8a8c0d71973052de686357fa86de2"
+    },
+    {
+      "path": "_internal/PySide6/QtOpenGL.abi3.so",
+      "size": 8878264,
+      "sha256": "e0bf5ba36bf4c6b32ab700c920ff3b703fda2bf5a4eecaf1f4736f52c8ddeb82"
+    },
+    {
+      "path": "_internal/PySide6/QtTest.abi3.so",
+      "size": 203032,
+      "sha256": "25a82f5689e27be85aa186de585aad2adb253f2914bf428089a2dbcb207cc246"
+    },
+    {
+      "path": "_internal/PySide6/QtWidgets.abi3.so",
+      "size": 6106232,
+      "sha256": "c48e8a768d6331591de65e1145d5b042e158209aa0988d9f2dd4c27696322a75"
+    },
+    {
+      "path": "_internal/PySide6/__init__.py",
+      "size": 6239,
+      "sha256": "b55991e116b4d77d1890bbfbf83d89256537c8cf90c7a61aae81327ed8b285c0"
+    },
+    {
+      "path": "_internal/PySide6/libpyside6.abi3.so.6.11",
+      "size": 292520,
+      "sha256": "493b8045486bd2381af70793a2165bcc4b0b04b8abc9d283fc7e1162c6b78709"
+    },
+    {
+      "path": "_internal/base_library.zip",
+      "size": 879993,
+      "sha256": "179e1576e34c20d8b7b21c627641c85f1d96432920d47d7544d933d5443d61c0"
+    },
+    {
+      "path": "_internal/camera_follow.cpython-310-x86_64-linux-gnu.so",
+      "size": 507360,
+      "sha256": "614a1bb882de352299dee44e93f204e3d92db8bf2d31f646a34bb31afa905775"
+    },
+    {
+      "path": "_internal/control_panel.cpython-310-x86_64-linux-gnu.so",
+      "size": 641008,
+      "sha256": "567f6ded5b0a884aedfd93e71ae678f699cbac8d1356dfff36c82cf6a0223617"
+    },
+    {
+      "path": "_internal/control_protocol.cpython-310-x86_64-linux-gnu.so",
+      "size": 556208,
+      "sha256": "ee6c8c617400c8ed36f9e4fa4486426bcfac06cc892cdd0497a6d2bfbed8dd09"
+    },
+    {
+      "path": "_internal/libpython3.10.so.1.0",
+      "size": 5834688,
+      "sha256": "88e4d5e7395813affc5c30a563bcb50321f55342aece87193760daaddae3bd78"
+    },
+    {
+      "path": "_internal/live_plot.cpython-310-x86_64-linux-gnu.so",
+      "size": 2488176,
+      "sha256": "62105665e96d1f1bbba52029037ffcf07a2a179c4cc2f628c37eed02f2c125de"
+    },
+    {
+      "path": "_internal/live_plot_data.cpython-310-x86_64-linux-gnu.so",
+      "size": 1083128,
+      "sha256": "32db805deb1780ae86c76e114ff4a820bea4639723eb86cc1a55bd7f6decf598"
+    },
+    {
+      "path": "_internal/log_replay_data.cpython-310-x86_64-linux-gnu.so",
+      "size": 719912,
+      "sha256": "d26b927a94943323d2b133ce178d51895d3beb6ccf50c24789f7d6e0cb9174a0"
+    },
+    {
+      "path": "_internal/log_replay_panel.cpython-310-x86_64-linux-gnu.so",
+      "size": 824128,
+      "sha256": "93434ec0182d443afed5f60f82852c8b3ab02752baf281cc91b5e4d66d9b2cc9"
+    },
+    {
+      "path": "_internal/main_window.cpython-310-x86_64-linux-gnu.so",
+      "size": 1066792,
+      "sha256": "492e36d8eafa0dfb700cc9c87bb95be76bec7bf88063a50eaa82228b59eb4859"
+    },
+    {
+      "path": "_internal/plugin_catalog.cpython-310-x86_64-linux-gnu.so",
+      "size": 497016,
+      "sha256": "0b9fb339842f022642a8442938594c1afb1c3e3e35625a4b719a098aec433b55"
+    },
+    {
+      "path": "_internal/plugin_command_panel.cpython-310-x86_64-linux-gnu.so",
+      "size": 364456,
+      "sha256": "13fdfd2426569f2bf72cf3ebebd35d6789b16b2a85765d65fe824980bfd93a37"
+    },
+    {
+      "path": "_internal/process_manager.cpython-310-x86_64-linux-gnu.so",
+      "size": 1542448,
+      "sha256": "fa5789e822715b4f851b2133dbbed16e6e26f16858be8a5797879f8dcb37415c"
+    },
+    {
+      "path": "_internal/process_panel.cpython-310-x86_64-linux-gnu.so",
+      "size": 582280,
+      "sha256": "860a849c5069a7f450c99260402f833bb5882bcca410fd1a0a0bfddf159ecf36"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_asyncio.cpython-310-x86_64-linux-gnu.so",
+      "size": 78624,
+      "sha256": "c9bb2404dcfdfea861950900f49990a1dec750b9894a575b1e773d7039ae6efd"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_bz2.cpython-310-x86_64-linux-gnu.so",
+      "size": 32120,
+      "sha256": "86fd002604395c7f18e8b5d455db8b288c504e920a013907c0c96c48fa93cec5"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_codecs_cn.cpython-310-x86_64-linux-gnu.so",
+      "size": 154128,
+      "sha256": "40bb6a2a3b3497e5ebf63e45fad8ef7131c98441efe60f6fe429cce3b7744f0d"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_codecs_hk.cpython-310-x86_64-linux-gnu.so",
+      "size": 162352,
+      "sha256": "4189f6e4992b5ab60be9a5cc7b0a0d74d1dcae284f049d3d5d299ba446ad3a8d"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_codecs_iso2022.cpython-310-x86_64-linux-gnu.so",
+      "size": 31248,
+      "sha256": "7d86ebfbd39f6886c4bca3a6b9b86e2341d127f6722efaca1fef4554e0833c3a"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_codecs_jp.cpython-310-x86_64-linux-gnu.so",
+      "size": 272912,
+      "sha256": "2ba7d75387eec967f696aeefe49784281393c9f4350cddecf31ce48b76eb4b59"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_codecs_kr.cpython-310-x86_64-linux-gnu.so",
+      "size": 141840,
+      "sha256": "db1a616cd038b273e9bed6f689be3e058b8b1afc2fa7e55995ffaf281dfb95b0"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_codecs_tw.cpython-310-x86_64-linux-gnu.so",
+      "size": 113168,
+      "sha256": "6ad3c8eb5e2d3acc3d4fc1759fcfe5cbdc3a2aa7e11250cb57db03999336aba4"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_contextvars.cpython-310-x86_64-linux-gnu.so",
+      "size": 14536,
+      "sha256": "a12c77293463697e7cb7a7b4d898a3472ef4e13d6029d5ad9bc7cdb86d6ccd9f"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_ctypes.cpython-310-x86_64-linux-gnu.so",
+      "size": 132120,
+      "sha256": "afd10a3affe19c34a14252e315dbf8c6c21fd13418a6444d7ad4d55c27f383f5"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_decimal.cpython-310-x86_64-linux-gnu.so",
+      "size": 180632,
+      "sha256": "1ff77b9bf39b1c9d62758fc0179c29fb47fa5f242dfb4bc980c96d0e1cd22ecc"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_hashlib.cpython-310-x86_64-linux-gnu.so",
+      "size": 63728,
+      "sha256": "9d48b20174e976f7a6bcaf0e76d208d1bf5b77b85b1565d1ca7a202e3eec41c2"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_json.cpython-310-x86_64-linux-gnu.so",
+      "size": 49160,
+      "sha256": "8f06c02cc5d7f692dd175b4fae18619fe66215391aa7797bc8400e7488eaef36"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_lzma.cpython-310-x86_64-linux-gnu.so",
+      "size": 45240,
+      "sha256": "9b7dc87f399102de534e8dc58c69fe0e27a0b935bb97ed50e0fbd36576dd74ea"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_multibytecodec.cpython-310-x86_64-linux-gnu.so",
+      "size": 50328,
+      "sha256": "ca380eb18a2a94cd28a4803b3b55b258fbdefaa631b630038ee181c1a9d65823"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_multiprocessing.cpython-310-x86_64-linux-gnu.so",
+      "size": 24336,
+      "sha256": "e03ca36c884098db086d5e223f3b14dec9a4ba03e4d0293ebfd90565c2525851"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_opcode.cpython-310-x86_64-linux-gnu.so",
+      "size": 14672,
+      "sha256": "6683c181289c98f8d8a8febe4b6eaf09ed008666e2f0b5a3ee620df2655cb5d5"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_posixshmem.cpython-310-x86_64-linux-gnu.so",
+      "size": 14992,
+      "sha256": "b893a1ad783822643c8ca0eba5f35e99d9862f85e50f7d263dcdfb3bc9f9a808"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_queue.cpython-310-x86_64-linux-gnu.so",
+      "size": 23664,
+      "sha256": "770e58de9e394fa0ad93f78ddffe85a1233d66462828094394e91b0283358d5e"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/_ssl.cpython-310-x86_64-linux-gnu.so",
+      "size": 225296,
+      "sha256": "99cb4cde3c14dd8acd75b6f4508e391d5299443c455bc4c1089172059e6f8f86"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/mmap.cpython-310-x86_64-linux-gnu.so",
+      "size": 32600,
+      "sha256": "0215e38abdcf2aff2a35cb14d99aa9738362f3a14b3457699f0549b21385e3a8"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/resource.cpython-310-x86_64-linux-gnu.so",
+      "size": 19424,
+      "sha256": "32c6504ea6595e15641159280d91ea012efd1209e1b8ebf059fdc9807242b623"
+    },
+    {
+      "path": "_internal/python3.10/lib-dynload/termios.cpython-310-x86_64-linux-gnu.so",
+      "size": 31296,
+      "sha256": "ff4d3d7950dea513995c731af269c7ceaad5412b88d3c527dd61e9b2f51f5f96"
+    },
+    {
+      "path": "_internal/replay_ankle.cpython-310-x86_64-linux-gnu.so",
+      "size": 1216016,
+      "sha256": "3efae507dbfdd472296f6305be3b169fbab02bb65cdf5e313f60c61bb6ebf9a1"
+    },
+    {
+      "path": "_internal/replay_clock.cpython-310-x86_64-linux-gnu.so",
+      "size": 446984,
+      "sha256": "a96bf2ba01af529675fbe1bfa5d84a0d42a023361ad86fe94210b0c48d00e667"
+    },
+    {
+      "path": "_internal/replay_view.cpython-310-x86_64-linux-gnu.so",
+      "size": 818608,
+      "sha256": "8ac639ed37027200daf7e737055fe6134ec050966c2f68c58a5a4e7011e87c50"
+    },
+    {
+      "path": "_internal/shiboken6/Shiboken.abi3.so",
+      "size": 23792,
+      "sha256": "ca6e60227bfda404fcb3826430a4b3129cfa9df6fd6188ab7987f21dca56e09f"
+    },
+    {
+      "path": "_internal/shiboken6/__init__.py",
+      "size": 670,
+      "sha256": "761b095f8f621423c835264967f9c260184d5533fd7c739ff448cbe6b4cd7c5e"
+    },
+    {
+      "path": "_internal/shiboken6/libshiboken6.abi3.so.6.11",
+      "size": 441840,
+      "sha256": "a13ba52dc4ff2770fb749084a0e7fc38331ce5506d185c1a9858f73efa2edf2d"
+    },
+    {
+      "path": "_internal/sim_desktop_checks.cpython-310-x86_64-linux-gnu.so",
+      "size": 684528,
+      "sha256": "af0608a88bb5aeebe956f09f3400af13b8cd402841fe7a21149bc51f4ef66263"
+    },
+    {
+      "path": "_internal/sim_gui.cpython-310-x86_64-linux-gnu.so",
+      "size": 284080,
+      "sha256": "5fe17cef8309d69e887a3ae41e71d3aa2309de28e8b85f4b62d9bfa43a2a04ed"
+    },
+    {
+      "path": "_internal/sim_gui_config.cpython-310-x86_64-linux-gnu.so",
+      "size": 350616,
+      "sha256": "8a1ab0909aa829c13f9f1783cda94cbf1a8a0fa4f904beb68c0969f8bc0b5d2b"
+    },
+    {
+      "path": "_internal/sim_gui_styles.cpython-310-x86_64-linux-gnu.so",
+      "size": 53776,
+      "sha256": "4ac15afddbc76cae413b7534110b854373e72ea44bf4d5b1264e3aaa9a0d014d"
+    },
+    {
+      "path": "_internal/sim_plot_checks.cpython-310-x86_64-linux-gnu.so",
+      "size": 1708848,
+      "sha256": "2749c052105cf6801b6af6002df823311fc335d4e19a3beb68727aff05c95067"
+    },
+    {
+      "path": "_internal/sim_replay_checks.cpython-310-x86_64-linux-gnu.so",
+      "size": 1919856,
+      "sha256": "35177f030dad1801db434764a93cfb8eeca99f9ff117e8cedcc20f0ef6b21e87"
+    },
+    {
+      "path": "_internal/simulator_view.cpython-310-x86_64-linux-gnu.so",
+      "size": 725912,
+      "sha256": "5840359a534987e8f743472073ec2d6b1032637d9f5bf4c442519e5e4c11b9a2"
+    },
+    {
+      "path": "_internal/x11_window.cpython-310-x86_64-linux-gnu.so",
+      "size": 765376,
+      "sha256": "856d35c11af9f69f61b1f89af35d45302055c84873c899e424f49ad66c2eff44"
+    }
+  ],
+  "symlinks": [
+    {
+      "path": "_internal/libQt6Core.so.6",
+      "target": "PySide6/Qt/lib/libQt6Core.so.6"
+    },
+    {
+      "path": "_internal/libQt6DBus.so.6",
+      "target": "PySide6/Qt/lib/libQt6DBus.so.6"
+    },
+    {
+      "path": "_internal/libQt6Gui.so.6",
+      "target": "PySide6/Qt/lib/libQt6Gui.so.6"
+    },
+    {
+      "path": "_internal/libQt6Network.so.6",
+      "target": "PySide6/Qt/lib/libQt6Network.so.6"
+    },
+    {
+      "path": "_internal/libQt6OpenGL.so.6",
+      "target": "PySide6/Qt/lib/libQt6OpenGL.so.6"
+    },
+    {
+      "path": "_internal/libQt6Svg.so.6",
+      "target": "PySide6/Qt/lib/libQt6Svg.so.6"
+    },
+    {
+      "path": "_internal/libQt6Test.so.6",
+      "target": "PySide6/Qt/lib/libQt6Test.so.6"
+    },
+    {
+      "path": "_internal/libQt6Widgets.so.6",
+      "target": "PySide6/Qt/lib/libQt6Widgets.so.6"
+    },
+    {
+      "path": "_internal/libQt6XcbQpa.so.6",
+      "target": "PySide6/Qt/lib/libQt6XcbQpa.so.6"
+    },
+    {
+      "path": "_internal/libicudata.so.73",
+      "target": "PySide6/Qt/lib/libicudata.so.73"
+    },
+    {
+      "path": "_internal/libicui18n.so.73",
+      "target": "PySide6/Qt/lib/libicui18n.so.73"
+    },
+    {
+      "path": "_internal/libicuuc.so.73",
+      "target": "PySide6/Qt/lib/libicuuc.so.73"
+    },
+    {
+      "path": "_internal/libpyside6.abi3.so.6.11",
+      "target": "PySide6/libpyside6.abi3.so.6.11"
+    },
+    {
+      "path": "_internal/libshiboken6.abi3.so.6.11",
+      "target": "shiboken6/libshiboken6.abi3.so.6.11"
+    }
+  ],
+  "legacy_module_hits": {
+    "PyQt5": [],
+    "PyQt6": [],
+    "PySide2": [],
+    "paramiko": [],
+    "readline": [],
+    "cryptography": [],
+    "nacl": [],
+    "cffi": [],
+    "_cffi_backend": [],
+    "pycparser": [],
+    "bcrypt": []
+  },
+  "scope": "GUI package inventory; not a license opinion, vulnerability scan or full SDK SBOM"
+}

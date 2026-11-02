@@ -1,0 +1,26 @@
+[
+  {
+    "file": "pyside-setup-everywhere-src-6.11.3.tar.xz",
+    "upstream_url": "https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.11.3-src/pyside-setup-everywhere-src-6.11.3.tar.xz",
+    "size": 18063176,
+    "sha256": "050819cb05e14d6689f42b56e4fa9c8ff63be2bb339e0c094c45b990b7cabde1"
+  },
+  {
+    "file": "qtbase-everywhere-src-6.11.3.tar.xz",
+    "upstream_url": "https://download.qt.io/official_releases/qt/6.11/6.11.3/submodules/qtbase-everywhere-src-6.11.3.tar.xz",
+    "size": 50715968,
+    "sha256": "46de0710b594945a5d446ae44354daa386141c6903c53781b2ca547bc62f8f8f"
+  },
+  {
+    "file": "qtsvg-everywhere-src-6.11.3.tar.xz",
+    "upstream_url": "https://download.qt.io/official_releases/qt/6.11/6.11.3/submodules/qtsvg-everywhere-src-6.11.3.tar.xz",
+    "size": 2341756,
+    "sha256": "9bdf6fa4b5a2d91c3eaa2edd12263fdff0ae19d0ac25d3c99946cd4189a07123"
+  },
+  {
+    "file": "qtimageformats-everywhere-src-6.11.3.tar.xz",
+    "upstream_url": "https://download.qt.io/official_releases/qt/6.11/6.11.3/submodules/qtimageformats-everywhere-src-6.11.3.tar.xz",
+    "size": 2055552,
+    "sha256": "2759929c7abbc5376120394d1ccac1abbb816bc2791b34ece6c1412d323e6213"
+  }
+]

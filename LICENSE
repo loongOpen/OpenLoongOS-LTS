@@ -1,0 +1,9 @@
+OpenLoongOS-LTS is a collection of separately licensed components.
+
+No single license is granted for the whole collection by this file.
+See LICENSES.md for component scopes, original license texts, copyright
+notices and the status of the GUI application license.
+
+The training framework retains its Apache-2.0 license. SDK components and
+third-party libraries retain their own licenses; these must not be replaced
+by the training framework license or by this index.

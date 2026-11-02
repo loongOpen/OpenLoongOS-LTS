@@ -37,8 +37,8 @@ def check(root):
             d == "log" and Path(parent) == root / "loong_gui_sim/runtime")]
         paths.extend(Path(parent) / n for n in dirs + files)
     for path in paths:
-        if path.is_symlink() and root not in path.resolve().parents:
-            errors.append(f"External link: {path.relative_to(root)}")
+        if path.is_symlink() and (not path.exists() or root not in path.resolve().parents):
+            errors.append(f"Broken or external link: {path.relative_to(root)}")
         if path.name == ".release_build":
             errors.append(f"Development artifact: {path.relative_to(root)}")
         if (path.name.startswith(("robot_gui_", "robot_control_gui"))
@@ -50,8 +50,27 @@ def check(root):
                     errors.append(f"Git LFS pointer: {path.relative_to(root)}")
     sim = root / "loong_gui_sim"
     for path in sim.rglob("*"):
+        relative = path.relative_to(sim)
+        if "__pycache__" in relative.parts:
+            continue
+        # LGPL binding support code stays external so recipients can replace it.
+        if (len(relative.parts) >= 3 and relative.parts[0] == "_internal"
+                and relative.parts[1] in {"PySide6", "shiboken6"}):
+            continue
         if path.suffix.lower() in (".py", ".pyc", ".pyx", ".c", ".cpp", ".h", ".hpp", ".hxx", ".a", ".sh"):
             errors.append(f"Simulator source/build file: {path.relative_to(root)}")
+    gui = manifest["components"]["loong_gui_sim"]
+    if gui.get("binding") == "PySide6":
+        for name in ("PySide6/__init__.py", "shiboken6/__init__.py",
+                     "PySide6/QtCore.abi3.so", "PySide6/Qt/lib/libQt6Core.so.6"):
+            if not (sim / "_internal" / name).is_file():
+                errors.append(f"Missing replaceable GUI library: {name}")
+        if hashlib.sha256((sim / "loong_gui_sim").read_bytes()).hexdigest() != gui["sha256"]:
+            errors.append("GUI executable differs from release metadata")
+        for item in json.loads((root / "third_party/sources/SOURCES.json").read_text()):
+            source = root / "third_party/sources" / item["file"]
+            if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest() != item["sha256"]:
+                errors.append(f"Missing or modified LGPL source: {item['file']}")
     for name in ("loong_gui_sim", "runtime/bin/loong_share_sim_x64", "runtime/bin/loong_driver_x64",
                  "runtime/bin/loong_interface_x64", "runtime/bin/loong_locomotion_x64"):
         path = sim / name

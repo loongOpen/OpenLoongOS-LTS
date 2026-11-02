@@ -11,7 +11,7 @@
 | 系统 | Ubuntu 22.04 / Linux x86_64，glibc 2.35 |
 | 桌面 | X11 或 XWayland，当前终端可访问图形桌面 |
 | 下载 | Git、Git LFS；首次下载需要联网 |
-| GUI | 已包含 Python 和 PyQt5，需要安装下列系统图形库 |
+| GUI | 已包含 Python 和 PySide6 / Qt 6，需要安装下列系统图形库 |
 | 训练 | 本 Demo 不需要安装训练环境；训练另需 NVIDIA GPU、驱动和 uv |
 
 Ubuntu 20.04 缺少所需的 glibc 版本；在 Python 虚拟环境里安装包不能解决该差异。其他发行版尚未列入本次验证环境。
@@ -21,7 +21,7 @@ Ubuntu 20.04 缺少所需的 glibc 版本；在 Python 虚拟环境里安装包�
 ```bash
 sudo apt update
 sudo apt install git git-lfs python3 x11-utils libgl1 libegl1 libgl1-mesa-dri \
-  libx11-6 libxcb-xinerama0 libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 \
+  libopengl0 libx11-6 libxcb-xinerama0 libxcb-cursor0 libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 \
   libxcb-keysyms1 libxcb-render-util0 libxcb-randr0 libxcb-shape0 \
   libxcb-xkb1 libfontconfig1 libdbus-1-3 libglib2.0-0 libstdc++6
 ```

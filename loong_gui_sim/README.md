@@ -1,8 +1,8 @@
 # 全链仿真 UI 使用手册
 
-[返回首页](../README.md) ·[技术说明文档](technical-guide.md) · [快速开始](../docs/quickstart.md) · [训练到仿真](../docs/training-to-simulation.md) · [技术架构](../docs/architecture.md)
+[返回首页](../README.md) ·[技术说明文档](../docs/technical-guide.md) · [快速开始](../docs/quickstart.md) · [训练到仿真](../docs/training-to-simulation.md) · [技术架构](../docs/architecture.md)
 
-面向 Ubuntu 22.04 / Linux x86_64，需 X11 或 XWayland 图形桌面。程序已包含 Python 和 PyQt5，无需编译。
+面向 Ubuntu 22.04 / Linux x86_64，需 X11 或 XWayland 图形桌面。程序已包含 Python 和 PySide6 / Qt 6，无需编译。
 默认采用原仓库灵龙 **26 轴模型**（双腿 12＋双臂 14，头腰不参与仿真），RL 使用内置 `policy.onnx`。
 请完整保留 `loong_gui_sim/`，其中的 `runtime/` 和 `native/` 是必需资源。
 
@@ -114,7 +114,7 @@ EN 是使能，RC 是恢复，RL 是策略控制。IDLE 不代表策略正在保
 
 | 现象 | 检查顺序 |
 | --- | --- |
-| `GLIBC_2.35 not found` | 确认使用 Ubuntu 22.04 对应运行环境；安装 PyQt 或更换 Python 不能解决此项 |
+| `GLIBC_2.35 not found` | 确认使用 Ubuntu 22.04 对应运行环境；安装 Qt 绑定或更换 Python 不能解决此项 |
 | 文件很小、无法执行，或出现 LFS 指针 | 执行 `git lfs pull`，再运行根目录完整性检查 |
 | `Permission denied` | 检查可执行位、所在文件系统是否为 noexec；优先通过 Git 完整检出保留文件权限 |
 | Qt 平台插件或窗口加载失败 | 确认当前是图形桌面终端，再按快速入门安装完整系统依赖 |
@@ -136,3 +136,8 @@ QT_QPA_PLATFORM=offscreen ./start_sim.sh --self-test
 ```
 
 输入包历史记录包含 RL 零速度、无辅助力的 30 秒进程内站立检查；本次发布验证包括依赖检查与 GUI 离线自检。完整多进程运行、窗口嵌入、镜头跟随和各速度下持续行走不能由离线自检推断，具体实测范围见 [验证记录](../VALIDATION.md)。本手册给出操作流程，不把待执行的操作描述为本次新增实测结果。
+
+
+## 10. PySide6 候选版与第三方库
+
+2026-11-02 候选版包含 PySide6 / Qt 6.11.3，启动时须保留 `_internal/`。许可、对应库源码与替换方式见 [库替换说明](../docs/gui-library-replacement.md)。实际仿真窗口、镜头跟随、控制链、曲线和 OpenGL 回放的本次短测结果见 [复核记录](../compliance/review-20261102.md)；上节旧包的离线验证边界不代表本次新增测试范围。

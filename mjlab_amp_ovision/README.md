@@ -1,6 +1,6 @@
 # mjlab_amp_ovision
 
-中文教程：[技术说明文档](technical-guide.md) · [从训练到全链仿真](../docs/training-to-simulation.md) · [技术架构与策略接口](../docs/architecture.md) · [项目首页](../README.md)
+中文教程：[技术说明文档](../docs/technical-guide.md) · [从训练到全链仿真](../docs/training-to-simulation.md) · [技术架构与策略接口](../docs/architecture.md) · [项目首页](../README.md)
 
 A minimal [mjlab](https://github.com/mujocolab/mjlab)-based demo for training
 the **LingLong 20-DoF humanoid** with **AMP (Adversarial Motion Priors)** on
@@ -23,8 +23,8 @@ motion (forward walking), and the core training framework — nothing else.
 Requires an NVIDIA GPU (CUDA) on Linux x86_64, and [uv](https://docs.astral.sh/uv/).
 
 ```bash
-git clone https://atomgit.com/openloong/LoongMC-2026-LTS.git
-cd LoongMC-2026-LTS
+git clone https://github.com/loongOpen/OpenLoongOS-LTS.git
+cd OpenLoongOS-LTS
 git lfs pull
 cd mjlab_amp_ovision
 uv sync --locked --extra cu128 --group dev

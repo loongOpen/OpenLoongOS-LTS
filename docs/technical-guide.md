@@ -93,12 +93,12 @@ flowchart LR
 ```bash
 sudo apt update
 sudo apt install git git-lfs python3 x11-utils libgl1 libegl1 libgl1-mesa-dri \
-  libx11-6 libxcb-xinerama0 libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 \
+  libopengl0 libx11-6 libxcb-xinerama0 libxcb-cursor0 libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 \
   libxcb-keysyms1 libxcb-render-util0 libxcb-randr0 libxcb-shape0 \
   libxcb-xkb1 libfontconfig1 libdbus-1-3 libglib2.0-0 libstdc++6
 ```
 
-GUI 程序**已内置 Python 和 PyQt5**，上面装的 `python3` 是给 `check_release.py` 用的，不是给 GUI 用的。系统图形库仍然必须装——内置的 PyQt5 解决不了 OpenGL、xcb 这些底层依赖。
+GUI 程序**已内置 Python 和 PySide6 / Qt 6**，上面装的 `python3` 是给 `check_release.py` 用的，不是给 GUI 用的。系统图形库仍然必须装——随包的 PySide6 / Qt 解决不了 OpenGL、xcb 这些底层依赖。
 
 ### 2.3 训练侧依赖
 
@@ -876,7 +876,7 @@ log2udpPort=9870
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |
-| `GLIBC_2.35 not found` | 系统不是 Ubuntu 22.04 | 换 Ubuntu 22.04；装 PyQt 或换 Python 都不能解决 |
+| `GLIBC_2.35 not found` | 系统不是 Ubuntu 22.04 | 换 Ubuntu 22.04；安装 Qt 绑定或更换 Python 都不能解决 |
 | `Qt platform plugin "xcb"` 加载失败 | 缺系统图形库，或不在图形终端 | 确认 `$DISPLAY` 非空；按 2.2 装完整依赖 |
 | `Could not load the Qt platform plugin` | 同上 | 同上 |
 | `nvidia-smi` 无输出 / 报错 | 驱动未装或版本不匹配 | 先解决驱动，uv 不管驱动 |
@@ -996,7 +996,7 @@ log2udpPort=9870
 
 ### 10.5 许可
 
-第三方分发许可依据及模型、动作数据、演示素材的授权范围**尚未完整核实**。GUI 使用 PyQt5 / Qt，输入包包含其 GPL v3 许可文本，适用于本项目的授权依据与分发条件待确认。
+本候选版 GUI 使用 PySide6 / Shiboken6 / Qt 6.11.3；对应运行库、许可证、版权材料及库源码随包提供。库的替换方法见 [库替换说明](gui-library-replacement.md)。自有 GUI 的分发许可尚待权利人确认，当前状态见 [复核记录](../compliance/review-20261102.md)。
 
 详见 [LICENSES.md](../LICENSES.md)。
 
