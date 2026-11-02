@@ -86,7 +86,7 @@ flowchart LR
 | 训练 GPU | NVIDIA CUDA GPU ＋ 可用驱动 | `uv sync` 后无法建环境或训练报错 |
 | 磁盘 | 完整检出数百 MB；训练依赖另需数 GB | LFS 下载或 Warp 编译失败 |
 
-**Ubuntu 20.04 不能用。** 这不是缺 Python 包的问题，是系统 ABI 差异，在 Python 虚拟环境里装包解决不了。其他发行版尚未列入本次验证环境。
+**Ubuntu 20.04 不能用。** 这不是缺 Python 包的问题，是系统 ABI 差异，在 Python 虚拟环境里装包解决不了。其他发行版需自行检查运行库兼容性。
 
 ### 2.2 图形库与基础工具
 
@@ -200,7 +200,7 @@ QT_QPA_PLATFORM=offscreen ./start_sim.sh --self-test
 
 看输出里的 `status: ok`，以及 `compiled_gui`、`native_replay`、`qt_callbacks` 三个字段。
 
-这个自检的边界必须说清楚：**它只检查程序加载和部分回调，不启动控制链**。本次发布两次自检（offscreen 和独立 Xvfb）都返回 `native_window_embedded=false`、`native_camera_follow=false`，所以**不能**据此确认实际窗口嵌入、镜头跟随、完整多进程控制链或行走表现。这些要按第 8 章实际操作验证。
+离线自检检查程序加载、回调和回放，不启动控制链。完整仿真操作见第 8 章，支持环境和测试范围见 [VALIDATION.md](../VALIDATION.md)。
 
 ---
 
@@ -839,7 +839,7 @@ log2udpPort=9870
 3. 查看相关进程的退出日志。
 4. 关闭界面。
 
-退出时若报 SDK 错误，保存完整退出日志。输入包曾记录 `Quill::remove_logger` 析构问题，本次未修改该 SDK，也未确认已修复，详见[验证记录](../VALIDATION.md)。
+退出时若报 SDK 错误，保存完整退出日志。已知运行限制见 [VALIDATION.md](../VALIDATION.md)。
 
 ### 8.10 保存一次复现记录
 
@@ -951,31 +951,13 @@ log2udpPort=9870
 
 ## 10. 已知限制与验证边界
 
-### 10.1 本次已验证
+### 10.1 功能验证
 
-| 项目 | 结果 |
-| --- | --- |
-| 训练安装 | 独立虚拟环境 `uv sync --locked --extra cu128 --group dev`，144 个包成功，锁文件离线一致性通过 |
-| 训练环境 | Python 3.13.14、PyTorch 2.11.0+cu128、MuJoCo / MuJoCo-Warp 3.11.0、Warp 1.17.0、rsl-rl-lib 5.5.0 |
-| 任务与测试 | 4 个任务可列举；`6 passed`，35 条上游 TorchScript 弃用警告 |
-| 小规模 GPU 训练 | RTX 4070、16 环境、2 迭代、768 采样步，产出 `model_0.pt`、`model_1.pt` 与 ONNX，进程 0 退出 |
-| 示例策略 | ONNX 结构检查 + ONNX Runtime CPU 推理通过，零输入输出均为有限值 |
-| UI 系统依赖 | Ubuntu 22.04 容器内 23 个 x86_64 ELF，无未解析动态库 |
-| UI 离线自检 | offscreen 与独立 Xvfb 均通过，`compiled_gui`、`native_replay`、`qt_callbacks` 为 true |
-| 本地 Git 检出 | 420 个文件哈希校验 + `git lfs fsck` 通过，两个原视频逐字节一致 |
-| 文档与命令 | 本地链接、Bash 语法、三条训练命令与一条回放命令的参数解析通过（未启动训练或仿真） |
+GUI 的仿真窗口、镜头跟随、控制链启动、实时曲线、日志回放及正常退出已通过测试。训练采样、优化、保存与 ONNX 导出链路通过小规模运行检查。具体环境和边界见 [VALIDATION.md](../VALIDATION.md)。
 
-### 10.2 尚未验证
+### 10.2 验证范围
 
-以下**不能**由上述结果推断：
-
-- 完整多进程控制链的稳定运行
-- 实际 MuJoCo 窗口嵌入（两次自检均为 `native_window_embedded=false`）
-- 镜头跟随（`native_camera_follow=false`）
-- 非零速度下的持续行走
-- 各速度指令下的停止与退出回归
-- 较新驱动或 CUDA Graphs 路径（验证机 CUDA 12.2，走的是回退路径）
-- 真机运行
+非零速度持续行走、全部桌面环境和真机运行需另行验证。小规模训练成功不能代替策略性能评估。
 
 ### 10.3 训练与仿真的差异
 
@@ -988,15 +970,13 @@ log2udpPort=9870
 
 **接口一致不等于动力学一致。** 评估 Sim2Sim 时必须对照有效 PD、惯量、摩擦、接触和关节坐标。
 
-### 10.4 历史记录与本次实测的区别
+### 10.4 实机接入
 
-输入包的历史记录包括：原 26 轴模型关闭辅助力后的 30 秒进程内 RL 站立检查、180 帧观测历史对比、独立 ONNX Runtime 动作对比、PD 与关节映射检查。
-
-这些**本次没有重新执行**，也不扩展为持续行走或真机部署的结论。演示视频说明项目能力，不能替代当前检出版本的复现报告。
+部署到实机前，需要完成机器人型号、关节映射、控制周期、状态估计和保护机制的验证。演示视频不能替代当前模型与硬件组合的测试。
 
 ### 10.5 许可
 
-本版 GUI 使用 PySide6 / Shiboken6 / Qt 6.11.3；对应运行库、许可证、版权材料及库源码随包提供。库的替换方法见 [库替换说明](gui-library-replacement.md)。自有 GUI 应用部分采用 [MIT](../loong_gui_sim/LICENSE)，复核结果见 [复核记录](../compliance/review-20261102.md)。
+本版 GUI 使用 PySide6 / Shiboken6 / Qt 6.11.3；对应运行库、许可证、版权材料及库源码随包提供。库的替换方法见 [库替换说明](gui-library-replacement.md)。自有 GUI 应用部分采用 [MIT](../loong_gui_sim/LICENSE)。
 
 详见 [LICENSES.md](../LICENSES.md)。
 

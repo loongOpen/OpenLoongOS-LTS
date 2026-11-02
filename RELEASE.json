@@ -1,5 +1,4 @@
 {
-  "created_utc": "2026-09-30T06:37:40.136415+00:00",
   "platform": {
     "system": "Linux",
     "architecture": "x86_64",
@@ -19,135 +18,36 @@
       "branch": "main",
       "binary": "loong_gui_sim/loong_gui_sim",
       "sha256": "bdc0960b890336127c26fb2ceec4b66f4eb738fe6c2554c3ca77bd85651203fa",
-      "exported_runtime_files": 169,
       "compiled_modules": 23,
-      "sim_bytecode_in_archive": false,
       "native_helpers": [
         "liblog_replay.so",
         "libsim_camera_follow.so"
       ],
-      "runtime_overlay": {
-        "plans": {
-          "rc": 2,
-          "rl": 4,
-          "jntTest": 31
-        },
-        "removed_files": [
-          "runtime/config/plan_bm_dance.ini",
-          "runtime/config/plan_bm_dance_fullbody.ini",
-          "runtime/config/plan_linglong_realtime.ini",
-          "runtime/config/plan_rl_7dof.ini",
-          "runtime/config/plan_rl_lite.ini",
-          "runtime/config/plan_rl_zdd2.ini",
-          "runtime/config/plan_rl_zdd_swingarm.ini",
-          "runtime/config/plan_teleop_zdd.ini",
-          "runtime/data/1_bi_xin.txt",
-          "runtime/data/2_v_shuangshou.txt",
-          "runtime/model/onnx/gm_29250.onnx",
-          "runtime/model/onnx/lite12_yuhan.onnx",
-          "runtime/model/onnx/lite_yuhan10000.onnx",
-          "runtime/model/onnx/model_15000.onnx",
-          "runtime/model/onnx/model_16500.onnx",
-          "runtime/model/onnx/model_16750.onnx",
-          "runtime/model/onnx/model_17500.onnx",
-          "runtime/model/onnx/model_18500.onnx",
-          "runtime/model/onnx/model_20000.onnx",
-          "runtime/model/onnx/model_21000.onnx",
-          "runtime/model/onnx/model_23750.onnx",
-          "runtime/model/onnx/model_5250.onnx",
-          "runtime/model/onnx/onnx.onnx",
-          "runtime/model/onnx/policy16000.onnx",
-          "runtime/model/onnx/policy18000.onnx",
-          "runtime/model/onnx/policy9500.onnx",
-          "runtime/model/onnx/policy_0.onnx",
-          "runtime/model/onnx/policy_0202_4.5m.onnx",
-          "runtime/model/onnx/policy_0611_4.onnx",
-          "runtime/model/onnx/policy_3052.onnx",
-          "runtime/model/onnx/policy_sep_25000.onnx",
-          "runtime/model/onnx/policy_xiaofang.onnx",
-          "runtime/model/onnx/policy_xiaofang_25000.onnx",
-          "runtime/model/onnx/sep18000.onnx",
-          "runtime/model/onnx/sep9000.onnx",
-          "runtime/module/nabo_locomotion/libplan_bm_dance_fullbody_x64.so",
-          "runtime/module/nabo_locomotion/libplan_bm_dance_x64.so",
-          "runtime/module/nabo_locomotion/libplan_home_x64.so",
-          "runtime/module/nabo_locomotion/libplan_linglong_realtime_lcm_x64.so",
-          "runtime/module/nabo_locomotion/libplan_linglong_realtime_lcmx64.so",
-          "runtime/module/nabo_locomotion/libplan_lite_symmetry_x64.so",
-          "runtime/module/nabo_locomotion/libplan_rl_7dof_x64.so",
-          "runtime/module/nabo_locomotion/libplan_rl_zdd2_x64.so",
-          "runtime/module/nabo_locomotion/libplan_rl_zdd_swingarm_x64.so",
-          "runtime/module/nabo_locomotion/libplan_teleop_zdd_x64.so"
-        ],
-        "changed_files": [
-          "runtime/config/driver.ini",
-          "runtime/config/driver_mujoco.ini",
-          "runtime/config/loco_plugins.ini",
-          "runtime/model/scene.xml"
-        ],
-        "added_files": [
-          "runtime/config/plan_rl.ini",
-          "runtime/config/replay_log.ini",
-          "runtime/model/onnx/policy.onnx",
-          "runtime/module/nabo_locomotion/libplan_rl_x64.so"
-        ],
-        "rl_plugin": "private SDK adapter, obs 700 / actions 20, term-major history 10, 50 Hz",
-        "pd": "original 26-axis profile: pdMode=3; fixed MuJoCo PD on all axes; useJntMotMap=0; simAnkleMap=none"
-      },
       "robot_baseline": {
         "model_sha256": "1f9ae2863d99d41c21baa904c2f614fd76524dd452cc47a7d859a6aee0cf909e",
         "driver_template": "config/driver.ini.bak_26dof",
         "mujoco_template": "config/driver_mujoco.ini.bak_26dof",
-        "mujoco_config_sha256": "e9127c318ead084a3ce0bb7fe4b2b3ec89bf303e67c5911e8535e3212689ad60",
-        "adaptations": [
-          "localhost plot logging",
-          "explicitly disable new main ankle mapping",
-          "direct-joint log replay"
-        ]
+        "mujoco_config_sha256": "e9127c318ead084a3ce0bb7fe4b2b3ec89bf303e67c5911e8535e3212689ad60"
       },
-      "packaging_adaptations": [
-        "external resources relative to executable",
-        "prebuilt replay bridge",
-        "native child environment restored",
-        "Qt surplus signal argument handling",
-        "replay supports rigid torso and joint name suffixes on LingLong1.4",
-        "self-test queries model qpos count",
-        "explicit pose space for untagged direct-joint simulation logs",
-        "PyQt5 to PySide6 migration",
-        "external LGPL Python entries and shared libraries",
-        "Qt widget metric name conflict resolved",
-        "PySide signal forwarding and splitter ownership adapted",
-        "third-party notices dialog"
-      ],
-      "previous_build_commit": "fcb12a782b42ad206f65fcc2309ddaf1e0425f04",
-      "source_snapshot_commit": "ac7b6d335d940a0e210a3d3f358d4226e681a140",
-      "source_note": "Supplied loong_gui_sim.zip source ported to PySide6, with release 26-axis adaptations; not asserted to be the exact source of the previous binary.",
       "binding": "PySide6",
       "binding_version": "6.11.3",
       "qt_version": "6.11.3",
       "packaging": "PyInstaller onedir; external replaceable LGPL bindings and libraries",
       "application_license": "MIT",
-      "application_license_file": "loong_gui_sim/LICENSE"
-    },
-    "loong_gui_ctrl": {
-      "branch": "master",
-      "commit": "27a58dd47d731d2bae4c53cbb304496bcfbdc76c",
-      "binary": "loong_gui_ctrl/loong_gui_ctrl",
-      "sha256": "9d19947c743b3abf4876be71eaa5919a1994e701a08b8ce38b29f55e68f3d993",
-      "compiled_modules": 22,
-      "controller_bytecode_in_archive": false,
-      "packaging_adaptation": "Cython signal receivers accept surplus Qt signal arguments; command logic unchanged",
-      "included": false,
-      "reason": "Not present in supplied archive; outside this stage walking and simulation UI scope."
+      "application_license_file": "loong_gui_sim/LICENSE",
+      "runtime": {
+        "plans": {
+          "rc": 2,
+          "rl": 4,
+          "jntTest": 31
+        },
+        "rl_plugin": "obs 700 / actions 20, term-major history 10, 50 Hz",
+        "pd": "original 26-axis profile: pdMode=3; fixed MuJoCo PD on all axes; useJntMotMap=0; simAnkleMap=none"
+      }
     },
     "mjlab_amp_ovision": {
-      "source": "local mjlab_amp_ovision snapshot",
-      "commit": null,
       "source_included": true,
-      "robot_dof": 20,
-      "exported_files": 204,
-      "snapshot_sha256": "08dee141ae21e194f49fca0a60434fe9de981007ef34bfdfb35dff8e2b52c04b",
-      "addition": "uv.lock resolved from the supplied pyproject.toml"
+      "robot_dof": 20
     },
     "policy": {
       "file": "models/policy.onnx",
@@ -211,7 +111,6 @@
   "publication": {
     "name": "OpenLoongOS-LTS",
     "stage": 1,
-    "prepared_date": "2026-10-23",
     "repository": "https://github.com/loongOpen/OpenLoongOS-LTS",
     "scope": [
       "open-source walking training code",
@@ -223,15 +122,7 @@
       "dance",
       "obstacle traversal",
       "teleoperation"
-    ],
-    "status": "PySide6 GUI release prepared and validated on 2026-11-02; remote publication is identified by the repository commit",
-    "packaging_changes": [
-      "Removed old runtime logs and editor settings",
-      "Added roadmap and demonstration media",
-      "Made integrity checker work with Git checkout and optional controller",
-      "Documented Git LFS and locked CUDA training commands"
-    ],
-    "gui_distribution_license_status": "Project-owned GUI: MIT. PySide6/Qt: LGPL runtime sources, notices and replaceability provided and tested. Historical PyQt5 distribution reviewed separately."
+    ]
   },
-  "release_prepared_date": "2026-11-02"
+  "release_date": "2026-11-02"
 }
