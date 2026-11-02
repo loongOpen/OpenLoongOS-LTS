@@ -1,11 +1,11 @@
 OpenLoongOS-LTS — component notices
 
-The GUI in this candidate uses PySide6, Shiboken6 and Qt 6.11.3, copyright
+The GUI in this release uses PySide6, Shiboken6 and Qt 6.11.3, copyright
 The Qt Company Ltd. and other contributors. The shipped runtime libraries
 are used under LGPL-3.0; see licenses/gui/ for license and copyright texts,
 including the GNU GPL v3 text incorporated by LGPL v3.
 
-Corresponding upstream library sources accompany this candidate in
+Corresponding upstream library sources accompany this release in
 third_party/sources/. The library version, origin URL and SHA-256 are listed
 in third_party/sources/SOURCES.json. These archives contain upstream build
 scripts and notices; no local modifications were made to those libraries.
@@ -14,7 +14,8 @@ The GUI loads these libraries from loong_gui_sim/_internal/. See
 docs/gui-library-replacement.md for replacing compatible libraries.
 This distribution imposes no restriction on modifications of the LGPL
 portions or on reverse engineering necessary for debugging such modifications.
-This statement does not grant a general license to project-owned GUI code.
+Project-owned GUI application code is licensed under MIT; see
+loong_gui_sim/LICENSE. This does not change any third-party license.
 
 CPython and its incorporated components retain their respective notices in
 licenses/gui/CPython/. PyInstaller's bootloader is accompanied by its license

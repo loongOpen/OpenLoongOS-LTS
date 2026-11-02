@@ -996,7 +996,7 @@ log2udpPort=9870
 
 ### 10.5 许可
 
-本候选版 GUI 使用 PySide6 / Shiboken6 / Qt 6.11.3；对应运行库、许可证、版权材料及库源码随包提供。库的替换方法见 [库替换说明](gui-library-replacement.md)。自有 GUI 的分发许可尚待权利人确认，当前状态见 [复核记录](../compliance/review-20261102.md)。
+本版 GUI 使用 PySide6 / Shiboken6 / Qt 6.11.3；对应运行库、许可证、版权材料及库源码随包提供。库的替换方法见 [库替换说明](gui-library-replacement.md)。自有 GUI 应用部分采用 [MIT](../loong_gui_sim/LICENSE)，复核结果见 [复核记录](../compliance/review-20261102.md)。
 
 详见 [LICENSES.md](../LICENSES.md)。
 

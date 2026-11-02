@@ -125,7 +125,9 @@
       "binding": "PySide6",
       "binding_version": "6.11.3",
       "qt_version": "6.11.3",
-      "packaging": "PyInstaller onedir; external replaceable LGPL bindings and libraries"
+      "packaging": "PyInstaller onedir; external replaceable LGPL bindings and libraries",
+      "application_license": "MIT",
+      "application_license_file": "loong_gui_sim/LICENSE"
     },
     "loong_gui_ctrl": {
       "branch": "master",
@@ -222,14 +224,14 @@
       "obstacle traversal",
       "teleoperation"
     ],
-    "status": "local candidate; not published; project-owned GUI license and historical distribution handling pending",
+    "status": "PySide6 GUI release prepared and validated on 2026-11-02; remote publication is identified by the repository commit",
     "packaging_changes": [
       "Removed old runtime logs and editor settings",
       "Added roadmap and demonstration media",
       "Made integrity checker work with Git checkout and optional controller",
       "Documented Git LFS and locked CUDA training commands"
     ],
-    "gui_distribution_license_status": "PySide6/Qt LGPL runtime sources and replaceability prepared and tested; project-owned GUI distribution license pending owner decision"
+    "gui_distribution_license_status": "Project-owned GUI: MIT. PySide6/Qt: LGPL runtime sources, notices and replaceability provided and tested. Historical PyQt5 distribution reviewed separately."
   },
-  "candidate_prepared_date": "2026-11-02"
+  "release_prepared_date": "2026-11-02"
 }

@@ -1,6 +1,6 @@
 # GUI 第三方库、源码与替换方法
 
-本候选版使用 PySide6 / Shiboken6 / Qt **6.11.3**（Linux x86_64，CPython 3.10 ABI）。应用通过动态库和外部 Python 包入口加载这些库，采用 PyInstaller `onedir` 目录打包。
+本版使用 PySide6 / Shiboken6 / Qt **6.11.3**（Linux x86_64，CPython 3.10 ABI）。应用通过动态库和外部 Python 包入口加载这些库，采用 PyInstaller `onedir` 目录打包。
 
 ## 交付布局
 
@@ -45,7 +45,7 @@ QT_QPA_PLATFORM=offscreen ./start_sim.sh --self-test
 
 ## 许可证与权利
 
-许可证及版权材料见 `licenses/gui/`、根目录 `NOTICE`、`LICENSES.md`。GNU LGPL v3 引用 GNU GPL v3，两者正文均需保留。允许按 LGPL 修改相关库，并允许为调试这些修改进行必要的反向工程。此说明不替代自有 GUI 部分的分发许可。
+许可证及版权材料见 `licenses/gui/`、根目录 `NOTICE`、`LICENSES.md`。GNU LGPL v3 引用 GNU GPL v3，两者正文均需保留。允许按 LGPL 修改相关库，并允许为调试这些修改进行必要的反向工程。自有 GUI 应用部分按 `loong_gui_sim/LICENSE` 中的 MIT 条款分发。
 
 请与二进制一起提供许可、声明、源码归档及本说明；不要只转发主程序或 Git LFS 指针。
 

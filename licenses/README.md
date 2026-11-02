@@ -1,6 +1,6 @@
 # 许可证材料
 
-- `gui/`：本候选版 GUI 实际使用的 PySide6 / Shiboken6 / Qt、ICU、CPython、PyInstaller 材料，以及 Cython 构建工具的说明。
+- `gui/`：本版 GUI 实际使用的 PySide6 / Shiboken6 / Qt、ICU、CPython、PyInstaller 材料，以及 Cython 构建工具的说明。
 - `onnxruntime/`：SDK 所用 ONNX Runtime 的许可及第三方声明。
 - `../loong_gui_sim/licenses/`：自研原生组件与 MuJoCo、GLFW、Quill 等上游组件的原有材料。
 - `../loong_gui_sim/runtime/license`：原 SDK 许可。

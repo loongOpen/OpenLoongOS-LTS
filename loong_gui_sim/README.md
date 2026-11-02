@@ -138,6 +138,6 @@ QT_QPA_PLATFORM=offscreen ./start_sim.sh --self-test
 输入包历史记录包含 RL 零速度、无辅助力的 30 秒进程内站立检查；本次发布验证包括依赖检查与 GUI 离线自检。完整多进程运行、窗口嵌入、镜头跟随和各速度下持续行走不能由离线自检推断，具体实测范围见 [验证记录](../VALIDATION.md)。本手册给出操作流程，不把待执行的操作描述为本次新增实测结果。
 
 
-## 10. PySide6 候选版与第三方库
+## 10. PySide6 版本与第三方库
 
-2026-11-02 候选版包含 PySide6 / Qt 6.11.3，启动时须保留 `_internal/`。许可、对应库源码与替换方式见 [库替换说明](../docs/gui-library-replacement.md)。实际仿真窗口、镜头跟随、控制链、曲线和 OpenGL 回放的本次短测结果见 [复核记录](../compliance/review-20261102.md)；上节旧包的离线验证边界不代表本次新增测试范围。
+2026-11-02 版本包含 PySide6 / Qt 6.11.3，启动时须保留 `_internal/`。许可、对应库源码与替换方式见 [库替换说明](../docs/gui-library-replacement.md)。实际仿真窗口、镜头跟随、控制链、曲线和 OpenGL 回放的本次短测结果见 [复核记录](../compliance/review-20261102.md)；上节旧包的离线验证边界不代表本次新增测试范围。
