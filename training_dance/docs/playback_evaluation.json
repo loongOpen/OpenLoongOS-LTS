@@ -1,0 +1,14 @@
+{
+  "task": "Mjlab-Tracking-Flat-LingLong14-Xiao",
+  "device": "cpu",
+  "steps": 1930,
+  "simulated_seconds": 38.6,
+  "source_motion_frames": 1781,
+  "evaluated_motion_frames": 1931,
+  "resets": 0,
+  "full_motion_completed": true,
+  "reward_sum": 415.51723177731037,
+  "min_base_height_m": 0.8709207773208618,
+  "max_joint_tracking_error_rad": 0.8862393498420715,
+  "elapsed_seconds": 54.43944660600391
+}

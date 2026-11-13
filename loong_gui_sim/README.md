@@ -1,8 +1,8 @@
 # 全链仿真 UI 使用手册
 
-[返回首页](../README.md) ·[技术说明文档](../docs/technical-guide.md) · [快速开始](../docs/quickstart.md) · [训练到仿真](../docs/training-to-simulation.md) · [技术架构](../docs/architecture.md)
+[返回首页](../README.md) ·[技术使用文档](../docs/technical-guide.md) ·  [快速入门与 Demo](../docs/quickstart.md) · [训练到仿真](../docs/training-to-simulation.md) · [技术架构](../docs/architecture.md)
 
-面向 Ubuntu 22.04 / Linux x86_64，需 X11 或 XWayland 图形桌面。程序已包含 Python 和 PySide6 / Qt 6，无需编译。
+面向 Ubuntu 22.04 / Linux x86_64，需 X11 或 XWayland 图形桌面。程序已包含 Python、PySide6 / Qt 6 和 XCB cursor 库，无需编译。
 默认采用原仓库灵龙 **26 轴模型**（双腿 12＋双臂 14，头腰不参与仿真），RL 使用内置 `policy.onnx`。
 请完整保留 `loong_gui_sim/`，其中的 `runtime/` 和 `native/` 是必需资源。
 
@@ -17,7 +17,9 @@ cd OpenLoongOS-LTS
 ./start_sim.sh
 ```
 
-GUI 自动打开仿真。点击 **“一键启动控制链”**，按提示输入本机 sudo 密码，等待 driver、interface、locomotion 启动完成。
+点击「一键启动控制链」，按本机授权提示输入 sudo 密码。三个功能使用同一个机器人、场景及 SDK 控制链。保持辅助力开启，依次 EN → RC → RL，稳定后按 F 关闭辅助力。在左下「插件 / 模型键值」输入 **4＝行走、28＝跳舞、43＝视觉越障**，点击「发送键值」。完整操作见 [三功能全链仿真](../docs/three-mode-guide.md)。
+
+仿真运行无需独立 Python 策略环境；`runtime/python/` 保留的程序用于算法单独调试。镜头、辅助力、PLOT 与日志回放沿用原操作方式。
 
 ## 2. 界面区域
 
@@ -32,6 +34,7 @@ GUI 自动打开仿真。点击 **“一键启动控制链”**，按提示输�
 | 左下「行走控制」 | EN、RC、RL 等模式切换，以及速度指令与读数 |
 | 右侧 DRIVER / INTERFACE / LOCOMOTION | 查看各进程输出，定位启动和运行错误 |
 | 右侧 PLOT | 选择关节、查看目标 TGT 和实际 ACT 的实时曲线 |
+| 右侧 VISION | 查看越障策略收到的实时深度图，近黑远白、0–2.5 m |
 
 顶部 `SIM LIVE` 表示仿真进程在线；演示界面的 `CHAIN 3/3` 表示三个控制进程在线。进程在线不等同于已进入 RL，仍需查看当前模式与输出。
 
@@ -62,7 +65,7 @@ EN 是使能，RC 是恢复，RL 是策略控制。IDLE 不代表策略正在保
 | PLOT / “打开日志回放” | 查看实时曲线 / 导入 driver 文本日志 |
 
 速度按键会累加指令，松开按键不会自动清零；S 是减小 VX，空格才是三个速度指令清零。F 是辅助力切换键，按后应确认当前状态。键盘无响应时，点击对应区域，或使用控制区同名按钮。
-回放期间暂停实时控制发送。插件键值为：`rc=2`、`rl=4`、`jntTest=31`。
+回放期间暂停实时控制发送。插件键值为：`rc=2`、`rl=4`、`dance=28`、`parkour=43`、`jntTest=31`。
 
 ## 5. 查看实时曲线
 
@@ -99,12 +102,12 @@ EN 是使能，RC 是恢复，RL 是策略控制。IDLE 不代表策略正在保
 | 文件 / 目录 | 用途 |
 | --- | --- |
 | `runtime/model/scene.xml` | 场景入口，引用 `linglong/linglong_26dof.xml` |
-| `runtime/config/driver.ini`、`driver_mujoco.ini` | 关节映射、固定 PD 与辅助力 |
+| `runtime/config/driver.ini`、`driver_mujoco.ini` | 关节映射、驱动层 PD 与辅助力 |
 | `runtime/config/plan_rl.ini` | RL 观测、动作映射及推理周期 |
 | `runtime/model/onnx/policy.onnx` | 当前策略，与整合包 `models/policy.onnx` 一致 |
 | `runtime/log/`、`runtime_logs/` | SDK 日志、各进程启动与运行输出 |
 
-当前配置为 `drvNums=31`、`activeDrvNumUser=26`、`pdMode=3`、`useJntMotMap=0`、`simAnkleMap=none`；所有有效轴使用 MuJoCo 固定 PD。
+当前配置为 `drvNums=31`、`activeDrvNumUser=26`、`pdMode=1`、`useJntMotMap=0`、`simAnkleMap=none`；各 plan 提供对应增益，由驱动层计算关节 PD；MuJoCo 侧固定 PD 为零。
 更换模型时，两份 driver 的关节映射必须一致；更换策略须匹配当前 `obs[1,700] → actions[1,20]` 接口及观测定义。
 修改模型、驱动或策略配置后，**退出旧 GUI 和控制链，再重新启动**。
 

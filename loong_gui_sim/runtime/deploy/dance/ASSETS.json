@@ -1,0 +1,33 @@
+{
+  "source": "User supplied files from /home/user/repositories/bao, integrated 2026-11-12",
+  "original_library_architecture": "aarch64",
+  "original_library_abi": "Loong Nabo plan, requires libloong_loco_sdk_a64.so",
+  "gui_library": "native/libdance_plan_x64.so (new C API implementation, not an ABI replacement for the supplied library)",
+  "files": [
+    {
+      "file": "runtime/deploy/dance/libplan_bm_taiji_mjlab_a64.so.1",
+      "sha256": "c436422bbcd429a8fe8d32bdad3c321b3f4c8ececebc10fc3e36dc3824bb322f",
+      "source": "libplan_bm_taiji_mjlab_a64.so.1"
+    },
+    {
+      "file": "runtime/deploy/dance/plan_bm_taiji_mjlab.ini",
+      "sha256": "1ec6884e738f47ea40b945527cfe46189af9173262dd2a26c678491500fd953a",
+      "source": "plan_bm_taiji_mjlab.ini"
+    },
+    {
+      "file": "runtime/model/dance/linglong14_mjlab_dance_29999.onnx",
+      "sha256": "b8946cff39ce32373905eed281b1ee70e32c4ba1f0e580cb330a0bea03c55d38",
+      "source": "linglong14_mjlab_dance_29999.onnx"
+    },
+    {
+      "file": "runtime/model/dance/linglong14_mjlab_xiao.refbin",
+      "sha256": "e37b5aa144a7957ef0e42bde23d93cae13b78fc6c48503ad19373d31dfa1804b",
+      "source": "linglong14_mjlab_xiao.refbin"
+    },
+    {
+      "file": "runtime/model/dance/linglong14_mjlab_xiao_source.npz",
+      "sha256": "cefc115e2922758beec336489d04eec8486c0a1cf5f417f2d21f32b9d47a7f29",
+      "source": "linglong14_mjlab_xiao_source.npz"
+    }
+  ]
+}

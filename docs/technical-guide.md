@@ -1,8 +1,8 @@
-# 用户使用指南（第一阶段）
+# 行走训练与全链仿真 GUI 使用指南
 
 [返回首页](../README.md) · [技术架构与策略接口](architecture.md) · [模型说明](../models/README.md) · [验证记录](../VALIDATION.md)
 
-本文是第一阶段（Stage 1）的完整技术说明，把项目获取、完整性校验、仿真部署、策略训练、检查点回放、策略接入和仿真验证串成一条可执行路径。原快速入门、训练到仿真教程、GUI 使用手册的内容已合并到本文。
+本文是行走训练与全链仿真 GUI 的技术说明，把项目获取、完整性校验、仿真部署、策略训练、检查点回放、策略接入和仿真验证串成一条可执行路径。原快速入门、训练到仿真教程、GUI 使用手册的内容已合并到本文。
 
 ---
 
@@ -12,7 +12,7 @@
 
 | 项目 | 本版内容 |
 | --- | --- |
-| 发布阶段 | 第一阶段（Stage 1），检查日期 2026-10-23 |
+| 文档适用范围 | 行走训练与全链仿真 GUI 默认配置 |
 | 仓库 | `loongOpen/OpenLoongOS-LTS`（GitHub）· `openloong/OpenLoongOS-LTS`（AtomGit） |
 | 仿真模型 | 原仓库灵龙 26 轴（双腿 12 ＋ 双臂 14，头腰不参与仿真） |
 | 策略 | 内置 `policy.onnx`，20 轴动作输出，10 帧观测历史 |
@@ -24,7 +24,7 @@
 
 **包含**：环境准备、项目获取、完整性校验、全链仿真部署与操作、行走策略训练、检查点回放与续训、ONNX 导出与接口检查、策略替换、故障排查、验证边界。
 
-**不包含**：真机部署（SSH / OTA 控制台）、跳舞 / 越障 / 身外化身三套算法。这些属于整体愿景中的后续阶段，本阶段代码中没有对应实现。
+三套训练流程见各 training 目录。全链仿真使用统一机器人和 SDK 控制链，通过插件键值 4 / 28 / 43 切换行走、跳舞、视觉越障，详见 [三功能全链仿真](three-mode-guide.md)。EN / RC、SDK 进程、PLOT 和日志回放适用于整个控制链。
 
 > 训练目录里有四个 task ID，它们是行走算法的 AMP / velocity 与平地 / 粗糙地形组合，**不代表四项能力已经全部发布**。
 
@@ -34,8 +34,9 @@
 | --- | --- | --- |
 | 训练代码 | 已开源 | 行走 AMP 训练源码、速度跟踪基线、机器人资源、一段前向行走参考动作、ONNX 示例策略 |
 | 全链仿真运行组件 | 预编译提供 | MuJoCo 场景、26 轴模型、SDK、driver / interface / locomotion 及控制插件 |
-| GUI | 预编译提供 | 统一仿真界面、控制链启动、实时曲线、日志回放 |
-| 跳舞 / 越障 / 身外化身 | 暂未开放 | 规划中，本阶段无实现 |
+| GUI | 预编译提供 | 三功能切换、SDK 控制链、跳舞／越障仿真与真实深度图、实时曲线、日志回放 |
+| 跳舞 / 视觉越障 | 提供源码及 GUI 后端 | 各自训练、原生 plan、MuJoCo 策略播放，越障深度图 |
+| 身外化身 | 后续规划 | 暂未提供 |
 
 ### 1.4 整体开发流程
 
@@ -66,7 +67,7 @@ flowchart LR
 
 ### 1.6 文档约定
 
-- 所有命令**默认在仓库根目录**执行，例外会写明"进入 `mjlab_amp_ovision/`"之类的切换。
+- 所有命令**默认在仓库根目录**执行，例外会写明"进入 `training_walking/`"之类的切换。
 - 路径一律相对仓库根目录；提到 `runtime/` 下的配置时，指的是 `loong_gui_sim/runtime/`。
 - 尖括号 `<run>`、`<迭代号>` 是占位符，需要替换成你实际的值。
 - 「辅助力」指仿真中的支撑力，默认开启；关闭后才能看出策略是否真的能维持平衡。
@@ -93,12 +94,12 @@ flowchart LR
 ```bash
 sudo apt update
 sudo apt install git git-lfs python3 x11-utils libgl1 libegl1 libgl1-mesa-dri \
-  libopengl0 libx11-6 libxcb-xinerama0 libxcb-cursor0 libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 \
+  libopengl0 libx11-6 libxcb-xinerama0 libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 \
   libxcb-keysyms1 libxcb-render-util0 libxcb-randr0 libxcb-shape0 \
   libxcb-xkb1 libfontconfig1 libdbus-1-3 libglib2.0-0 libstdc++6
 ```
 
-GUI 程序**已内置 Python 和 PySide6 / Qt 6**，上面装的 `python3` 是给 `check_release.py` 用的，不是给 GUI 用的。系统图形库仍然必须装——随包的 PySide6 / Qt 解决不了 OpenGL、xcb 这些底层依赖。
+GUI 主程序**已内置 Python 和 PySide6 / Qt 6**。跳舞／越障模式还需执行 `bash loong_gui_sim/setup_runtime.sh` 安装其独立 MuJoCo 和 CPU 推理环境；见 [三功能操作说明](three-mode-guide.md)。系统图形库仍然必须装——随包的 PySide6 / Qt 解决不了 OpenGL、xcb 这些底层依赖。
 
 ### 2.3 训练侧依赖
 
@@ -171,7 +172,7 @@ python3 -B check_release.py
 成功时输出**一行**：
 
 ```text
-OK: 423 hashes; simulator binary; LingLong original 26-DoF runtime; training source; ONNX model; no LFS pointers
+OK: <清单条目数> hashes; simulator binary; LingLong original 26-DoF runtime; 3 training source trees; ONNX model; GUI walking/dance/parkour runtime profiles; no LFS pointers
 ```
 
 行首的哈希数量应与 `FILE_HASHES.json` 条目数一致。数字对不上通常意味着你增删过文件。
@@ -266,7 +267,7 @@ GUI 自动打开仿真，左侧应出现 MuJoCo 画面和机器人。此时控�
 | --- | --- |
 | `runtime/model/scene.xml` | 场景入口，引用 `linglong/linglong_26dof.xml` |
 | `runtime/config/driver.ini` | 关节映射、总线槽位、日志 UDP |
-| `runtime/config/driver_mujoco.ini` | MuJoCo 侧关节映射、固定 PD、辅助力 |
+| `runtime/config/driver_mujoco.ini` | MuJoCo 侧关节映射、辅助力；固定 PD 为零 |
 | `runtime/config/plan_rl.ini` | RL 观测、动作映射、推理周期 |
 | `runtime/config/thread.ini` | 各任务周期与 CPU 绑定 |
 | `runtime/config/loco_plugins.ini` | 插件注册（RC / RL / 关节测试） |
@@ -276,10 +277,10 @@ GUI 自动打开仿真，左侧应出现 MuJoCo 画面和机器人。此时控�
 当前发布配置：
 
 ```text
-drvNums=31  activeDrvNumUser=26  pdMode=3  useJntMotMap=0  simAnkleMap=none
+drvNums=31  activeDrvNumUser=26  pdMode=1  useJntMotMap=0  simAnkleMap=none
 ```
 
-即：总线保留 31 个槽位，其中 26 个有效轴，全部使用 MuJoCo 固定 PD。
+即：总线保留 31 个槽位，其中 26 个有效轴，PD 在驱动层计算，增益由当前 plan 提供。
 
 **改动任何配置、模型或策略后，必须退出旧 GUI 和控制链，再重新启动。** 部分配置只在进程启动时读取一次，热改不生效。
 
@@ -292,7 +293,7 @@ drvNums=31  activeDrvNumUser=26  pdMode=3  useJntMotMap=0  simAnkleMap=none
 ### 5.1 安装训练环境
 
 ```bash
-cd mjlab_amp_ovision
+cd training_walking
 uv sync --locked --extra cu128 --group dev
 uv run --locked --extra cu128 list-envs
 uv run --locked --extra cu128 pytest tests/ -q
@@ -357,7 +358,7 @@ cd ..
 输出目录：
 
 ```text
-mjlab_amp_ovision/logs/rsl_rl/linglong_amp/<运行目录>/
+training_walking/logs/rsl_rl/linglong_amp/<运行目录>/
 ├── params/env.yaml          # 本次环境配置
 ├── params/agent.yaml        # 本次训练配置
 ├── model_<迭代号>.pt        # 检查点，可续训、可回放
@@ -412,7 +413,7 @@ AMP 参考状态为 53 维（关节位置 20、关节速度 20、基座线速度
 
 ### 5.8 使用自己的参考动作
 
-AMP 启动时自动读取 `mjlab_amp_ovision/src/mjlab/tasks/amp/motions/linglong/` 下的所有 JSON，把文件放进去即可，不需要注册。
+AMP 启动时自动读取 `training_walking/src/mjlab/tasks/amp/motions/linglong/` 下的所有 JSON，把文件放进去即可，不需要注册。
 
 每份文件需要两个必填字段、一个可选字段：
 
@@ -432,7 +433,7 @@ root_pos 3 | root_rot_xyzw 4 | joint_q 20 | end 12 | lin 3 | ang 3 | joint_dq 20
 
 加载器会把 77 维蒸馏成 53 维 AMP 特征，与 actor 的 700 维输入是**两套不同用途的数据**，不要混用。
 
-> 仅把 JSON 补足到 77 列**远远不够**。新动作必须对齐 20 个关节的顺序、单位和坐标系；在线 AMP 特征用的是机体系基座速度和相对根部的脚位置，以及世界系根部高度。字段切片见 [`motion_loader.py`](../mjlab_amp_ovision/src/mjlab/tasks/amp/rl/motion_loader.py)，在线特征见 [`observations.py`](../mjlab_amp_ovision/src/mjlab/tasks/amp/observations.py)。加入新动作后，先按 6.2 做小规模检查，再开始正式训练。
+> 仅把 JSON 补足到 77 列**远远不够**。新动作必须对齐 20 个关节的顺序、单位和坐标系；在线 AMP 特征用的是机体系基座速度和相对根部的脚位置，以及世界系根部高度。字段切片见 [`motion_loader.py`](../training_walking/src/mjlab/tasks/amp/rl/motion_loader.py)，在线特征见 [`observations.py`](../training_walking/src/mjlab/tasks/amp/observations.py)。加入新动作后，先按 6.2 做小规模检查，再开始正式训练。
 
 ---
 
@@ -468,7 +469,7 @@ root_pos 3 | root_rot_xyzw 4 | joint_q 20 | end 12 | lin 3 | ang 3 | joint_dq 20
 ### 6.3 策略回放
 
 ```bash
-cd mjlab_amp_ovision
+cd training_walking
 checkpoint_file='logs/rsl_rl/linglong_amp/<run>/model_1000.pt'
 uv run --locked --extra cu128 play Mjlab-Amp-Flat-LingLong \
   --checkpoint-file "$checkpoint_file" --num-envs 1 --viewer native
@@ -476,7 +477,7 @@ uv run --locked --extra cu128 play Mjlab-Amp-Flat-LingLong \
 
 - `--viewer native` 开桌面窗口；`--viewer viser` 走浏览器，按终端打印的地址访问。
 - `play.py` 会设置**八组固定速度指令**，按环境编号循环分配。单环境默认拿第一组 `(vx=0.7, vy=0, wz=0)`——**不是静止测试**。终端会打印实际使用的指令。
-- 想看多种指令的表现，设 `--num-envs 8`。完整命令表以 [`play.py`](../mjlab_amp_ovision/src/mjlab/scripts/play.py) 为准。
+- 想看多种指令的表现，设 `--num-envs 8`。完整命令表以 [`play.py`](../training_walking/src/mjlab/scripts/play.py) 为准。
 
 回放用的是当前任务的 play 配置，**不会**自动还原检查点目录里的全部环境参数。分析效果前先确认训练与回放的机器人、观测、动作、任务一致。
 
@@ -504,7 +505,7 @@ uv run --locked --extra cu128 play Mjlab-Amp-Flat-LingLong \
 
 ### 6.5 TensorBoard
 
-另开终端，进入 `mjlab_amp_ovision/`：
+另开终端，进入 `training_walking/`：
 
 ```bash
 uv run --locked --extra cu128 tensorboard --logdir logs/rsl_rl --host 127.0.0.1
@@ -522,7 +523,7 @@ uv run --locked --extra cu128 tensorboard --logdir logs/rsl_rl --host 127.0.0.1
 2. **导出失败训练仍会继续**，终端打印 `[WARN] ONNX export failed (training continues)`。看到这行说明导出没成功，不要误用目录里残留的旧 ONNX。
 3. 检查文件时间戳，确认它比你想用的检查点更新。
 
-导出完成后做结构检查。以下命令在 `mjlab_amp_ovision/` 中执行，先把 `policy_file` 指向实际导出文件（首次熟悉流程可以用仓库示例 `../models/policy.onnx`）：
+导出完成后做结构检查。以下命令在 `training_walking/` 中执行，先把 `policy_file` 指向实际导出文件（首次熟悉流程可以用仓库示例 `../models/policy.onnx`）：
 
 ```bash
 policy_file='../models/policy.onnx'
@@ -637,7 +638,7 @@ cp "$backup_dir/plan_rl.ini" loong_gui_sim/runtime/config/plan_rl.ini
 - 相位是基于速度门限推进的正弦时钟。
 - 自己写推理器时，必须同时核对：相位推进、reset 行为、历史填充、各项缩放、上一动作的语义。
 
-来源：[观测配置](../mjlab_amp_ovision/src/mjlab/tasks/velocity/config/linglong/env_cfgs.py)、[观测管理器](../mjlab_amp_ovision/src/mjlab/managers/observation_manager.py)、[历史缓冲](../mjlab_amp_ovision/src/mjlab/utils/buffers/circular_buffer.py)、[发布元数据](../models/policy.metadata.json)。
+来源：[观测配置](../training_walking/src/mjlab/tasks/velocity/config/linglong/env_cfgs.py)、[观测管理器](../training_walking/src/mjlab/managers/observation_manager.py)、[历史缓冲](../training_walking/src/mjlab/utils/buffers/circular_buffer.py)、[发布元数据](../models/policy.metadata.json)。
 
 ### 7.4 动作协议：20 / 26 / 31 三个数
 
@@ -686,7 +687,7 @@ cp "$backup_dir/plan_rl.ini" loong_gui_sim/runtime/config/plan_rl.ini
 
 周期来自 [`thread.ini`](../loong_gui_sim/runtime/config/thread.ini)，是**配置目标值，不是实测实时性能承诺**。CPU 绑定和调度条件会显著影响实际执行。
 
-**训练与仿真的 PD 并不完全相同。** 例如发布元数据里髋 yaw 阻尼是 10，运行固定 PD 对应值是 5；肩部增益也有差异。所以评估 Sim2Sim 时必须比较有效 PD、惯量、摩擦、接触和关节坐标，**不能因为 ONNX 接口一致就认为动力学一致**。
+**统一仿真使用驱动层 PD。** 行走、跳舞和越障分别提供各自部署增益；MuJoCo 固定 PD 为零。更换权重仍需比较观测定义、动作缩放、有效增益、惯量、摩擦与接触参数。
 
 ### 7.6 替换后的验证
 
@@ -702,7 +703,7 @@ cp "$backup_dir/plan_rl.ini" loong_gui_sim/runtime/config/plan_rl.ini
 | 6 | 单次 Q，观察 WZ 与响应 | 转向方向正确 |
 | 7 | 空格清零 | 指令归零，能否停稳看策略 |
 
-**训练模型是 20 轴，运行模型是 26 轴，并使用独立的固定 PD 配置。** 即使元数据完全一致，接触、惯量和驱动行为仍需这样逐项对照。
+**训练模型是 20 轴，运行模型是 26 轴，使用当前 plan 的增益和统一模型的动力学配置。** 即使元数据完全一致，接触、惯量和驱动行为仍需这样逐项对照。
 
 替换策略后，`check_release.py` 会按原发布哈希报告差异——**这是预期行为，不是错误**。不要通过重写 `FILE_HASHES.json` 把自定义策略标记成原版。保留实验配置、策略哈希和日志即可。
 
@@ -965,7 +966,7 @@ GUI 的仿真窗口、镜头跟随、控制链启动、实时曲线、日志回�
 | --- | --- | --- |
 | 引擎 | MuJoCo-Warp | 原生 MuJoCo 3.1.1 |
 | 关节数 | 20 | 26（腕关节保持默认） |
-| PD | 元数据记录值 | 固定 PD，部分增益不同（如髋 yaw 阻尼 10 vs 5） |
+| PD | 元数据记录值 | 驱动层 PD，增益来自当前 plan |
 | 观测 | 700 维 | 由 `plan_rl.ini` 与插件构造 |
 
 **接口一致不等于动力学一致。** 评估 Sim2Sim 时必须对照有效 PD、惯量、摩擦、接触和关节坐标。
@@ -990,11 +991,11 @@ GUI 的仿真窗口、镜头跟随、控制链启动、实时曲线、日志回�
 
 | 想改什么 | 主要文件 |
 | --- | --- |
-| AMP / PPO 参数 | [`mjlab_amp_ovision/src/mjlab/tasks/amp/config/linglong/rl_cfg.py`](../mjlab_amp_ovision/src/mjlab/tasks/amp/config/linglong/rl_cfg.py) |
-| 奖励、随机化、课程 | [`amp/.../env_cfgs.py`](../mjlab_amp_ovision/src/mjlab/tasks/amp/config/linglong/env_cfgs.py)、[`velocity/.../env_cfgs.py`](../mjlab_amp_ovision/src/mjlab/tasks/velocity/config/linglong/env_cfgs.py) |
-| 参考动作 | `mjlab_amp_ovision/src/mjlab/tasks/amp/motions/linglong/` |
-| 判别器更新逻辑 | [`amp/rl/runner.py`](../mjlab_amp_ovision/src/mjlab/tasks/amp/rl/runner.py)、[`discriminator.py`](../mjlab_amp_ovision/src/mjlab/tasks/amp/rl/discriminator.py) |
-| 保存与导出 | [`rl/runner.py`](../mjlab_amp_ovision/src/mjlab/rl/runner.py)、[`exporter_utils.py`](../mjlab_amp_ovision/src/mjlab/rl/exporter_utils.py) |
+| AMP / PPO 参数 | [`training_walking/src/mjlab/tasks/amp/config/linglong/rl_cfg.py`](../training_walking/src/mjlab/tasks/amp/config/linglong/rl_cfg.py) |
+| 奖励、随机化、课程 | [`amp/.../env_cfgs.py`](../training_walking/src/mjlab/tasks/amp/config/linglong/env_cfgs.py)、[`velocity/.../env_cfgs.py`](../training_walking/src/mjlab/tasks/velocity/config/linglong/env_cfgs.py) |
+| 参考动作 | `training_walking/src/mjlab/tasks/amp/motions/linglong/` |
+| 判别器更新逻辑 | [`amp/rl/runner.py`](../training_walking/src/mjlab/tasks/amp/rl/runner.py)、[`discriminator.py`](../training_walking/src/mjlab/tasks/amp/rl/discriminator.py) |
+| 保存与导出 | [`rl/runner.py`](../training_walking/src/mjlab/rl/runner.py)、[`exporter_utils.py`](../training_walking/src/mjlab/rl/exporter_utils.py) |
 | 仿真模型 | `loong_gui_sim/runtime/model/scene.xml` |
 | 驱动与 PD | `loong_gui_sim/runtime/config/driver_mujoco.ini` |
 | RL 观测与动作映射 | `loong_gui_sim/runtime/config/plan_rl.ini` |
@@ -1002,28 +1003,3 @@ GUI 的仿真窗口、镜头跟随、控制链启动、实时曲线、日志回�
 
 变更观测、动作或机器人结构时，**必须同步检查训练、导出元数据和运行插件三处的协议**。变更后完整性检查会提示偏离发布版本，物理效果需要重新验证。
 
-## 附录 B：文档迁移对照
-
-本文合并了三份原文档，对应关系：
-
-| 原文档 | 并入章节 |
-| --- | --- |
-| `docs/quickstart.md` | 第 2 章（环境）、第 3 章（获取与校验）、第 4 章（部署）、8.3 – 8.5、8.10 |
-| `docs/training-to-simulation.md` | 第 5 章、第 6 章、7.1 – 7.2、7.6 |
-| `loong_gui_sim/README.md` | 第 4 章、第 8 章、9.3 – 9.6 |
-| `mjlab_amp_ovision/README.md` | 5.1、5.2、5.7、5.8（英文子说明保留） |
-| `docs/architecture.md` | 7.3 – 7.5 引用其协议定义，原文保留 |
-| `models/README.md` | 7.4 引用其元数据，原文保留 |
-| `VALIDATION.md` | 第 10 章，原文保留 |
-
-若要停用前三份文档，需同步更新下列入链（`grep -rn` 可复核）：
-
-| 引用方 | 位置 |
-| --- | --- |
-| `README.md` | 文档导航表、第 3 – 5 节 |
-| `docs/architecture.md` | 第 3 行导航 |
-| `models/README.md` | 第 3 行、第 24 行 |
-| `mjlab_amp_ovision/README.md` | 第 3 行 |
-| `loong_gui_sim/README.md` | 第 3 行、第 11 行、第 111 行 |
-
-建议做法：三份原文档各保留 3 – 5 行，改为指向本文对应章节的跳转页，避免一次性修改大量入链。

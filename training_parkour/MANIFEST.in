@@ -1,0 +1,3 @@
+include LICENSE NOTICE.md README.md
+recursive-include source/lite_parkour/lite_parkour/data *.urdf *.xml *.STL *.pkl *.json
+recursive-include source/lite_parkour/lite_parkour *.pyi

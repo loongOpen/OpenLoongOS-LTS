@@ -4,10 +4,14 @@
 
 | 内容 | 来源与适用许可 |
 |---|---|
-| `mjlab_amp_ovision/` | 在上游 mjlab 基础上二次开发；保留 Apache-2.0、源码版权声明及 rsl_rl 等依赖的各自许可 |
+| `training_walking/` | 在上游 mjlab 基础上二次开发；保留 Apache-2.0、源码版权声明及 rsl_rl 等依赖的各自许可 |
+| `training_dance/` | mjlab 舞蹈训练源码；保留 `LICENSE`、`LICENSE-LINGLONG-SOURCE`、`NOTICE` 与源码中的上游声明 |
+| `training_parkour/` | 项目级 Apache-2.0；具体文件按原始许可头适用，InstinctLab 派生组件含 CC BY-NC 4.0 非商业使用条款，详见 `training_parkour/NOTICE.md` |
 | `loong_gui_sim/runtime/license` | 自研 SDK 原有 MIT 许可文本及原作者声明，按其原有范围适用 |
 | `loong_gui_sim/licenses/` | 自研与上游材料混合；保留 SDK、driver、关节映射、MuJoCo、GLFW、Quill 等各自 LICENSE / NOTICE |
 | GUI 自有应用部分 | 采用 [MIT](loong_gui_sim/LICENSE)，仅覆盖 GUI 自有应用代码；第三方运行库、SDK、原生辅助库及资源各自授权继续适用 |
+| 新增跳舞／越障运行后端与原生 plan | `loong_gui_sim/runtime/python/` 及 `native/` 中带 MIT 标记的本项目代码；ONNX Runtime C API 头保留 `native/vendor/onnxruntime/LICENSE` |
+| 跳舞原始附件 | `runtime/deploy/dance/` 和 `runtime/model/dance/` 保留用户提供的 ARM 库、ini、ONNX、refbin、NPZ；文件来源与原始哈希见 `ASSETS.json`，不因新 plan 的 MIT 标记而改变原文件授权 |
 | `models/` | 自研模型；各资源按随附授权说明适用 |
 
 ## 本版 GUI 的实际第三方组件
@@ -21,8 +25,11 @@
 | PyInstaller bootloader | 6.22.3 | GPL-2.0-or-later **附 Bootloader Exception**，`licenses/gui/PyInstaller/COPYING.txt`；例外不替代其他依赖义务 |
 | Cython | 3.3.0，应用模块的构建工具 | `licenses/gui/Cython/`；上游声明生成输出不因此受 Cython 许可证约束 |
 | ONNX Runtime（SDK 使用） | 1.21.0 | `licenses/onnxruntime/LICENSE` 与完整 `ThirdPartyNotices.txt` |
+| xcb-util-cursor | Ubuntu `libxcb-cursor0` 0.1.1-4ubuntu1，Linux x86_64 | MIT/X Consortium，原始版权文本和包／库来源及 SHA-256 见 `loong_gui_sim/licenses/libxcb-cursor/` |
 
-运行文件清单见 [COMPONENTS.json](licenses/gui/COMPONENTS.json)。操作系统提供的动态库需按快速入门安装，不属于重新打包的 GUI 内置库。
+运行文件清单见 [COMPONENTS.json](licenses/gui/COMPONENTS.json)。Qt XCB 所需的 cursor 库已放入 GUI `_internal/`；其余操作系统图形依赖按快速入门安装。
+
+跳舞／越障的外部 Python 环境由 `loong_gui_sim/setup_runtime.sh` 按独立 `uv.lock` 安装 NumPy、MuJoCo、ONNX Runtime、SciPy、Pillow 及其依赖；这些依赖不封入 GUI 主程序，保留安装包自身的许可证。运行后端复用 `training_parkour/` 的模型与部署辅助代码，其原有许可及非商业条款继续适用，见该目录 `NOTICE.md`。
 
 PySide6 / Shiboken6 的 Python 支持入口、绑定 `.so`、Qt 动态库和插件均放在可替换目录中，不将其 Python 入口封入主程序。见 [库替换说明](docs/gui-library-replacement.md)、[NOTICE](NOTICE) 及 [库源码](third_party/sources/README.md)。允许按 LGPL 修改相关库，以及为调试这些修改而进行必要的反向工程。
 

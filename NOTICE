@@ -17,6 +17,11 @@ portions or on reverse engineering necessary for debugging such modifications.
 Project-owned GUI application code is licensed under MIT; see
 loong_gui_sim/LICENSE. This does not change any third-party license.
 
+The GUI also includes xcb-util-cursor (Ubuntu libxcb-cursor0 0.1.1-4ubuntu1),
+copyright 2013 Michael Stapelberg, under the MIT/X Consortium License.
+The original copyright and exact binary package provenance accompany the
+library in loong_gui_sim/licenses/libxcb-cursor/.
+
 CPython and its incorporated components retain their respective notices in
 licenses/gui/CPython/. PyInstaller's bootloader is accompanied by its license
 and Bootloader Exception in licenses/gui/PyInstaller/. ICU notices are in
@@ -26,4 +31,21 @@ or build-tool component in upstream source archives is linked into this GUI.
 
 SDK/native helper notices remain under loong_gui_sim/licenses/ and
 loong_gui_sim/runtime/license. ONNX Runtime notices are in licenses/onnxruntime/.
-Training-framework notices remain in mjlab_amp_ovision/.
+Training-framework notices remain in training_walking/, training_dance/ and
+training_parkour/. The Lite26 deployment helpers and assets retain their
+original notices, including the applicable noncommercial terms described in
+training_parkour/NOTICE.md.
+
+The added dance and parkour GUI backends use standalone native C APIs. The
+original user-supplied ARM dance library is preserved with its configuration
+and asset checksums in runtime/deploy/dance/; it is not relabeled as x86_64.
+The external CPU policy environment is installed from its separate uv.lock;
+its NumPy, MuJoCo, ONNX Runtime, SciPy and Pillow distributions retain their
+own licenses. The ONNX Runtime C API header retains its MIT license under
+loong_gui_sim/native/vendor/onnxruntime/.
+
+SDK plan adapter and same-world depth extension sources: loong_gui_sim/native/sdk (MIT).
+OpenLoong SDK interface headers: native/vendor/loong_sdk (original Apache-2.0 notices retained).
+MuJoCo 3.1.1 headers: native/vendor/mujoco (Apache-2.0, original notices retained).
+
+Quill SDK logging interface headers: native/vendor/quill (MIT; upstream LICENSE retained).

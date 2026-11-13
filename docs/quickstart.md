@@ -1,8 +1,8 @@
-# 快速入门教程
+# 快速入门与行走 Demo
 
-[返回首页](../README.md) ·[技术说明文档](technical-guide.md) · [UI 使用手册](../loong_gui_sim/README.md) · [训练到仿真](training-to-simulation.md) · [技术架构](architecture.md)
+[返回首页](../README.md) · [UI 使用手册](../loong_gui_sim/README.md) · [训练到仿真](training-to-simulation.md) · [技术架构](architecture.md)
 
-本教程使用仓库自带的 `policy.onnx`，从下载开始完成启动、恢复、RL 控制、速度指令和停止操作，无需先训练。演示操作限定在本机仿真；愿景中的真机部署属于后续接入流程。
+三个功能共用同一 SDK 控制链，通过键值 4 / 28 / 43 切换，详见 [三功能全链仿真](three-mode-guide.md)。GUI 及算法插件均随包提供，运行无需先训练或安装 Python 策略环境。本教程的 EN / RC / RL、辅助力、速度与停止操作适用于这套统一仿真。
 
 ## 1. 准备环境
 
@@ -11,26 +11,28 @@
 | 系统 | Ubuntu 22.04 / Linux x86_64，glibc 2.35 |
 | 桌面 | X11 或 XWayland，当前终端可访问图形桌面 |
 | 下载 | Git、Git LFS；首次下载需要联网 |
-| GUI | 已包含 Python 和 PySide6 / Qt 6，需要安装下列系统图形库 |
+| GUI | 主程序已包含 Python 和 PySide6 / Qt 6；安装下列系统图形库；三个仿真功能共用随包 SDK，无需安装训练环境 |
 | 训练 | 本 Demo 不需要安装训练环境；训练另需 NVIDIA GPU、驱动和 uv |
 
 Ubuntu 20.04 缺少所需的 glibc 版本；在 Python 虚拟环境里安装包不能解决该差异。其他发行版需自行检查运行库兼容性。
 
-安装 Git 和 GUI 系统依赖（首页、UI 手册统一引用此处）：
+GUI 已随包附带 `libxcb-cursor.so.0`，支持缺少系统 `libxcb-cursor0` 的桌面。安装 Git 和其余 GUI 系统依赖（首页、UI 手册统一引用此处）：
 
 ```bash
 sudo apt update
 sudo apt install git git-lfs python3 x11-utils libgl1 libegl1 libgl1-mesa-dri \
-  libopengl0 libx11-6 libxcb-xinerama0 libxcb-cursor0 libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 \
+  libopengl0 libx11-6 libxcb-xinerama0 libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 \
   libxcb-keysyms1 libxcb-render-util0 libxcb-randr0 libxcb-shape0 \
   libxcb-xkb1 libfontconfig1 libdbus-1-3 libglib2.0-0 libstdc++6
 ```
 
 ## 2. 下载并检查
 
+使用完整 Release 压缩包时，直接解压并进入 `OpenLoongOS-LTS/`，运行 `python3 -B check_release.py`。压缩包已包含大文件，无需执行 Git LFS 下载。以下 Git 命令仅用于从仓库获取项目：
+
 ```bash
 git lfs install
-git clone https://atomgit.com/openloong/OpenLoongOS-LTS.git
+git clone https://atomgit.com/openloong/OpenLoongOS-LTS
 cd OpenLoongOS-LTS
 git lfs pull
 python3 -B check_release.py
@@ -46,7 +48,7 @@ python3 -B check_release.py
 QT_QPA_PLATFORM=offscreen ./start_sim.sh --self-test
 ```
 
-查看输出中的 `status: ok`。该自检检查程序加载和部分回调，不启动完整控制链；`native_window_embedded`、`native_camera_follow` 为 false 时，不能据此确认实际窗口嵌入和镜头跟随正常。
+确认命令退出码为 0，输出中的 `qt_callbacks` 和 `native_replay` 为 true。该自检检查程序加载和部分回调，不启动完整控制链；`native_window_embedded`、`native_camera_follow` 为 false 时，不能据此确认实际窗口嵌入和镜头跟随正常。
 
 ## 3. 启动界面与控制链
 

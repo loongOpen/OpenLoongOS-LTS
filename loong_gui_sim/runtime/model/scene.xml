@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <mujoco model="scene">
   <include file="linglong/linglong_26dof.xml" />
   <statistic center="0 0 0.1" extent="0.8" />
@@ -15,5 +16,5 @@
   </asset>
   <worldbody>
     <light pos="0 0 1.5" dir="0 0 -1" directional="true" />
-  </worldbody>
+  <geom name="unified_box_20cm" type="box" pos="4.5 0 .1" size=".4 .75 .1" rgba=".6 .5 .3 1" contype="1" conaffinity="15" friction="1 .005 .0001" /></worldbody>
 </mujoco>

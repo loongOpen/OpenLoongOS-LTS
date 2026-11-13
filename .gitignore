@@ -10,6 +10,10 @@ loong_gui_sim/runtime/log/
 wandb/
 MUJOCO_LOG.TXT
 core
-core.*
+core.[0-9]*
 .env
 .env.*
+*.egg-info/
+training_*/build/
+training_*/dist/
+training_parkour/.external/

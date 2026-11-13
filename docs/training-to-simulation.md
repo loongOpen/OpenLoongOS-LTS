@@ -1,8 +1,10 @@
 # 从训练到全链仿真
 
-[返回首页](../README.md) ·[技术说明文档](technical-guide.md) · [快速开始](quickstart.md) · [技术架构](architecture.md) · [UI 使用手册](../loong_gui_sim/README.md)
+[返回首页](../README.md) ·[技术使用文档](technical-guide.md) ·  [快速上手](quickstart.md) · [技术架构](architecture.md) · [UI 使用手册](../loong_gui_sim/README.md)
 
-流程为：安装训练环境 → 小规模检查 → 正式训练 → 回放检查点 → 获取 ONNX → 核对接口 → 在全链仿真中验证。本教程以 `Mjlab-Amp-Flat-LingLong` 为例，使用当前仓库的任务和配置。
+三功能训练可从根目录 `./train.sh walking`、`./train.sh dance`、`./train.sh parkour` 分别进入；三套依赖独立安装。跳舞与越障的 GUI 接入及环境见 [三功能操作说明](three-mode-guide.md)。
+
+以下行走流程为：安装训练环境 → 小规模检查 → 正式训练 → 回放检查点 → 获取 ONNX → 核对接口 → 在全链仿真中验证。本教程以 `Mjlab-Amp-Flat-LingLong` 为例，使用当前仓库的任务和配置。
 
 ## 1. 安装训练环境
 
@@ -10,7 +12,7 @@
 
 ```bash
 nvidia-smi
-cd mjlab_amp_ovision
+cd training_walking
 uv sync --locked --extra cu128 --group dev
 uv run --locked --extra cu128 list-envs
 uv run --locked --extra cu128 pytest tests/ -q
@@ -63,7 +65,7 @@ uv 管理 Python 和 Python/CUDA 用户态依赖；NVIDIA 驱动由系统提供�
 训练开始时输出实际 device、seed 和日志目录。文件位于：
 
 ```text
-mjlab_amp_ovision/logs/rsl_rl/linglong_amp/<运行目录>/
+training_walking/logs/rsl_rl/linglong_amp/<运行目录>/
 ├── params/env.yaml          # 本次环境配置
 ├── params/agent.yaml        # 本次训练配置
 ├── model_<迭代号>.pt        # 检查点，可续训、可回放
@@ -71,7 +73,7 @@ mjlab_amp_ovision/logs/rsl_rl/linglong_amp/<运行目录>/
 └── events.out.tfevents.*    # TensorBoard 日志
 ```
 
-另开终端，进入 `OpenLoongOS-LTS/mjlab_amp_ovision/`：
+另开终端，进入 `OpenLoongOS-LTS/training_walking/`：
 
 ```bash
 uv run --locked --extra cu128 tensorboard --logdir logs/rsl_rl --host 127.0.0.1
@@ -103,7 +105,7 @@ uv run --locked --extra cu128 tensorboard --logdir logs/rsl_rl --host 127.0.0.1
 进入训练目录，并设置一个实际存在的检查点路径：
 
 ```bash
-cd mjlab_amp_ovision
+cd training_walking
 checkpoint_file='logs/rsl_rl/linglong_amp/2026-10-23_14-00-00_walking/model_1000.pt'
 uv run --locked --extra cu128 play Mjlab-Amp-Flat-LingLong \
   --checkpoint-file "$checkpoint_file" --num-envs 1 --viewer native
@@ -111,7 +113,7 @@ uv run --locked --extra cu128 play Mjlab-Amp-Flat-LingLong \
 
 桌面模式使用 `native`；浏览器查看可改成 `--viewer viser`，按终端打印的地址访问。`play` 使用 `.pt`，不要把 `policy.onnx` 传给 `--checkpoint-file`。仓库示例策略是 ONNX，直接体验它应走 [GUI Demo](quickstart.md)。
 
-当前 `play.py` 会设置八组固定速度命令，按环境编号循环分配；单环境默认第一组为 `(vx=0.7, vy=0, wz=0)`，不是静止测试。终端会打印实际命令。需要对比多种命令时可设置 `--num-envs 8`，具体命令表以 [play.py](../mjlab_amp_ovision/src/mjlab/scripts/play.py) 为准。
+当前 `play.py` 会设置八组固定速度命令，按环境编号循环分配；单环境默认第一组为 `(vx=0.7, vy=0, wz=0)`，不是静止测试。终端会打印实际命令。需要对比多种命令时可设置 `--num-envs 8`，具体命令表以 [play.py](../training_walking/src/mjlab/scripts/play.py) 为准。
 
 回放采用当前任务的 play 配置，也不自动还原检查点目录中的全部环境参数。先确认训练与回放的机器人、观测、动作和任务一致，再分析策略效果。
 
@@ -121,7 +123,7 @@ uv run --locked --extra cu128 play Mjlab-Amp-Flat-LingLong \
 
 导出失败会打印 `[WARN] ONNX export failed (training continues)`；训练继续不代表导出成功。检查日志和文件时间，失败时不要误用之前留下的旧 ONNX。
 
-下面在 `mjlab_amp_ovision/` 中执行。先将 `policy_file` 指向实际导出文件；首次熟悉流程也可以使用仓库示例 `../models/policy.onnx`：
+下面在 `training_walking/` 中执行。先将 `policy_file` 指向实际导出文件；首次熟悉流程也可以使用仓库示例 `../models/policy.onnx`：
 
 ```bash
 policy_file='../models/policy.onnx'
@@ -182,7 +184,7 @@ sha256sum loong_gui_sim/runtime/model/onnx/policy.onnx
 
 运行时文件名保持 `policy.onnx`，与 `plan_rl.ini` 的 `model` 设置一致。保留 `models/policy.onnx` 作为发布示例，不需要同步替换它。
 
-先按 Demo 检查辅助恢复、RL 零速度、撤去辅助后的站立，再逐步检查前进、转向与停止。训练模型是 20 轴，运行模型是 26 轴，并使用独立的固定 PD 配置；即使元数据一致，接触、惯量和驱动行为仍需对照验证。
+先按 Demo 检查辅助恢复、RL 零速度、撤去辅助后的站立，再逐步检查前进、转向与停止。训练模型是 20 轴，运行模型是 26 轴，使用当前 plan 的增益和统一模型的动力学配置；即使元数据一致，接触、惯量和驱动行为仍需对照验证。
 
 需要回退时，退出 GUI 和控制链，在同一终端执行（新终端需把 `backup_dir` 设为实际备份目录）：
 
@@ -200,4 +202,4 @@ AMP 启动时读取 `src/mjlab/tasks/amp/motions/linglong/` 内的 JSON。每份
 
 原始布局为 `root_pos3 | root_rot_xyzw4 | joint_q20 | end12 | lin3 | ang3 | joint_dq20 | end_vel12`；末端顺序为左脚、右脚、左手、右手。加载器提取 53 维 AMP 特征，与 actor 的 700 维输入是两套不同用途的数据。
 
-新动作必须对齐 20 个关节的顺序、单位与坐标系。在线 AMP 特征使用机体系的基座速度和相对根部的脚位置，以及世界系根部高度；仅把 JSON 补足到 77 列并不够。字段切片见 [motion_loader.py](../mjlab_amp_ovision/src/mjlab/tasks/amp/rl/motion_loader.py)，在线特征见 [observations.py](../mjlab_amp_ovision/src/mjlab/tasks/amp/observations.py)。加入新动作后重新做小规模检查，再开始正式训练。
+新动作必须对齐 20 个关节的顺序、单位与坐标系。在线 AMP 特征使用机体系的基座速度和相对根部的脚位置，以及世界系根部高度；仅把 JSON 补足到 77 列并不够。字段切片见 [motion_loader.py](../training_walking/src/mjlab/tasks/amp/rl/motion_loader.py)，在线特征见 [observations.py](../training_walking/src/mjlab/tasks/amp/observations.py)。加入新动作后重新做小规模检查，再开始正式训练。

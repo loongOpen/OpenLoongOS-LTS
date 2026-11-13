@@ -1,0 +1,531 @@
+{
+  "checkpoint": "model_10200.pt",
+  "checkpoint_path": "checkpoints/lite/model_10200.pt",
+  "checkpoint_sha256": "74d12d324f197ea8c738890d65d2ee4d0ed191677bb9df9dcf3a98d9d0a9a3d3",
+  "schema_version": 1,
+  "task": "Lite-AMP-Depth-v0",
+  "robot": "lite_26dof",
+  "root_link": "base_link",
+  "training_config": "checkpoints/lite/params/env.yaml",
+  "training_config_sha256": "fdde3527135b4b40e8642ae29f86d3842bf58adbc0f424f9f0b7f483bc41c6c8",
+  "config_source": "saved params/env.yaml",
+  "urdf_path": "source/lite_parkour/lite_parkour/data/Robots/Lite/lite_26dof.urdf",
+  "urdf_sha256": "71877a7eb1d124a70a3defb94f0a7eae2bdec363eaec399e11f4ce3ed3daefdc",
+  "onnx_inputs": {
+    "obs": [
+      1,
+      450
+    ],
+    "depth": [
+      1,
+      8,
+      18,
+      32
+    ]
+  },
+  "onnx_outputs": {
+    "actions": [
+      1,
+      26
+    ]
+  },
+  "policy_dt": 0.02,
+  "training_physics_dt": 0.005,
+  "joint_names": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_joint",
+    "left_ankle_pitch_joint",
+    "left_ankle_roll_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_joint",
+    "right_ankle_pitch_joint",
+    "right_ankle_roll_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "left_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_joint",
+    "right_wrist_roll_joint",
+    "right_wrist_pitch_joint",
+    "right_wrist_yaw_joint"
+  ],
+  "kp": [
+    280.0,
+    240.0,
+    100.0,
+    280.0,
+    50.0,
+    50.0,
+    280.0,
+    240.0,
+    100.0,
+    280.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0
+  ],
+  "kd": [
+    14.0,
+    12.0,
+    5.0,
+    14.0,
+    5.0,
+    5.0,
+    14.0,
+    12.0,
+    5.0,
+    14.0,
+    5.0,
+    5.0,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5
+  ],
+  "armature": [
+    0.27430387,
+    0.07031016,
+    0.06247368,
+    0.07031016,
+    0.09505512,
+    0.09505512,
+    0.27430387,
+    0.07031016,
+    0.06247368,
+    0.07031016,
+    0.09505512,
+    0.09505512,
+    0.033048,
+    0.033048,
+    0.033048,
+    0.033048,
+    0.033048,
+    0.033048,
+    0.033048,
+    0.033048,
+    0.033048,
+    0.033048,
+    0.033048,
+    0.033048,
+    0.033048,
+    0.033048
+  ],
+  "effort_limit": [
+    330.0,
+    150.0,
+    130.0,
+    150.0,
+    90.0,
+    90.0,
+    330.0,
+    150.0,
+    130.0,
+    150.0,
+    90.0,
+    90.0,
+    97.0,
+    97.0,
+    27.0,
+    27.0,
+    7.0,
+    7.0,
+    7.0,
+    97.0,
+    97.0,
+    27.0,
+    27.0,
+    7.0,
+    7.0,
+    7.0
+  ],
+  "velocity_limit": [
+    12.8805,
+    14.6608,
+    14.6608,
+    14.6608,
+    16.441,
+    16.441,
+    12.8805,
+    14.6608,
+    14.6608,
+    14.6608,
+    16.441,
+    16.441,
+    6.28,
+    6.28,
+    10.47,
+    10.47,
+    20.94,
+    20.94,
+    20.943,
+    6.28,
+    6.28,
+    10.47,
+    10.47,
+    20.94,
+    20.94,
+    20.94
+  ],
+  "position_lower": [
+    -1.5708,
+    -0.3491,
+    -2.7925,
+    -0.1745,
+    -0.8029,
+    -0.5236,
+    -1.5708,
+    -0.7854,
+    -2.7925,
+    -0.1745,
+    -0.8029,
+    -0.5236,
+    -2.967059728,
+    -0.087266463,
+    -2.967059728,
+    -0.785398163,
+    -2.967059728,
+    -1.396263402,
+    -1.396263402,
+    -2.967059728,
+    -3.228859116,
+    -2.967059728,
+    -0.785398163,
+    -2.967059728,
+    -1.396263402,
+    -1.396263402
+  ],
+  "position_upper": [
+    0.7854,
+    0.7854,
+    2.7925,
+    1.9024,
+    0.6109,
+    0.5236,
+    0.7854,
+    0.3491,
+    2.7925,
+    1.9024,
+    0.6109,
+    0.5236,
+    2.967059728,
+    3.228859116,
+    2.967059728,
+    1.570796327,
+    2.967059728,
+    1.396263402,
+    1.396263402,
+    2.967059728,
+    0.087266463,
+    2.967059728,
+    1.570796327,
+    2.967059728,
+    1.396263402,
+    1.396263402
+  ],
+  "default_joint_pos": [
+    -0.2,
+    0.0,
+    0.0,
+    0.48,
+    -0.28,
+    0.0,
+    -0.2,
+    0.0,
+    0.0,
+    0.48,
+    -0.28,
+    0.0,
+    0.0,
+    0.25,
+    -0.2,
+    1.14,
+    -0.09,
+    -0.25,
+    -0.08,
+    0.0,
+    -0.25,
+    0.2,
+    1.14,
+    0.09,
+    -0.25,
+    0.08
+  ],
+  "action_scale": [
+    0.29464285714285715,
+    0.15625,
+    0.325,
+    0.13392857142857142,
+    0.45,
+    0.45,
+    0.29464285714285715,
+    0.15625,
+    0.325,
+    0.13392857142857142,
+    0.45,
+    0.45,
+    0.485,
+    0.485,
+    0.135,
+    0.135,
+    0.035,
+    0.035,
+    0.035,
+    0.485,
+    0.485,
+    0.135,
+    0.135,
+    0.035,
+    0.035,
+    0.035
+  ],
+  "actuator_delay_physics_steps_training": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ]
+  ],
+  "initial_root_pos": [
+    0.0,
+    0.0,
+    0.99
+  ],
+  "default_root_pos": [
+    0.0,
+    0.0,
+    0.99
+  ],
+  "default_root_rot_xyzw": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "action_to_target": "target[i] = default_joint_pos[i] + action_scale[i] * actions[i]; no filter, no clip",
+  "last_action": "raw output from the previous policy step; zeros on entry",
+  "obs_history": 5,
+  "obs_slices": {
+    "base_ang_vel": {
+      "start": 0,
+      "end": 15,
+      "dim_per_frame": 3
+    },
+    "root_local_rot_tan_norm": {
+      "start": 15,
+      "end": 45,
+      "dim_per_frame": 6
+    },
+    "velocity_commands": {
+      "start": 45,
+      "end": 60,
+      "dim_per_frame": 3
+    },
+    "joint_pos": {
+      "start": 60,
+      "end": 190,
+      "dim_per_frame": 26
+    },
+    "joint_vel": {
+      "start": 190,
+      "end": 320,
+      "dim_per_frame": 26
+    },
+    "last_action": {
+      "start": 320,
+      "end": 450,
+      "dim_per_frame": 26
+    }
+  },
+  "obs_layout": "per-term histories oldest to newest, flattened; terms concatenated in obs_slices order",
+  "obs_reset": "fill every history slot with the first frame",
+  "obs_definitions": {
+    "base_ang_vel": "base_link angular velocity in its local frame, rad/s, unscaled",
+    "root_local_rot_tan_norm": "remove root yaw; concatenate columns 0 and 2 of the local rotation matrix",
+    "velocity_commands": "heading-frame [vx m/s, vy m/s, wz rad/s], unscaled",
+    "joint_pos": "absolute joint positions in joint_names order, rad",
+    "joint_vel": "absolute joint velocities in joint_names order, rad/s",
+    "last_action": "previous raw policy output"
+  },
+  "depth": {
+    "mount_link": "base_link",
+    "mount_pos_m": [
+      0.1237,
+      0.0,
+      0.40966
+    ],
+    "mount_rot_xyzw": [
+      0.0,
+      0.3826834323650898,
+      0.0,
+      0.9238795325112867
+    ],
+    "mount_convention": "world: x forward, y left, z up; camera offset relative to base_link",
+    "image_wh": [
+      64,
+      36
+    ],
+    "hfov_deg": 89.51,
+    "vfov_deg": 58.29,
+    "value": "distance_to_image_plane",
+    "sees_robot_itself": true,
+    "crop_up_down_left_right": [
+      18,
+      0,
+      16,
+      16
+    ],
+    "blur": {
+      "kernel": 3,
+      "sigma": 1.0,
+      "padding": "reflect"
+    },
+    "depth_range_m": [
+      0.0,
+      2.5
+    ],
+    "normalize": "crop, blur; replace NaN/+inf with max and -inf with min; clamp and map depth_range to [0,1]",
+    "update_period_s": 0.02,
+    "history_length": 37,
+    "history_skip": 5,
+    "output_frames": 8,
+    "output_order": "oldest to newest",
+    "delay_frames_training": [
+      0,
+      1
+    ],
+    "reset": "fill every history slot with the first frame"
+  },
+  "onnx_sha256": "ed3a25b0b47a333e38b66d8f68c51980f931d82f8b6498885585d7dc821246da"
+}

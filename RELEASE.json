@@ -11,23 +11,26 @@
     "simulation_dof": 26,
     "bus_slots": 31,
     "model": "linglong/linglong_26dof.xml",
-    "profile": "original loong_gui_sim 26-axis simulation; head and waist omitted"
+    "profile": "Unified 26-DoF SDK simulation with one fixed training-aligned dynamics profile"
   },
   "components": {
     "loong_gui_sim": {
       "branch": "main",
       "binary": "loong_gui_sim/loong_gui_sim",
-      "sha256": "bdc0960b890336127c26fb2ceec4b66f4eb738fe6c2554c3ca77bd85651203fa",
-      "compiled_modules": 23,
+      "sha256": "1dbc8d69e60f6d75334afb666b0364692481f20679acb8eb8fd7536d33812cff",
+      "compiled_modules": 24,
       "native_helpers": [
+        "libdance_plan_x64.so",
         "liblog_replay.so",
-        "libsim_camera_follow.so"
+        "libsim_camera_follow.so",
+        "libsim_depth_bridge.so",
+        "libwalking_plan_x64.so"
       ],
       "robot_baseline": {
-        "model_sha256": "1f9ae2863d99d41c21baa904c2f614fd76524dd452cc47a7d859a6aee0cf909e",
-        "driver_template": "config/driver.ini.bak_26dof",
-        "mujoco_template": "config/driver_mujoco.ini.bak_26dof",
-        "mujoco_config_sha256": "e9127c318ead084a3ce0bb7fe4b2b3ec89bf303e67c5911e8535e3212689ad60"
+        "model_sha256": "ee1e7761c28d2f0bc41bd940fffc98cc58380284ef28ef5137dc4c5d4388923d",
+        "driver_template": "config/driver.ini",
+        "mujoco_template": "config/driver_mujoco.ini",
+        "mujoco_config_sha256": "14620279bbcedb0c21fecbde3d90b6cb31edd727dbaa924af20b4c965663e5e2"
       },
       "binding": "PySide6",
       "binding_version": "6.11.3",
@@ -39,15 +42,313 @@
         "plans": {
           "rc": 2,
           "rl": 4,
+          "dance": 28,
+          "parkour": 43,
           "jntTest": 31
         },
         "rl_plugin": "obs 700 / actions 20, term-major history 10, 50 Hz",
-        "pd": "original 26-axis profile: pdMode=3; fixed MuJoCo PD on all axes; useJntMotMap=0; simAnkleMap=none"
+        "pd": "Unified SDK: pdMode=1; per-plan joint gains; MuJoCo fixed gains zero; useJntMotMap=0; simAnkleMap=none",
+        "architecture": "single simulator, single robot, driver/interface/locomotion; same-world depth sensor",
+        "depth_preview": {
+          "tab": "VISION",
+          "source": "same-world parkour depth input",
+          "width": 32,
+          "height": 18,
+          "range_m": [
+            0,
+            2.5
+          ],
+          "colormap": "near black, far white"
+        }
+      },
+      "public_runtime_sources": [
+        "native/build_dance_plan.sh",
+        "native/build_parkour_plan.sh",
+        "native/build_sdk_plans.sh",
+        "native/dance_plan.cpp",
+        "native/parkour_plan.cpp",
+        "native/parkour_plan.h",
+        "native/sdk/deployment_values.h",
+        "native/sdk/depth_frame.h",
+        "native/sdk/sdk_policy_plan.cpp",
+        "native/sdk/sim_depth_bridge.cpp",
+        "native/sdk/walking_plan.cpp",
+        "native/tests/test_parkour_plan.py",
+        "native/vendor/loong_sdk/LICENSE",
+        "native/vendor/loong_sdk/algorithms.h",
+        "native/vendor/loong_sdk/eigen.h",
+        "native/vendor/loong_sdk/ini.h",
+        "native/vendor/loong_sdk/iopack.h",
+        "native/vendor/loong_sdk/iopack.hxx",
+        "native/vendor/loong_sdk/log.h",
+        "native/vendor/loong_sdk/log.hxx",
+        "native/vendor/loong_sdk/loong_loco_sdk.h",
+        "native/vendor/loong_sdk/nabo_data.h",
+        "native/vendor/loong_sdk/plan.h",
+        "native/vendor/loong_sdk/robot_config.h",
+        "native/vendor/mujoco/LICENSE",
+        "native/vendor/mujoco/mjdata.h",
+        "native/vendor/mujoco/mjexport.h",
+        "native/vendor/mujoco/mjmacro.h",
+        "native/vendor/mujoco/mjmodel.h",
+        "native/vendor/mujoco/mjplugin.h",
+        "native/vendor/mujoco/mjrender.h",
+        "native/vendor/mujoco/mjthread.h",
+        "native/vendor/mujoco/mjtnum.h",
+        "native/vendor/mujoco/mjui.h",
+        "native/vendor/mujoco/mjvisualize.h",
+        "native/vendor/mujoco/mjxmacro.h",
+        "native/vendor/mujoco/mujoco.h",
+        "native/vendor/onnxruntime/onnxruntime_c_api.h",
+        "native/vendor/quill/LICENSE",
+        "native/vendor/quill/README.md",
+        "native/vendor/quill/quill/Clock.h",
+        "native/vendor/quill/quill/Config.h",
+        "native/vendor/quill/quill/Fmt.h",
+        "native/vendor/quill/quill/LogLevel.h",
+        "native/vendor/quill/quill/Logger.h",
+        "native/vendor/quill/quill/MacroMetadata.h",
+        "native/vendor/quill/quill/PatternFormatter.h",
+        "native/vendor/quill/quill/Quill.h",
+        "native/vendor/quill/quill/QuillError.h",
+        "native/vendor/quill/quill/TransitEvent.h",
+        "native/vendor/quill/quill/TweakMe.h",
+        "native/vendor/quill/quill/Utility.h",
+        "native/vendor/quill/quill/bundled/fmt/args.h",
+        "native/vendor/quill/quill/bundled/fmt/chrono.h",
+        "native/vendor/quill/quill/bundled/fmt/color.h",
+        "native/vendor/quill/quill/bundled/fmt/compile.h",
+        "native/vendor/quill/quill/bundled/fmt/core.h",
+        "native/vendor/quill/quill/bundled/fmt/format-inl.h",
+        "native/vendor/quill/quill/bundled/fmt/format.h",
+        "native/vendor/quill/quill/bundled/fmt/os.h",
+        "native/vendor/quill/quill/bundled/fmt/ostream.h",
+        "native/vendor/quill/quill/bundled/fmt/printf.h",
+        "native/vendor/quill/quill/bundled/fmt/ranges.h",
+        "native/vendor/quill/quill/bundled/fmt/std.h",
+        "native/vendor/quill/quill/bundled/fmt/xchar.h",
+        "native/vendor/quill/quill/clock/TimestampClock.h",
+        "native/vendor/quill/quill/detail/HandlerCollection.h",
+        "native/vendor/quill/quill/detail/LogMacros.h",
+        "native/vendor/quill/quill/detail/LogManager.h",
+        "native/vendor/quill/quill/detail/LoggerCollection.h",
+        "native/vendor/quill/quill/detail/LoggerDetails.h",
+        "native/vendor/quill/quill/detail/Serialize.h",
+        "native/vendor/quill/quill/detail/SignalHandler.h",
+        "native/vendor/quill/quill/detail/ThreadContext.h",
+        "native/vendor/quill/quill/detail/ThreadContextCollection.h",
+        "native/vendor/quill/quill/detail/backend/BackendWorker.h",
+        "native/vendor/quill/quill/detail/backend/BacktraceStorage.h",
+        "native/vendor/quill/quill/detail/backend/StringFromTime.h",
+        "native/vendor/quill/quill/detail/backend/TimestampFormatter.h",
+        "native/vendor/quill/quill/detail/backend/TransitEventBuffer.h",
+        "native/vendor/quill/quill/detail/misc/Attributes.h",
+        "native/vendor/quill/quill/detail/misc/Common.h",
+        "native/vendor/quill/quill/detail/misc/FileUtilities.h",
+        "native/vendor/quill/quill/detail/misc/Os.h",
+        "native/vendor/quill/quill/detail/misc/Rdtsc.h",
+        "native/vendor/quill/quill/detail/misc/RdtscClock.h",
+        "native/vendor/quill/quill/detail/misc/TypeTraitsCopyable.h",
+        "native/vendor/quill/quill/detail/misc/Utilities.h",
+        "native/vendor/quill/quill/detail/spsc_queue/BoundedQueue.h",
+        "native/vendor/quill/quill/detail/spsc_queue/UnboundedQueue.h",
+        "native/vendor/quill/quill/filters/FilterBase.h",
+        "native/vendor/quill/quill/handlers/ConsoleHandler.h",
+        "native/vendor/quill/quill/handlers/FileHandler.h",
+        "native/vendor/quill/quill/handlers/Handler.h",
+        "native/vendor/quill/quill/handlers/JsonConsoleHandler.h",
+        "native/vendor/quill/quill/handlers/JsonFileHandler.h",
+        "native/vendor/quill/quill/handlers/NullHandler.h",
+        "native/vendor/quill/quill/handlers/RotatingFileHandler.h",
+        "native/vendor/quill/quill/handlers/StreamHandler.h",
+        "runtime/python/check_runtime.py",
+        "runtime/python/dance_runtime.py",
+        "runtime/python/native_policy.py",
+        "runtime/python/native_scene_style.py",
+        "runtime/python/native_view.py",
+        "runtime/python/parkour_runtime.py",
+        "runtime/python/render_probe.py",
+        "runtime/python/test_dance_contract.py",
+        "runtime/python/test_native_scene_style.py",
+        "runtime/python/test_native_view.py",
+        "runtime/python/test_render_probe.py",
+        "setup_runtime.sh"
+      ],
+      "runtime_profiles": {
+        "walking": {
+          "backend": "unified SDK plan",
+          "robot": "same LingLong26 / 31 bus slots",
+          "inputs": {
+            "obs": [
+              1,
+              700
+            ]
+          },
+          "actions": [
+            1,
+            20
+          ],
+          "plan_library": "runtime/module/nabo_locomotion/libplan_walking_sdk_x64.so",
+          "required_files": [
+            "runtime/bin/loong_share_sim_x64",
+            "runtime/bin/loong_driver_x64",
+            "runtime/bin/loong_interface_x64",
+            "runtime/bin/loong_locomotion_x64",
+            "runtime/module/nabo_locomotion/libplan_walking_sdk_x64.so",
+            "runtime/config/loco_plugins.ini"
+          ],
+          "key": 4
+        },
+        "dance": {
+          "backend": "unified SDK plan",
+          "robot": "same LingLong26 / 31 bus slots",
+          "inputs": {
+            "obs": [
+              1,
+              1610
+            ]
+          },
+          "actions": [
+            1,
+            26
+          ],
+          "plan_library": "runtime/module/nabo_locomotion/libplan_dance_sdk_x64.so",
+          "required_files": [
+            "runtime/bin/loong_share_sim_x64",
+            "runtime/bin/loong_driver_x64",
+            "runtime/bin/loong_interface_x64",
+            "runtime/bin/loong_locomotion_x64",
+            "runtime/module/nabo_locomotion/libplan_dance_sdk_x64.so",
+            "runtime/config/loco_plugins.ini"
+          ],
+          "release_required_files": [
+            "training_dance/src/mjlab/asset_zoo/robots/linglong14/linglong.xml",
+            "training_dance/src/mjlab/asset_zoo/robots/linglong14/linglong.urdf"
+          ],
+          "main_view": "native MuJoCo GLFW embedded in the shared SimulatorView",
+          "key": 28
+        },
+        "parkour": {
+          "backend": "unified SDK plan",
+          "robot": "same LingLong26 / 31 bus slots",
+          "inputs": {
+            "obs": [
+              1,
+              450
+            ],
+            "depth": [
+              1,
+              8,
+              18,
+              32
+            ]
+          },
+          "actions": [
+            1,
+            26
+          ],
+          "plan_library": "runtime/module/nabo_locomotion/libplan_parkour_sdk_x64.so",
+          "required_files": [
+            "runtime/bin/loong_share_sim_x64",
+            "runtime/bin/loong_driver_x64",
+            "runtime/bin/loong_interface_x64",
+            "runtime/bin/loong_locomotion_x64",
+            "runtime/module/nabo_locomotion/libplan_parkour_sdk_x64.so",
+            "runtime/config/loco_plugins.ini",
+            "native/libsim_depth_bridge.so",
+            "runtime/model/parkour/policy_10200.onnx"
+          ],
+          "release_required_files": [
+            "training_parkour/checkpoints/lite/exported/policy_10200.onnx",
+            "training_parkour/checkpoints/lite/exported/policy_10200.json",
+            "training_parkour/source/lite_parkour/lite_parkour/data/Robots/Lite/lite_26dof.urdf",
+            "training_parkour/source/lite_parkour/lite_parkour/data/Robots/Lite/lite_26dof.xml",
+            "training_parkour/scripts/sim2sim_mujoco_lite.py",
+            "training_parkour/scripts/sim2sim/runtime.py"
+          ],
+          "default_terrain": "box",
+          "example_policy_scenarios": {
+            "box": {
+              "passed": true,
+              "simulation_seconds": 20,
+              "passed_box_heights_m": [
+                0.2,
+                0.3
+              ],
+              "third_box_0_4m_tested": false
+            },
+            "stairs_low": {
+              "passed": true,
+              "height_m": 0.05,
+              "vx_m_s": 0.4,
+              "simulation_seconds": 35
+            },
+            "stairs_0_10m": {
+              "passed": false,
+              "vx_m_s": 0.6,
+              "fall_time_seconds": 6.975
+            },
+            "stairs_0_20m": {
+              "passed": false,
+              "vx_m_s": 0.6,
+              "fall_time_seconds": 5.74
+            }
+          },
+          "main_view": "native MuJoCo GLFW embedded in the shared SimulatorView",
+          "key": 43
+        }
+      },
+      "policy_runtime": {
+        "directory": "loong_gui_sim/runtime/python",
+        "installer": "loong_gui_sim/setup_runtime.sh",
+        "lockfile": "loong_gui_sim/runtime/python/uv.lock",
+        "python": "3.12",
+        "packages": {
+          "numpy": "2.1.3",
+          "mujoco": "3.4.0",
+          "onnxruntime": "1.21.0",
+          "scipy": "1.15.3",
+          "Pillow": "11.1.0"
+        },
+        "default_interpreter": "loong_gui_sim/runtime/python/.venv/bin/python",
+        "automatic_preparation": true,
+        "render_preflight": "loong_gui_sim/runtime/python/render_probe.py",
+        "backend_selection": {
+          "gui_native": [
+            "glfw"
+          ],
+          "standalone_offscreen": {
+            "desktop": [
+              "glfw",
+              "egl"
+            ],
+            "without_display": [
+              "egl",
+              "glfw"
+            ]
+          }
+        },
+        "gui_viewport": {
+          "type": "native MuJoCo GLFW / X11",
+          "same_host_as_walking": true,
+          "resizes_with_host": true,
+          "dpi_aware": true,
+          "camera_interaction": "native rotate/pan/zoom with optional translation following"
+        }
+      },
+      "xcb_cursor": {
+        "library": "_internal/libxcb-cursor.so.0",
+        "version": "0.1.1-4ubuntu1",
+        "license": "MIT/X Consortium",
+        "provenance": "loong_gui_sim/licenses/libxcb-cursor/SOURCE.json",
+        "bundled": true
       }
     },
-    "mjlab_amp_ovision": {
+    "training_walking": {
       "source_included": true,
-      "robot_dof": 20
+      "robot_dof": 20,
+      "directory": "training_walking",
+      "short_training_and_resume_validated": true
     },
     "policy": {
       "file": "models/policy.onnx",
@@ -100,6 +401,40 @@
         12,
         13
       ]
+    },
+    "training_parkour": {
+      "directory": "training_parkour",
+      "source_included": true,
+      "robot_dof": 26,
+      "training_framework": "Isaac Sim / Isaac Lab",
+      "gui_control_chain_integrated": true,
+      "gui_integrated": true,
+      "gui_backend": "independent MuJoCo / native plan; separate from legacy SDK control chain",
+      "legacy_sdk_control_chain_integrated": false,
+      "short_training_and_resume_validated": true,
+      "installation": {
+        "installer": "training_parkour/scripts/install_training.sh",
+        "requirements_lock": "training_parkour/requirements-training-cu128.lock",
+        "upstream_commit": "28a37cecdd433c22d9eabd6a5954add9f13a8951",
+        "metadata_patch": "training_parkour/patches/isaaclab-sim6-metadata.patch",
+        "python": "3.12",
+        "torch": "2.11.0+cu128",
+        "isaacsim": "6.0.0.1",
+        "isaaclab": "6.1.11",
+        "validation": "training_parkour/TRAINING_VALIDATION.md",
+        "validation_json": "training_parkour/training-validation-20261112.json"
+      }
+    },
+    "training_dance": {
+      "directory": "training_dance",
+      "source_included": true,
+      "robot_dof": 26,
+      "training_framework": "mjlab / MuJoCo-Warp",
+      "gui_control_chain_integrated": true,
+      "gui_integrated": true,
+      "gui_backend": "independent MuJoCo / native plan; separate from legacy SDK control chain",
+      "legacy_sdk_control_chain_integrated": false,
+      "short_training_and_resume_validated": true
     }
   },
   "gui_build_packages": {
@@ -110,19 +445,25 @@
   },
   "publication": {
     "name": "OpenLoongOS-LTS",
-    "stage": 1,
-    "repository": "https://github.com/loongOpen/OpenLoongOS-LTS",
+    "repository": "https://atomgit.com/openloong/OpenLoongOS-LTS",
     "scope": [
-      "open-source walking training code",
-      "prebuilt full-chain simulation runtime",
-      "GUI application"
+      "walking training source",
+      "visual parkour training source",
+      "dance training source",
+      "prebuilt full-chain walking simulation runtime",
+      "GUI binary supporting three modes",
+      "native dance and parkour plans with build sources",
+      "real policy depth visualization"
     ],
     "roadmap": [
       "walking",
       "dance",
       "obstacle traversal",
       "teleoperation"
+    ],
+    "planned_capabilities": [
+      "teleoperation"
     ]
   },
-  "release_date": "2026-11-02"
+  "release_date": "2026-11-12"
 }

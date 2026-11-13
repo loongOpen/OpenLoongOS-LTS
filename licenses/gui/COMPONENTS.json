@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "format": "PyInstaller onedir",
-  "executable_sha256": "bdc0960b890336127c26fb2ceec4b66f4eb738fe6c2554c3ca77bd85651203fa",
-  "executable_size": 1714352,
+  "executable_sha256": "7066497f05254f8d0490555ff8824eb487567953cf3bdf82e9816e078c5e681e",
+  "executable_size": 1618200,
   "external_files": [
     {
       "path": "_internal/PySide6/Qt/lib/libQt6Core.so.6",
@@ -692,202 +692,222 @@
     {
       "path": "_internal/base_library.zip",
       "size": 879993,
-      "sha256": "179e1576e34c20d8b7b21c627641c85f1d96432920d47d7544d933d5443d61c0"
+      "sha256": "de87ef509c203b7295390865c7b55224fd6d9b6fdac24e13e339165ae7371f5c"
     },
     {
       "path": "_internal/camera_follow.cpython-310-x86_64-linux-gnu.so",
-      "size": 507360,
-      "sha256": "614a1bb882de352299dee44e93f204e3d92db8bf2d31f646a34bb31afa905775"
+      "size": 507808,
+      "sha256": "cc7c16b43ba988e94a9a920f5bf585ac246e289314e4474161e33a9ee32a8877"
     },
     {
       "path": "_internal/control_panel.cpython-310-x86_64-linux-gnu.so",
-      "size": 641008,
-      "sha256": "567f6ded5b0a884aedfd93e71ae678f699cbac8d1356dfff36c82cf6a0223617"
+      "size": 641448,
+      "sha256": "7d9e743a9efdb1dd22d5c0f7cc2208a22dc2cd56e17cc81fa90d7a8729c7e225"
     },
     {
       "path": "_internal/control_protocol.cpython-310-x86_64-linux-gnu.so",
-      "size": 556208,
-      "sha256": "ee6c8c617400c8ed36f9e4fa4486426bcfac06cc892cdd0497a6d2bfbed8dd09"
+      "size": 556648,
+      "sha256": "643cc4e15119f26c87f071ff76a6c25d8868647ab647132deb4f4b7640df2118"
+    },
+    {
+      "path": "_internal/depth_panel.cpython-310-x86_64-linux-gnu.so",
+      "size": 506456,
+      "sha256": "c5378f26e051d5d243a25c69fe44fd2477ca0e87ca1165a6cf8c672c40f70ca8"
+    },
+    {
+      "path": "_internal/feature_panel.cpython-310-x86_64-linux-gnu.so",
+      "size": 910424,
+      "sha256": "6fdab984c1149dddfa912a1207de8baf8483c1b6721b6aa2e69f3b772a855b2e"
+    },
+    {
+      "path": "_internal/feature_runner.cpython-310-x86_64-linux-gnu.so",
+      "size": 1469456,
+      "sha256": "136ac01a8cfb56d4390bdd11105cd4ebc0f904347b0f3f33a1959b34ba4cc7cd"
     },
     {
       "path": "_internal/libpython3.10.so.1.0",
       "size": 5834688,
-      "sha256": "88e4d5e7395813affc5c30a563bcb50321f55342aece87193760daaddae3bd78"
+      "sha256": "d7bc028c6a98ac8c17edeada13609ea36db324d7f49c26b6ca93994e8c830453"
+    },
+    {
+      "path": "_internal/libxcb-cursor.so.0.0.0",
+      "size": 24080,
+      "sha256": "729297e66519bdb0df3ac8d5a2950e2e09b1e8d0b9eeea33250fce57a27aafa3"
     },
     {
       "path": "_internal/live_plot.cpython-310-x86_64-linux-gnu.so",
-      "size": 2488176,
-      "sha256": "62105665e96d1f1bbba52029037ffcf07a2a179c4cc2f628c37eed02f2c125de"
+      "size": 2488616,
+      "sha256": "a30af42ae80397d76b406fabd8dc618e20e533418e33f3036feb40593a6f2cdb"
     },
     {
       "path": "_internal/live_plot_data.cpython-310-x86_64-linux-gnu.so",
-      "size": 1083128,
-      "sha256": "32db805deb1780ae86c76e114ff4a820bea4639723eb86cc1a55bd7f6decf598"
+      "size": 1083576,
+      "sha256": "6baf46afc7613167f0508fb4cc1cb799410301b0acdbc36ed43ab0dd6bd36bf8"
     },
     {
       "path": "_internal/log_replay_data.cpython-310-x86_64-linux-gnu.so",
-      "size": 719912,
-      "sha256": "d26b927a94943323d2b133ce178d51895d3beb6ccf50c24789f7d6e0cb9174a0"
+      "size": 720352,
+      "sha256": "92e5d89f44900b0f7e0865b866879a67fadb7202fc3baa9bf7383c14d2c47a6f"
     },
     {
       "path": "_internal/log_replay_panel.cpython-310-x86_64-linux-gnu.so",
-      "size": 824128,
-      "sha256": "93434ec0182d443afed5f60f82852c8b3ab02752baf281cc91b5e4d66d9b2cc9"
+      "size": 824576,
+      "sha256": "0e962bb5cc96983cd4e2d69ee2813c3942d4bc303d8557826fb7436e658b06a6"
     },
     {
       "path": "_internal/main_window.cpython-310-x86_64-linux-gnu.so",
-      "size": 1066792,
-      "sha256": "492e36d8eafa0dfb700cc9c87bb95be76bec7bf88063a50eaa82228b59eb4859"
+      "size": 1532944,
+      "sha256": "d4019dedba10f7b1896f1f0008ea5c40e3e03e90f99c4b1c233a71f1d3ce14b8"
     },
     {
       "path": "_internal/plugin_catalog.cpython-310-x86_64-linux-gnu.so",
-      "size": 497016,
-      "sha256": "0b9fb339842f022642a8442938594c1afb1c3e3e35625a4b719a098aec433b55"
+      "size": 497456,
+      "sha256": "c1d770c9bcee7ea63877deb3768ca76d757b30db72200d843b94743334d7cda4"
     },
     {
       "path": "_internal/plugin_command_panel.cpython-310-x86_64-linux-gnu.so",
-      "size": 364456,
-      "sha256": "13fdfd2426569f2bf72cf3ebebd35d6789b16b2a85765d65fe824980bfd93a37"
+      "size": 364904,
+      "sha256": "a37af73c388daae232601825942ce34d9925697266a6a68d9b8d944d1c2bc674"
     },
     {
       "path": "_internal/process_manager.cpython-310-x86_64-linux-gnu.so",
-      "size": 1542448,
-      "sha256": "fa5789e822715b4f851b2133dbbed16e6e26f16858be8a5797879f8dcb37415c"
+      "size": 1542888,
+      "sha256": "f8de82da112453ca1ca0879c18eb8d267e2faa852b9f9ca202eec7b9af439f5a"
     },
     {
       "path": "_internal/process_panel.cpython-310-x86_64-linux-gnu.so",
-      "size": 582280,
-      "sha256": "860a849c5069a7f450c99260402f833bb5882bcca410fd1a0a0bfddf159ecf36"
+      "size": 582720,
+      "sha256": "46983d231f71cabc5664663c404bb61188a786fab26850e042885ed9c4763bb3"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_asyncio.cpython-310-x86_64-linux-gnu.so",
       "size": 78624,
-      "sha256": "c9bb2404dcfdfea861950900f49990a1dec750b9894a575b1e773d7039ae6efd"
+      "sha256": "6222f92ca7194b1daf4cd0ecd7da5fafa750919e26f46a5443d5ef034209c250"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_bz2.cpython-310-x86_64-linux-gnu.so",
       "size": 32120,
-      "sha256": "86fd002604395c7f18e8b5d455db8b288c504e920a013907c0c96c48fa93cec5"
+      "sha256": "3603dfed24c06133e6c06614176016577be924fb5f6d1160bb6d30ac56842a39"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_codecs_cn.cpython-310-x86_64-linux-gnu.so",
       "size": 154128,
-      "sha256": "40bb6a2a3b3497e5ebf63e45fad8ef7131c98441efe60f6fe429cce3b7744f0d"
+      "sha256": "18aad890910778c70c6068b5e41d5e1bd40a989f859e55ef41b38fca3665e67f"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_codecs_hk.cpython-310-x86_64-linux-gnu.so",
       "size": 162352,
-      "sha256": "4189f6e4992b5ab60be9a5cc7b0a0d74d1dcae284f049d3d5d299ba446ad3a8d"
+      "sha256": "4b06de5890ff4ad1a84bab4f7dcfaf34c4dcd266361082176ba962b8757f7905"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_codecs_iso2022.cpython-310-x86_64-linux-gnu.so",
       "size": 31248,
-      "sha256": "7d86ebfbd39f6886c4bca3a6b9b86e2341d127f6722efaca1fef4554e0833c3a"
+      "sha256": "8d43c4adf9fb9759c047e7ee584a7b44892aaf5adae8c50ee64dfc1683afedeb"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_codecs_jp.cpython-310-x86_64-linux-gnu.so",
       "size": 272912,
-      "sha256": "2ba7d75387eec967f696aeefe49784281393c9f4350cddecf31ce48b76eb4b59"
+      "sha256": "d6e7eb386840d6c58c2dd79eef72332e4412d8f404cff74e3517d934b6f10afd"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_codecs_kr.cpython-310-x86_64-linux-gnu.so",
       "size": 141840,
-      "sha256": "db1a616cd038b273e9bed6f689be3e058b8b1afc2fa7e55995ffaf281dfb95b0"
+      "sha256": "ebbe45555b5e3fffb5c19a1fab2714af851fcc87290f5d064426d83c455557e3"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_codecs_tw.cpython-310-x86_64-linux-gnu.so",
       "size": 113168,
-      "sha256": "6ad3c8eb5e2d3acc3d4fc1759fcfe5cbdc3a2aa7e11250cb57db03999336aba4"
+      "sha256": "96e0c5fc0e66017365d23f6dbf8a718646290eacf7c908460bc174003e8ea1f3"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_contextvars.cpython-310-x86_64-linux-gnu.so",
       "size": 14536,
-      "sha256": "a12c77293463697e7cb7a7b4d898a3472ef4e13d6029d5ad9bc7cdb86d6ccd9f"
+      "sha256": "906b8886e77407f2a001fcd32912e1b0cec9b97ecb15a62c8d6c36d3f14c0981"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_ctypes.cpython-310-x86_64-linux-gnu.so",
       "size": 132120,
-      "sha256": "afd10a3affe19c34a14252e315dbf8c6c21fd13418a6444d7ad4d55c27f383f5"
+      "sha256": "0208ba4a33c8fd0cb3b8482688a3781f129d45d6a948b30b0ec4eeb90b2a9c83"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_decimal.cpython-310-x86_64-linux-gnu.so",
       "size": 180632,
-      "sha256": "1ff77b9bf39b1c9d62758fc0179c29fb47fa5f242dfb4bc980c96d0e1cd22ecc"
+      "sha256": "db7d38288217251c294732956058ea89c21080177e88eb56f9d9fa964f172f5d"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_hashlib.cpython-310-x86_64-linux-gnu.so",
       "size": 63728,
-      "sha256": "9d48b20174e976f7a6bcaf0e76d208d1bf5b77b85b1565d1ca7a202e3eec41c2"
+      "sha256": "aaa7cad4595fb421be5a9206efea579ec852f820d44e1d76a8de9ab46e02200c"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_json.cpython-310-x86_64-linux-gnu.so",
       "size": 49160,
-      "sha256": "8f06c02cc5d7f692dd175b4fae18619fe66215391aa7797bc8400e7488eaef36"
+      "sha256": "d02668cbf0664d30f194230b767f940d0abf9da851204c54b84640f987bcb145"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_lzma.cpython-310-x86_64-linux-gnu.so",
       "size": 45240,
-      "sha256": "9b7dc87f399102de534e8dc58c69fe0e27a0b935bb97ed50e0fbd36576dd74ea"
+      "sha256": "291e4fc37143c7060bf210390f08451bdce7fcfcc034c0b70fb9651e1e4098bf"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_multibytecodec.cpython-310-x86_64-linux-gnu.so",
       "size": 50328,
-      "sha256": "ca380eb18a2a94cd28a4803b3b55b258fbdefaa631b630038ee181c1a9d65823"
+      "sha256": "faa65133609e1b79570cc2c350f7e6ea94e0aeeb721a81ce53a65e4c6fa03d01"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_multiprocessing.cpython-310-x86_64-linux-gnu.so",
       "size": 24336,
-      "sha256": "e03ca36c884098db086d5e223f3b14dec9a4ba03e4d0293ebfd90565c2525851"
+      "sha256": "efa25aa38572addc171033f02fa5dd8868074393786573183865a288676d3ff1"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_opcode.cpython-310-x86_64-linux-gnu.so",
       "size": 14672,
-      "sha256": "6683c181289c98f8d8a8febe4b6eaf09ed008666e2f0b5a3ee620df2655cb5d5"
+      "sha256": "57b17b5a12dcb7ddd890f968acd7d8afed00439d7f27deb656a3e5c81dc7d8f4"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_posixshmem.cpython-310-x86_64-linux-gnu.so",
       "size": 14992,
-      "sha256": "b893a1ad783822643c8ca0eba5f35e99d9862f85e50f7d263dcdfb3bc9f9a808"
+      "sha256": "dacb57d140fa79e27e557b798d6218c2cf0ca6037bf30332ebe56e752f7c759c"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_queue.cpython-310-x86_64-linux-gnu.so",
       "size": 23664,
-      "sha256": "770e58de9e394fa0ad93f78ddffe85a1233d66462828094394e91b0283358d5e"
+      "sha256": "558cd265559f8324b3723f5e349b0a4fc97b4c7139db373d30fd396c089f76ca"
     },
     {
       "path": "_internal/python3.10/lib-dynload/_ssl.cpython-310-x86_64-linux-gnu.so",
-      "size": 225296,
-      "sha256": "99cb4cde3c14dd8acd75b6f4508e391d5299443c455bc4c1089172059e6f8f86"
+      "size": 221200,
+      "sha256": "99aa106038e4ac231b4232733381f98903edba02319363db8a1d12728148c2b6"
     },
     {
       "path": "_internal/python3.10/lib-dynload/mmap.cpython-310-x86_64-linux-gnu.so",
       "size": 32600,
-      "sha256": "0215e38abdcf2aff2a35cb14d99aa9738362f3a14b3457699f0549b21385e3a8"
+      "sha256": "1d85a9fccb48eae9173b5fc8437daa05a62d221bf4b0066c0af332e1fb003c29"
     },
     {
       "path": "_internal/python3.10/lib-dynload/resource.cpython-310-x86_64-linux-gnu.so",
       "size": 19424,
-      "sha256": "32c6504ea6595e15641159280d91ea012efd1209e1b8ebf059fdc9807242b623"
+      "sha256": "a08b98ad6eac99adf06043a5f39e841b85198a62189f47f9896906f9148224b9"
     },
     {
       "path": "_internal/python3.10/lib-dynload/termios.cpython-310-x86_64-linux-gnu.so",
       "size": 31296,
-      "sha256": "ff4d3d7950dea513995c731af269c7ceaad5412b88d3c527dd61e9b2f51f5f96"
+      "sha256": "372d14580dee308321b69358821c4f2d19f938a26c259298c64365d50a14e4a9"
     },
     {
       "path": "_internal/replay_ankle.cpython-310-x86_64-linux-gnu.so",
-      "size": 1216016,
-      "sha256": "3efae507dbfdd472296f6305be3b169fbab02bb65cdf5e313f60c61bb6ebf9a1"
+      "size": 1216456,
+      "sha256": "33ebfebe107ed89552e71943f53ec96e6afdd759470c624086a325674d04678c"
     },
     {
       "path": "_internal/replay_clock.cpython-310-x86_64-linux-gnu.so",
-      "size": 446984,
-      "sha256": "a96bf2ba01af529675fbe1bfa5d84a0d42a023361ad86fe94210b0c48d00e667"
+      "size": 447424,
+      "sha256": "0d9ff8bb3c2a9d796e62986ac1d1a4f176e4243f0890523762aa3772c10432c1"
     },
     {
       "path": "_internal/replay_view.cpython-310-x86_64-linux-gnu.so",
-      "size": 818608,
-      "sha256": "8ac639ed37027200daf7e737055fe6134ec050966c2f68c58a5a4e7011e87c50"
+      "size": 819048,
+      "sha256": "66eeac993486da39eb299b007275df416942c2cd8fe5e70f00ec73cd7b00c438"
     },
     {
       "path": "_internal/shiboken6/Shiboken.abi3.so",
@@ -906,43 +926,48 @@
     },
     {
       "path": "_internal/sim_desktop_checks.cpython-310-x86_64-linux-gnu.so",
-      "size": 684528,
-      "sha256": "af0608a88bb5aeebe956f09f3400af13b8cd402841fe7a21149bc51f4ef66263"
+      "size": 684968,
+      "sha256": "9a48e6eaefd612312c6c3ffa89506e10172011387ef754e26cccf68dd3bb6e78"
+    },
+    {
+      "path": "_internal/sim_feature_checks.cpython-310-x86_64-linux-gnu.so",
+      "size": 2147240,
+      "sha256": "b2a3c2bfdc082343b2a949814d6a6f3e79d4797d37b9f282b3f41d0e7856c478"
     },
     {
       "path": "_internal/sim_gui.cpython-310-x86_64-linux-gnu.so",
-      "size": 284080,
-      "sha256": "5fe17cef8309d69e887a3ae41e71d3aa2309de28e8b85f4b62d9bfa43a2a04ed"
+      "size": 296504,
+      "sha256": "270050855d35516080e8436aa79a1a20704c19f4b6a9525ebe2c1e627014bcc2"
     },
     {
       "path": "_internal/sim_gui_config.cpython-310-x86_64-linux-gnu.so",
-      "size": 350616,
-      "sha256": "8a1ab0909aa829c13f9f1783cda94cbf1a8a0fa4f904beb68c0969f8bc0b5d2b"
+      "size": 351064,
+      "sha256": "47a2a2bfc15a9c57a04e21077d43b28389a3e2b1b01aceaa35386e2bf0f27e55"
     },
     {
       "path": "_internal/sim_gui_styles.cpython-310-x86_64-linux-gnu.so",
-      "size": 53776,
-      "sha256": "4ac15afddbc76cae413b7534110b854373e72ea44bf4d5b1264e3aaa9a0d014d"
+      "size": 54224,
+      "sha256": "5fc9a6d50a9764062b3dd0439b85c05749b8861e433dda15e71c015712154bc9"
     },
     {
       "path": "_internal/sim_plot_checks.cpython-310-x86_64-linux-gnu.so",
-      "size": 1708848,
-      "sha256": "2749c052105cf6801b6af6002df823311fc335d4e19a3beb68727aff05c95067"
+      "size": 1702280,
+      "sha256": "4c1d4d81ab189dfeb076584269e680a83582521b9049126f5060bc797c586a56"
     },
     {
       "path": "_internal/sim_replay_checks.cpython-310-x86_64-linux-gnu.so",
-      "size": 1919856,
-      "sha256": "35177f030dad1801db434764a93cfb8eeca99f9ff117e8cedcc20f0ef6b21e87"
+      "size": 1920296,
+      "sha256": "9ae569d8603069703de56cb4a5337830a428ed8064e0e5c4243b2277678cf5be"
     },
     {
       "path": "_internal/simulator_view.cpython-310-x86_64-linux-gnu.so",
-      "size": 725912,
-      "sha256": "5840359a534987e8f743472073ec2d6b1032637d9f5bf4c442519e5e4c11b9a2"
+      "size": 868024,
+      "sha256": "5ef8e5e7f7baee138daeea31b5ffba3985ed393f10af7d0bbc16e2319cf4879d"
     },
     {
       "path": "_internal/x11_window.cpython-310-x86_64-linux-gnu.so",
-      "size": 765376,
-      "sha256": "856d35c11af9f69f61b1f89af35d45302055c84873c899e424f49ad66c2eff44"
+      "size": 765816,
+      "sha256": "9b6a335bb2ee40ea714ccb64e532d4dc68a4bb7c2862f27d1b8020fa233d0285"
     }
   ],
   "symlinks": [
@@ -1001,11 +1026,24 @@
     {
       "path": "_internal/libshiboken6.abi3.so.6.11",
       "target": "shiboken6/libshiboken6.abi3.so.6.11"
+    },
+    {
+      "path": "_internal/libxcb-cursor.so.0",
+      "target": "libxcb-cursor.so.0.0.0"
     }
   ],
   "binding": {
     "name": "PySide6",
     "version": "6.11.3",
     "Qt": "6.11.3"
-  }
+  },
+  "bundled_system_libraries": [
+    {
+      "name": "libxcb-cursor",
+      "version": "0.1.1-4ubuntu1",
+      "license": "MIT/X Consortium License",
+      "source_record": "loong_gui_sim/licenses/libxcb-cursor/SOURCE.json",
+      "copyright": "loong_gui_sim/licenses/libxcb-cursor/copyright"
+    }
+  ]
 }

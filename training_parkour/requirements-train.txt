@@ -1,0 +1,10 @@
+# Install the pinned Isaac Sim / Isaac Lab checkout in README.md first.
+-r requirements-sim.txt
+rsl-rl-lib==5.4.1
+tensordict==0.12.3
+warp-lang==1.13.0
+gymnasium==1.2.1
+joblib==1.5.3
+psutil==5.9.8
+tensorboard
+onnxscript>=0.5

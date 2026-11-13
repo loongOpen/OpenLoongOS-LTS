@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lite-parkour"
+version = "0.1.0"
+description = "Standalone 26-DoF Lite perceptive locomotion: AMP/depth training and MuJoCo sim2sim"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {file = "LICENSE"}
+dependencies = ["numpy>=1.26", "joblib>=1.2", "psutil>=5.9", "gymnasium>=1.0", "PyYAML>=6.0"]
+
+[project.optional-dependencies]
+train = ["rsl-rl-lib==5.4.1", "tensordict==0.12.3", "tensorboard", "onnxscript>=0.5"]
+sim = ["mujoco==3.8.0", "onnx==1.21.0", "onnxruntime==1.31.0", "scipy>=1.11", "Pillow", "pygame", "mujoco-python-viewer"]
+test = ["pytest>=8"]
+
+[tool.setuptools]
+package-dir = {"" = "source/lite_parkour"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["source/lite_parkour"]
+include = ["lite_parkour*"]
+
+[tool.setuptools.package-data]
+lite_parkour = ["**/*.pyi", "data/Robots/Lite/*.urdf", "data/Robots/Lite/*.xml", "data/Robots/Lite/meshes/*.STL", "data/MotionData/Lite/amp/reference/*.pkl", "data/MotionData/Lite/amp/reference/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

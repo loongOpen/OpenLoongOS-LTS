@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "device": "cpu",
+  "num_envs": 2,
+  "iterations": 2,
+  "checkpoint_count": 2,
+  "checkpoint_iterations": [
+    0,
+    1
+  ],
+  "actor_max_parameter_change_between_updates": 0.00036818720400333405,
+  "actor_tensors_finite": true
+}

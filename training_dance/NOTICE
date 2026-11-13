@@ -1,0 +1,9 @@
+This distribution includes modified MjLab 1.6.0 sources.
+Copyright and Apache-2.0 license notices are preserved in LICENSE and source files.
+The Linglong tracking adaptation derives from the supplied Linglong/Isaac Lab
+workspace. Its supplied license is preserved in LICENSE-LINGLONG-SOURCE.
+Tracking task attribution: BeyondMimic / HybridRobotics whole_body_tracking,
+as stated in src/mjlab/tasks/tracking/tracking_env_cfg.py.
+Local changes: a standalone Linglong 1.4 task with nominal physics, noise-free
+observations and resets, zero actuator delay, local-only training and playback,
+and no private experiment/deployment tooling or other robot projects.

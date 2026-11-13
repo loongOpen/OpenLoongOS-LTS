@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-12",
+  "python": "3.12.14",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "driver": "580.65.06",
+  "cuda": "12.8",
+  "packages": {
+    "isaacsim": "6.0.0.1",
+    "isaacsim-asset": "6.0.0.1",
+    "isaacsim-robot-setup": "6.0.0.1",
+    "isaaclab": "6.1.11",
+    "isaaclab_physx": "1.1.3",
+    "rsl-rl-lib": "5.4.1",
+    "torch": "2.11.0+cu128",
+    "tensordict": "0.12.3",
+    "warp-lang": "1.13.0",
+    "mujoco": "3.8.0",
+    "onnxruntime": "1.31.0"
+  },
+  "pip_check": {
+    "packages": 247,
+    "compatible": true
+  },
+  "assets": {
+    "clips": 72,
+    "frames": 7569,
+    "dofs": 26,
+    "meshes": 27
+  },
+  "smoke": {
+    "num_envs": 2,
+    "steps_per_env_per_iteration": 24,
+    "iterations": 2,
+    "environment_transitions": 96,
+    "report": {
+      "nonce": "train.BhfkMG",
+      "started_ns": 1794478363261539750,
+      "requested_iterations": 2,
+      "start_iteration": 0,
+      "final_iteration": 1,
+      "completed": true,
+      "status": "completed",
+      "log_dir": "logs/rsl_rl/lite_amp_depth/2026-11-12_18-12-21_384132_b861dd58_integration_smoke",
+      "finished_ns": 1794478367699927225,
+      "iterations_completed": 2,
+      "checkpoints": [
+        {
+          "path": "logs/rsl_rl/lite_amp_depth/2026-11-12_18-12-21_384132_b861dd58_integration_smoke/model_1.pt",
+          "size": 37349823,
+          "mtime_ns": 1794478367497914705,
+          "sha256": "17db0cfb95f7ad5da8cea6c6b6e960b19f0981a6315e3aa8f9a108df35465029"
+        }
+      ]
+    }
+  },
+  "resume": {
+    "num_envs": 2,
+    "steps_per_env_per_iteration": 24,
+    "iterations": 1,
+    "environment_transitions": 48,
+    "report": {
+      "nonce": "train.10901e",
+      "started_ns": 1794478447062931566,
+      "requested_iterations": 1,
+      "start_iteration": 1,
+      "final_iteration": 1,
+      "completed": true,
+      "status": "completed",
+      "log_dir": "logs/rsl_rl/lite_amp_depth/2026-11-12_18-13-50_413582_0a293ed0_integration_resume",
+      "finished_ns": 1794478449731028298,
+      "iterations_completed": 1,
+      "checkpoints": [
+        {
+          "path": "logs/rsl_rl/lite_amp_depth/2026-11-12_18-13-50_413582_0a293ed0_integration_resume/model_1.pt",
+          "size": 37350271,
+          "mtime_ns": 1794478449532178965,
+          "sha256": "8b0d86cd10d847c976394d8db31b8bac2b7e6e8cf9b8c24c13e6efdb7e8ba5c5"
+        }
+      ]
+    }
+  },
+  "checkpoint_audit": {
+    "all_tensors_finite": true,
+    "fresh_parameter_max_changes": {
+      "actor_state_dict": 0.00144127756357193,
+      "critic_state_dict": 0.0015250621363520622,
+      "amp_discriminator_state_dict": 2.010352909564972e-05
+    },
+    "resume_parameter_max_changes": {
+      "actor_state_dict": 0.004244610667228699,
+      "critic_state_dict": 0.005170907825231552,
+      "amp_discriminator_state_dict": 2.0256265997886658e-05
+    },
+    "state_keys": [
+      "actor_state_dict",
+      "critic_state_dict",
+      "optimizer_state_dict",
+      "amp_discriminator_state_dict",
+      "amp_discriminator_normalizer_state_dict",
+      "amp_discriminator_optimizer_state_dict",
+      "iter",
+      "infos"
+    ],
+    "smoke_nonce_saved_in_checkpoint": true,
+    "resume_nonce_saved_in_checkpoint": true
+  },
+  "notes": [
+    "The original package CUDA 13 validation is historical. This run used CUDA 12.8.",
+    "Network DNS in this machine returned a fake proxy IP for the Kit registry. This validation used a process-only resolver override to official DoH A records without changing TLS hostnames or certificate verification. This workaround is not shipped.",
+    "Short training and resume prove the update/save chain, not policy convergence or obstacle success."
+  ],
+  "tests": {
+    "full_suite_passed": 42,
+    "preflight_and_wrapper_cases_passed": 10,
+    "warnings": 63
+  }
+}

@@ -2,7 +2,7 @@
 
 [返回首页](../README.md) · [快速 Demo](quickstart.md) · [训练到仿真](training-to-simulation.md) · [UI 使用手册](../loong_gui_sim/README.md)
 
-本文描述第一阶段发布配置。行走训练、全链仿真运行组件和 GUI 构成本阶段交付；跳舞、越障、身外化身和真机部署在整体愿景中单独规划，不把训练中的四个 task ID 当作四项能力的实现。
+本文描述行走训练与全链仿真 GUI 的接口。仓库同时包含 [视觉越障](../training_parkour/README.md) 和 [跳舞](../training_dance/README.md) 训练源码，两者保留独立训练入口，并已在同一 GUI 中提供模式选择、MuJoCo 策略后端与原生 plan。GUI 默认配置仍为行走；下文第 2–7 节具体描述行走 SDK 链路。三功能差异及启动方式见 [三功能操作说明](three-mode-guide.md)。身外化身属于后续规划。
 
 ## 1. 模块与数据流
 
@@ -28,7 +28,7 @@ flowchart LR
 
 | 组件 | 入口 / 主要位置 | 作用 |
 | --- | --- | --- |
-| 训练 | `train.sh`、`mjlab_amp_ovision/src/mjlab/` | 环境、任务、采样和模型优化 |
+| 训练 | `train.sh`、`training_walking/src/mjlab/` | 环境、任务、采样和模型优化 |
 | 策略回放 | `mjlab/scripts/play.py` | 在训练侧加载 `.pt` 并可视化 |
 | 模型 | `models/policy.onnx`、`policy.metadata.json` | 发布策略与接口记录 |
 | GUI | `start_sim.sh`、`loong_gui_sim/loong_gui_sim` | 启停、模式和速度控制、曲线与回放 |
@@ -63,7 +63,7 @@ AMP 任务基于速度跟踪任务，使用 PPO actor / critic，再单独更新
 | 5000 轮后 | task_reward_lerp=0.65，reward_coef=0.4 |
 | 7500 轮后 | 开启低速度站立阶段；满足低速度门限时 lerp=1.0 |
 
-站立阶段同时调整站立与步幅相关奖励。实际切换基于环境步计数及配置，续训恢复的步数会影响课程阶段。基础随机化包括摩擦、质心、负载、惯量、编码器偏置、推扰和观测噪声；具体区间见 [AMP 环境配置](../mjlab_amp_ovision/src/mjlab/tasks/amp/config/linglong/env_cfgs.py)。
+站立阶段同时调整站立与步幅相关奖励。实际切换基于环境步计数及配置，续训恢复的步数会影响课程阶段。基础随机化包括摩擦、质心、负载、惯量、编码器偏置、推扰和观测噪声；具体区间见 [AMP 环境配置](../training_walking/src/mjlab/tasks/amp/config/linglong/env_cfgs.py)。
 
 AMP 参考状态为 53 维：关节位置 20、关节速度 20、基座线速度 3、角速度 3、双脚位置 6、根部高度 1。判别器拼接相邻两个状态，因此输入为 106 维。该输入仅用于 AMP 训练，不是部署 actor 的输入。
 
@@ -85,7 +85,7 @@ AMP 参考状态为 53 维：关节位置 20、关节速度 20、基座线速度
 
 训练缓冲在初始化和重置后用首个有效观测填充历史。相位是基于速度门限推进的正弦时钟；更换观测实现或构造独立推理器时，需要同时核对相位、重置、历史填充、缩放和上一动作的语义。
 
-来源：[观测配置](../mjlab_amp_ovision/src/mjlab/tasks/velocity/config/linglong/env_cfgs.py)、[观测管理器](../mjlab_amp_ovision/src/mjlab/managers/observation_manager.py)、[历史缓冲](../mjlab_amp_ovision/src/mjlab/utils/buffers/circular_buffer.py)、[发布元数据](../models/policy.metadata.json)。
+来源：[观测配置](../training_walking/src/mjlab/tasks/velocity/config/linglong/env_cfgs.py)、[观测管理器](../training_walking/src/mjlab/managers/observation_manager.py)、[历史缓冲](../training_walking/src/mjlab/utils/buffers/circular_buffer.py)、[发布元数据](../models/policy.metadata.json)。
 
 ## 4. 动作与 20 / 26 / 31 轴关系
 
@@ -123,9 +123,9 @@ AMP 参考状态为 53 维：关节位置 20、关节速度 20、基座线速度
 
 运行周期来自 [thread.ini](../loong_gui_sim/runtime/config/thread.ini)，表示配置目标，不是实测实时性能承诺。CPU 绑定和调度条件也会影响执行。
 
-发布运行配置使用 `pdMode=3`、`useJntMotMap=0`、`simAnkleMap=none`，并在 `driver_mujoco.ini` 中设置固定 PD。`plan_rl.ini` 的增益记录不覆盖这组固定驱动增益。
+发布运行配置使用 `pdMode=1`、`useJntMotMap=0`、`simAnkleMap=none`。三个 plan 提供各自增益，由 driver 计算关节 PD；`driver_mujoco.ini` 的固定 PD 为零，避免重复计算。
 
-训练与仿真的 PD 并非全部相同，例如发布模型元数据的髋 yaw 阻尼为 10，而运行固定 PD 对应值为 5；肩部增益也存在差异。评估 Sim2Sim 时需要比较有效 PD、惯量、摩擦、接触和关节坐标，不能仅凭 ONNX 接口一致判定动力学一致。本文记录现有配置，没有自动调整这些参数。
+三个功能共用一套机器人动力学配置。更换模型或权重后，应重新核对观测、动作映射、增益、惯量、摩擦与接触，并完成单功能及切换测试。
 
 ## 6. 指令、插件与日志
 
@@ -137,11 +137,11 @@ AMP 参考状态为 53 维：关节位置 20、关节速度 20、基座线速度
 
 | 目标 | 主要文件 |
 | --- | --- |
-| 调整 AMP / PPO 参数 | [AMP rl_cfg.py](../mjlab_amp_ovision/src/mjlab/tasks/amp/config/linglong/rl_cfg.py) |
-| 调整奖励、随机化和课程 | [AMP env_cfgs.py](../mjlab_amp_ovision/src/mjlab/tasks/amp/config/linglong/env_cfgs.py)、[基础行走配置](../mjlab_amp_ovision/src/mjlab/tasks/velocity/config/linglong/env_cfgs.py) |
-| 添加参考动作 | `mjlab_amp_ovision/src/mjlab/tasks/amp/motions/linglong/` |
-| 理解判别器更新 | [AMP runner.py](../mjlab_amp_ovision/src/mjlab/tasks/amp/rl/runner.py)、[discriminator.py](../mjlab_amp_ovision/src/mjlab/tasks/amp/rl/discriminator.py) |
-| 理解保存与导出 | [基础 runner.py](../mjlab_amp_ovision/src/mjlab/rl/runner.py)、[速度任务 runner.py](../mjlab_amp_ovision/src/mjlab/tasks/velocity/rl/runner.py)、[exporter_utils.py](../mjlab_amp_ovision/src/mjlab/rl/exporter_utils.py) |
+| 调整 AMP / PPO 参数 | [AMP rl_cfg.py](../training_walking/src/mjlab/tasks/amp/config/linglong/rl_cfg.py) |
+| 调整奖励、随机化和课程 | [AMP env_cfgs.py](../training_walking/src/mjlab/tasks/amp/config/linglong/env_cfgs.py)、[基础行走配置](../training_walking/src/mjlab/tasks/velocity/config/linglong/env_cfgs.py) |
+| 添加参考动作 | `training_walking/src/mjlab/tasks/amp/motions/linglong/` |
+| 理解判别器更新 | [AMP runner.py](../training_walking/src/mjlab/tasks/amp/rl/runner.py)、[discriminator.py](../training_walking/src/mjlab/tasks/amp/rl/discriminator.py) |
+| 理解保存与导出 | [基础 runner.py](../training_walking/src/mjlab/rl/runner.py)、[速度任务 runner.py](../training_walking/src/mjlab/tasks/velocity/rl/runner.py)、[exporter_utils.py](../training_walking/src/mjlab/rl/exporter_utils.py) |
 | 调整仿真模型与驱动 | `loong_gui_sim/runtime/model/scene.xml`、`runtime/config/driver_mujoco.ini` |
 
 变更观测、动作或机器人结构时，应同步检查训练、导出元数据和运行插件的协议。变更模型与配置后的完整性检查会提示偏离发布版本；物理效果需要重新验证，已有验证范围见 [VALIDATION.md](../VALIDATION.md)。
