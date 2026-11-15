@@ -1,0 +1,18 @@
+name: repository-check
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  repository: read
+jobs:
+  repository-check:
+    name: repository-check
+    runs-on: [ubuntu-latest, x64, small]
+    steps:
+      - name: Checkout
+        uses: checkout
+      - name: Check repository inventory and entry scripts
+        run: python3 scripts/check_repository.py

@@ -1,0 +1,22 @@
+name: repository-check
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  repository-check:
+    name: repository-check
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          lfs: false
+          persist-credentials: false
+      - name: Check repository inventory and entry scripts
+        run: python3 scripts/check_repository.py

@@ -1,0 +1,64 @@
+name: "缺陷报告"
+description: "报告 GUI、训练、安装或文档问题"
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+assignees: "bjwwww"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先阅读项目的 docs/reporting-bugs.md，并搜索已有 Issue。
+        请勿粘贴 Token、密钥、密码、证书、私人连接信息或未经脱敏的日志。
+        公开 Issue 不用于提交漏洞利用细节或敏感数据。
+  - type: dropdown
+    id: component
+    attributes:
+      label: "问题模块"
+      options:
+        - "全链仿真 GUI"
+        - "行走训练"
+        - "跳舞训练"
+        - "视觉越障训练"
+        - "安装 / 下载 / 文档"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: "版本与下载来源"
+      description: "提交 SHA 或压缩包名称；GitHub / AtomGit / 完整包"
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: "运行环境"
+      description: "Ubuntu、GPU、驱动、Python 版本；GUI 问题补充桌面或远程桌面类型。不要提供内网地址。"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "复现步骤"
+      description: "最小命令、界面操作、功能键值及修改过的配置"
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: "预期结果与实际结果"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: "已脱敏的报错和检查输出"
+      description: "优先提供首次报错、check_release.py 输出；不要直接上传完整环境变量、原始日志目录或 core dump。"
+      render: text
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: "提交前确认"
+      options:
+        - label: "我已删除 Token、密钥、密码及私人信息。"
+          required: true

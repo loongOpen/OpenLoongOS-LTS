@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "故障排查与缺陷报告指南"
+    url: https://github.com/loongOpen/OpenLoongOS-LTS/blob/main/docs/reporting-bugs.md
+    about: "先检查下载完整性和运行环境；提交日志前移除敏感信息。"

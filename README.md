@@ -210,3 +210,12 @@ OpenLoongOS-LTS/
 训练目录分别保留自有及上游许可；视觉越障部分上游组件带有 CC BY-NC 4.0 非商业使用条款。GUI 自有应用部分采用 [MIT](loong_gui_sim/LICENSE)。具体范围、版权声明及库源码见 [LICENSES.md](LICENSES.md)。
 
 欢迎通过仓库 Issue 反馈问题、提交建议。为便于定位问题，请尽量提供操作系统版本、GPU 与驱动信息、复现步骤及必要日志，并在提交前删除密码、访问令牌及私人连接信息。
+
+
+## 问题反馈与贡献
+
+遇到安装、GUI 或训练问题，请按 [缺陷报告指南](docs/reporting-bugs.md) 使用 Issue 模板，
+提交前移除 Token、密钥、密码及私人信息。变更通过 PR 审查合入，流程见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+维护者配置分支保护、标签、CI 和 Release 时参见 [仓库维护与发布设置](docs/repository-maintenance.md)。
+
+视觉越障包含保留非商业条款的上游派生组件，适用范围见 [许可证说明](LICENSES.md#非商业组件与许可证识别)。

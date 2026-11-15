@@ -14,6 +14,20 @@
 | 跳舞原始附件 | `runtime/deploy/dance/` 和 `runtime/model/dance/` 保留用户提供的 ARM 库、ini、ONNX、refbin、NPZ；文件来源与原始哈希见 `ASSETS.json`，不因新 plan 的 MIT 标记而改变原文件授权 |
 | `models/` | 自研模型；各资源按随附授权说明适用 |
 
+## 非商业组件与许可证识别
+
+`training_parkour/NOTICE.md` 和相关文件头标注的 InstinctLab 派生代码保留 **CC BY-NC 4.0**，
+其非商业限制不因项目级 Apache-2.0、GUI 的 MIT、LFS 存储或打包方式而消失。
+本仓库不能整体宣称所有组件都满足 OSI 开源定义，也不能宣称全部内容允许无条件商用。
+若交付要求所有源码均符合 OSI 定义，需要取得相应权利人的兼容授权，或完成相关组件替换与训练、部署验证。
+当前版本未完成这项替换，保留原功能和原许可。
+
+根目录 LICENSE 是组件索引。平台显示 `NOASSERTION` 仅表示自动识别没有给出单一许可证结论，
+不要为改变标签而覆盖第三方文件头或把全部目录重新标为 Apache-2.0。
+
+参考：[CC 非商业条款说明](https://creativecommons.org/share-your-work/use-remix/cc-licenses/)、
+[OSI 开源定义](https://opensource.org/osd)。
+
 ## 本版 GUI 的实际第三方组件
 
 | 组件 | 版本 / 范围 | 许可材料 |
