@@ -45,15 +45,45 @@ python3 -B check_release.py
 可先执行离线 GUI 自检：
 
 ```bash
-QT_QPA_PLATFORM=offscreen ./start_sim.sh --self-test
+QT_QPA_PLATFORM=offscreen ./start_openloong_gui.sh --self-test
 ```
 
 确认命令退出码为 0，输出中的 `qt_callbacks` 和 `native_replay` 为 true。该自检检查程序加载和部分回调，不启动完整控制链；`native_window_embedded`、`native_camera_follow` 为 false 时，不能据此确认实际窗口嵌入和镜头跟随正常。
 
 ## 3. 启动界面与控制链
 
+### 远程桌面使用 GPU 渲染
+
+XRDP 桌面可能默认使用 `llvmpipe`（CPU 软件渲染），导致画面卡顿。
+在远程桌面的终端进入项目根目录，运行：
+
 ```bash
-./start_sim.sh
+./start_openloong_gui.sh --check-renderer
+./start_openloong_gui.sh
+```
+
+`--check-renderer` 只查询渲染器，不启动 GUI 或控制链；应确认输出为 NVIDIA GPU。
+脚本直接加载深度图组件并启动 GUI，保留深度可视化及 4 / 28 / 43 功能切换。
+不要同时开启多套 GUI / 控制链；切换启动方式前先在旧界面停止本次进程并关闭窗口。
+
+需在系统中安装 VirtualGL，并有可用的 NVIDIA 驱动和图形桌面。
+依次查找项目内可选的 `tools/virtualgl/`、系统 `/opt/VirtualGL` 和用户目录
+`~/.local/opt/virtualgl-3.1.5`，也可显式指定安装位置：
+
+```bash
+VIRTUALGL_HOME=/你的VirtualGL安装目录 ./start_openloong_gui.sh
+```
+
+目录内需有 `lib/libdlfaker.so` 和 `lib/libvglfaker.so`；查询渲染器还需 `bin/glxinfo`。
+VirtualGL 是独立系统依赖，不随本项目发布包捆绑。脚本不依赖其他机器人工作区。
+默认 `VGL_DISPLAY=egl0`；多 GPU 环境可通过该变量选择已配置的设备。
+保留当前桌面的 DISPLAY，不应从普通无图形 SSH 会话直接启动。
+
+### 本机图形桌面启动
+
+
+```bash
+./start_openloong_gui.sh --local
 ```
 
 ![全链仿真界面示例](media/ui-preview.png)

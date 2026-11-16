@@ -179,7 +179,7 @@ cp loong_gui_sim/runtime/model/onnx/policy.onnx "$backup_dir/policy.onnx"
 cp loong_gui_sim/runtime/config/plan_rl.ini "$backup_dir/plan_rl.ini"
 cp "$policy_file" loong_gui_sim/runtime/model/onnx/policy.onnx
 sha256sum loong_gui_sim/runtime/model/onnx/policy.onnx
-./start_sim.sh
+./start_openloong_gui.sh
 ```
 
 运行时文件名保持 `policy.onnx`，与 `plan_rl.ini` 的 `model` 设置一致。保留 `models/policy.onnx` 作为发布示例，不需要同步替换它。
@@ -191,7 +191,7 @@ sha256sum loong_gui_sim/runtime/model/onnx/policy.onnx
 ```bash
 cp "$backup_dir/policy.onnx" loong_gui_sim/runtime/model/onnx/policy.onnx
 cp "$backup_dir/plan_rl.ini" loong_gui_sim/runtime/config/plan_rl.ini
-./start_sim.sh
+./start_openloong_gui.sh
 ```
 
 替换模型后，`check_release.py` 会按原发布哈希和策略配置报告变化，这是预期行为；不要通过重写发布清单把自定义策略标记成原版。保留实验配置、候选模型哈希与日志即可。

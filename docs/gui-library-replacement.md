@@ -30,9 +30,9 @@ loong_gui_sim/
 4. 在测试副本根目录验证：
 
 ```bash
-./start_sim.sh --qt-info
-QT_QPA_PLATFORM=offscreen ./start_sim.sh --self-test
-./start_sim.sh
+./start_openloong_gui.sh --qt-info
+QT_QPA_PLATFORM=offscreen ./start_openloong_gui.sh --self-test
+./start_openloong_gui.sh
 ```
 
 `--qt-info` 输出实际导入路径及版本；自检不启动机器人控制链。正常启动后检查窗口、曲线和回放。GUI 启动不依赖文件哈希白名单，不要求重新编译应用来加载兼容库。

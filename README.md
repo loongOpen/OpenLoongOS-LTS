@@ -34,12 +34,24 @@ git lfs pull
 
 ### 启动 GUI
 
+**远程桌面（XRDP）请使用项目根目录的 GPU 加速入口：**
+
+```bash
+./start_openloong_gui.sh
+```
+
+项目只保留这一个 GUI 启动入口，默认使用 VirtualGL 加速远程桌面。
+可先用 `./start_openloong_gui.sh --check-renderer` 检查，确认显示 NVIDIA GPU。
+VirtualGL 的安装位置和配置见 [远程桌面启动说明](docs/quickstart.md#远程桌面使用-gpu-渲染)。
+本机直连图形桌面加 `--local`；离屏自检自动跳过 VirtualGL。
+
+
 先按 [快速入门：准备环境](docs/quickstart.md#1-准备环境) 安装系统图形依赖，再在项目根目录执行：
 
 ```bash
 python3 -B check_release.py
-QT_QPA_PLATFORM=offscreen ./start_sim.sh --self-test
-./start_sim.sh
+QT_QPA_PLATFORM=offscreen ./start_openloong_gui.sh --self-test
+./start_openloong_gui.sh --local
 ```
 
 完整性检查应输出 `OK:`；离屏自检应正常退出，并显示 `qt_callbacks`、`native_replay` 为 true。
@@ -113,7 +125,7 @@ Python、驱动、依赖版本以及两轮小规模训练命令分别见：
 | 视觉越障 | 深度视觉 PPO/AMP 训练源码、Lite 模型、动作数据与独立 sim2sim | [training_parkour](training_parkour/README.md) |
 | 跳舞 | 灵龙 1.4 动作跟踪训练源码、参考动作与示例策略 | [training_dance](training_dance/README.md) |
 | 全链仿真运行组件 | MuJoCo 场景、26 轴模型、SDK、driver / interface / locomotion 及控制插件 | `loong_gui_sim/runtime/` |
-| GUI | 行走／跳舞／越障切换、统一原生 MuJoCo 交互视口、越障深度图、实时曲线与日志回放 | `./start_sim.sh` |
+| GUI | 行走／跳舞／越障切换、统一原生 MuJoCo 交互视口、越障深度图、实时曲线与日志回放 | `./start_openloong_gui.sh` |
 | 身外化身 | 后续规划 | 暂未提供 |
 
 三套训练环境分别安装：行走、跳舞使用 mjlab / MuJoCo-Warp；视觉越障训练使用 Isaac Sim / Isaac Lab。全链仿真共用 driver、interface、locomotion 和同一个 MuJoCo 机器人，GUI 通过插件键值切换功能。运行三个 SDK 插件无需安装独立 Python 策略环境。
@@ -165,7 +177,7 @@ OpenLoongOS-LTS/
 │   ├── quickstart.md             # 快速开始
 │   └── training-to-simulation.md # 仿真训练
 ├── licenses/                     # 第三方依赖许可材料
-├── start_sim.sh                  # 仿真 UI 启动入口
+├── start_openloong_gui.sh        # 统一 GUI 入口：远程 GPU、本机桌面与离屏自检
 ├── train.sh                      # 训练启动入口
 ├── check_release.py              # 文件完整性、模型和配置检查
 ├── RELEASE.json                  # 发布组件与来源

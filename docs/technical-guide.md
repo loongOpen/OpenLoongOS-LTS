@@ -196,7 +196,7 @@ OK: <清单条目数> hashes; simulator binary; LingLong original 26-DoF runtime
 ### 3.4 离线 GUI 自检
 
 ```bash
-QT_QPA_PLATFORM=offscreen ./start_sim.sh --self-test
+QT_QPA_PLATFORM=offscreen ./start_openloong_gui.sh --self-test
 ```
 
 看输出里的 `status: ok`，以及 `compiled_gui`、`native_replay`、`qt_callbacks` 三个字段。
@@ -225,12 +225,12 @@ loong_gui_sim/
     └── log/                   # driver 轨迹日志
 ```
 
-启动脚本 `start_sim.sh` 用脚本自身位置求根目录，所以从任何目录调用都可以，但**目录结构必须完整**。
+启动脚本 `start_openloong_gui.sh` 用脚本自身位置求根目录，所以从任何目录调用都可以，但**目录结构必须完整**。
 
 ### 4.2 启动前检查
 
 ```bash
-ls -l start_sim.sh loong_gui_sim/loong_gui_sim     # 应有可执行位 x
+ls -l start_openloong_gui.sh loong_gui_sim/loong_gui_sim     # 应有可执行位 x
 df -h . | tail -1                                   # 确认磁盘不是满的
 echo "$DISPLAY"                                     # 非空
 ```
@@ -238,7 +238,7 @@ echo "$DISPLAY"                                     # 非空
 如果 `loong_gui_sim/loong_gui_sim` 只有 130 字节左右，说明还是 LFS 指针，回第 3 章。如果可执行位丢了（常见于从 ZIP 解压或跨文件系统复制），补回来：
 
 ```bash
-chmod +x start_sim.sh loong_gui_sim/loong_gui_sim loong_gui_sim/runtime/bin/*_x64
+chmod +x start_openloong_gui.sh loong_gui_sim/loong_gui_sim loong_gui_sim/runtime/bin/*_x64
 ```
 
 > 如果所在文件系统挂载了 `noexec`，`chmod` 也没用。用 `mount | grep noexec` 确认，换到普通目录（如 `~/`）再试。
@@ -246,7 +246,7 @@ chmod +x start_sim.sh loong_gui_sim/loong_gui_sim loong_gui_sim/runtime/bin/*_x6
 ### 4.3 启动
 
 ```bash
-./start_sim.sh
+./start_openloong_gui.sh
 ```
 
 GUI 自动打开仿真，左侧应出现 MuJoCo 画面和机器人。此时控制链尚未启动，界面顶部的 `SIM LIVE` 只表示仿真进程在线。
@@ -595,7 +595,7 @@ cp loong_gui_sim/runtime/model/onnx/policy.onnx "$backup_dir/policy.onnx"
 cp loong_gui_sim/runtime/config/plan_rl.ini "$backup_dir/plan_rl.ini"
 cp "$policy_file" loong_gui_sim/runtime/model/onnx/policy.onnx
 sha256sum loong_gui_sim/runtime/model/onnx/policy.onnx
-./start_sim.sh
+./start_openloong_gui.sh
 ```
 
 `mktemp -d ../...` 把备份建在**仓库的上级目录**，不污染工作区，也不会被完整性检查扫到。终端会打印备份路径，记下它，回退时要用。
@@ -611,7 +611,7 @@ sha256sum loong_gui_sim/runtime/model/onnx/policy.onnx
 ```bash
 cp "$backup_dir/policy.onnx" loong_gui_sim/runtime/model/onnx/policy.onnx
 cp "$backup_dir/plan_rl.ini" loong_gui_sim/runtime/config/plan_rl.ini
-./start_sim.sh
+./start_openloong_gui.sh
 ```
 
 ### 7.3 输入协议：700 维怎么来的
@@ -901,7 +901,7 @@ log2udpPort=9870
 | --- | --- | --- |
 | `Permission denied` | 缺可执行位 | `chmod +x`（见 4.2） |
 | `chmod` 后仍然 `Permission denied` | 文件系统 `noexec` | `mount \| grep noexec` 确认，换目录 |
-| 双击或从文件管理器启动无反应 | 工作目录不对 | 在终端里 `./start_sim.sh` |
+| 双击或从文件管理器启动无反应 | 工作目录不对 | 在终端里 `./start_openloong_gui.sh` |
 | 窗口打开但画面空白 | 缺 OpenGL / mesa | 补 `libgl1-mesa-dri`、`libegl1` |
 | 启动即崩溃 | 目录结构不完整 | 确认整个 `loong_gui_sim/` 都在，`runtime/`、`native/` 齐全 |
 

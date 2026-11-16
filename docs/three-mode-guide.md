@@ -4,7 +4,7 @@
 
 ## 启动与操作
 
-在 Ubuntu 22.04 / x86_64 图形桌面中运行项目根目录的 `./start_sim.sh`。系统图形依赖见 [快速入门](quickstart.md)。三个 SDK 插件随包提供，不需要安装 Python 策略运行环境。
+在 Ubuntu 22.04 / x86_64 图形桌面中运行项目根目录的 `./start_openloong_gui.sh`。系统图形依赖见 [快速入门](quickstart.md)。三个 SDK 插件随包提供，不需要安装 Python 策略运行环境。
 
 1. 点击「一键启动控制链」，在本机授权窗口输入 sudo 密码。
 2. 保持辅助力开启、速度为零，点击 EN → RC，等待恢复完成。

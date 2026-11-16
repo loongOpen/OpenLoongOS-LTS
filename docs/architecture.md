@@ -31,7 +31,7 @@ flowchart LR
 | 训练 | `train.sh`、`training_walking/src/mjlab/` | 环境、任务、采样和模型优化 |
 | 策略回放 | `mjlab/scripts/play.py` | 在训练侧加载 `.pt` 并可视化 |
 | 模型 | `models/policy.onnx`、`policy.metadata.json` | 发布策略与接口记录 |
-| GUI | `start_sim.sh`、`loong_gui_sim/loong_gui_sim` | 启停、模式和速度控制、曲线与回放 |
+| GUI | `start_openloong_gui.sh`、`loong_gui_sim/loong_gui_sim` | 启停、模式和速度控制、曲线与回放 |
 | 原生运行 | `loong_gui_sim/runtime/bin/` | share_sim、driver、interface、locomotion |
 | 控制插件 | `runtime/module/nabo_locomotion/` | RC 恢复、RL、关节测试 |
 | 运行配置 | `runtime/config/` | 总线、关节映射、插件、线程及控制参数 |
