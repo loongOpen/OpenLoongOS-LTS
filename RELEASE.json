@@ -11,7 +11,24 @@
     "simulation_dof": 26,
     "bus_slots": 31,
     "model": "linglong/linglong_26dof.xml",
-    "profile": "Unified 26-DoF SDK simulation with one fixed training-aligned dynamics profile"
+    "profile": "LingLong1.4 with four physical parallel-ankle linkages and real joint_map motor feedback",
+    "ankle_model": {
+      "type": "physical_closed_chain",
+      "constraints": 4,
+      "motor_order": [
+        "long",
+        "short"
+      ],
+      "joint_map": "runtime/module/loong_driver_sdk/libjoint_map_x64.so",
+      "geometry": "runtime/config/joint_map.ini",
+      "passive_anatomical_axes": [
+        "left_ankle_pitch",
+        "left_ankle_roll",
+        "right_ankle_pitch",
+        "right_ankle_roll"
+      ],
+      "inertia_status": "crank/rod distribution estimated; original shin aggregate mass, COM and inertia preserved at zero pose"
+    }
   },
   "components": {
     "loong_gui_sim": {
@@ -47,7 +64,7 @@
           "jntTest": 31
         },
         "rl_plugin": "obs 700 / actions 20, term-major history 10, 50 Hz",
-        "pd": "Unified SDK: pdMode=1; per-plan joint gains; MuJoCo fixed gains zero; useJntMotMap=0; simAnkleMap=none",
+        "pd": "pdMode=1 joint PD -> real joint_map torque conversion -> physical motor hinges; fixed MuJoCo gains zero; useJntMotMap=1; simAnkleMap=closed_chain",
         "architecture": "single simulator, single robot, driver/interface/locomotion; same-world depth sensor",
         "depth_preview": {
           "tab": "VISION",
@@ -59,7 +76,8 @@
             2.5
           ],
           "colormap": "near black, far white"
-        }
+        },
+        "replay": "actuator-indexed motor feedback; bundled joint_map FK restores passive ankles and rod orientations"
       },
       "public_runtime_sources": [
         "native/build_dance_plan.sh",
@@ -409,8 +427,8 @@
       "training_framework": "Isaac Sim / Isaac Lab",
       "gui_control_chain_integrated": true,
       "gui_integrated": true,
-      "gui_backend": "independent MuJoCo / native plan; separate from legacy SDK control chain",
-      "legacy_sdk_control_chain_integrated": false,
+      "gui_backend": "unified SDK plan plugin in the shared MuJoCo scene and driver/interface/locomotion control chain",
+      "legacy_sdk_control_chain_integrated": true,
       "short_training_and_resume_validated": true,
       "installation": {
         "installer": "training_parkour/scripts/install_training.sh",
@@ -432,8 +450,8 @@
       "training_framework": "mjlab / MuJoCo-Warp",
       "gui_control_chain_integrated": true,
       "gui_integrated": true,
-      "gui_backend": "independent MuJoCo / native plan; separate from legacy SDK control chain",
-      "legacy_sdk_control_chain_integrated": false,
+      "gui_backend": "unified SDK plan plugin in the shared MuJoCo scene and driver/interface/locomotion control chain",
+      "legacy_sdk_control_chain_integrated": true,
       "short_training_and_resume_validated": true
     }
   },
@@ -450,7 +468,7 @@
       "walking training source",
       "visual parkour training source",
       "dance training source",
-      "prebuilt full-chain walking simulation runtime",
+      "prebuilt unified full-chain simulation runtime with physical closed-chain ankles",
       "GUI binary supporting three modes",
       "native dance and parkour plans with build sources",
       "real policy depth visualization"
@@ -463,7 +481,8 @@
     ],
     "planned_capabilities": [
       "teleoperation"
-    ]
+    ],
+    "description": "Humanoid motion-control development platform spanning policy training, simulation validation and deployment integration"
   },
-  "release_date": "2026-11-12"
+  "release_date": "2026-11-18"
 }

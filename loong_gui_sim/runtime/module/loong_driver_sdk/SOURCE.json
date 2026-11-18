@@ -1,0 +1,12 @@
+{
+  "component": "LingLong joint_map",
+  "source_repository": "https://codeup.aliyun.com/6871faed7fece63a9824e0e6/avatar/joint_map",
+  "source_branch": "linglongv2.0",
+  "source_commit": "8ae6b0ff62eca3002da0c1edc6c8b21e91575c4f",
+  "version": "linglong-joint-map-0.3.1-bilateral-calibration-bounded-mapping",
+  "platform": "Linux x86_64",
+  "deployment_configuration": "loong_real_deployment v4_2_7/config/joint_map.ini",
+  "deployment_commit": "8a1f0e04d24daf0a38b0e7f13c40d47980e97a1b",
+  "configuration_adaptation": "explicit pitch/roll centers and limits from the bundled LingLong1.4 model",
+  "sha256": "9e275ab5831429e004c983f90372c95922b5319162f5e92b408af416fd2fec7b"
+}

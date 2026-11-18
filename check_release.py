@@ -161,29 +161,59 @@ def check(root):
         if array(name, "idMap") != expected_map:
             errors.append(f"Incorrect LingLong1.4 mapping: {name}")
     if array("driver.ini", "activeDrvNumUser") != [26]:
-        errors.append("Expected 26 active legacy simulation joints")
-    if array("driver.ini", "useJntMotMap") != [0]:
-        errors.append("Legacy simulation requires direct joint coordinates")
+        errors.append("Expected 26 active motor axes")
+    if array("driver.ini", "useJntMotMap") != [1]:
+        errors.append("Closed-chain ankles require the real motor/joint map")
     driver_text = (sim / "runtime/config/driver.ini").read_text()
-    if not re.search(r"^\s*simAnkleMap=none\s*$", driver_text, re.M):
-        errors.append("Legacy simulation requires simAnkleMap=none")
+    if not re.search(r"^\s*simAnkleMap=closed_chain\s*$", driver_text, re.M):
+        errors.append("Closed-chain motor feedback requires simAnkleMap=closed_chain")
     if "untaggedPoseSpace=joint" not in (sim / "runtime/config/replay_log.ini").read_text():
-        errors.append("Direct-joint logs must not be converted from motor angles")
+        errors.append("Physical actuator replay must not pre-convert motor coordinates")
     import xml.etree.ElementTree as ET
     scene = ET.parse(sim / "runtime/model/scene.xml").getroot()
     assert scene.find("include").get("file") == manifest["robot"]["model"]
     robot = ET.parse(sim / "runtime/model" / manifest["robot"]["model"]).getroot()
     joints = [j for j in robot.findall(".//body/joint") if j.get("type") != "free"]
     motors = robot.findall("actuator/motor")
-    if len(joints) != 26 or [j.get("name") for j in joints] != [m.get("joint") for m in motors]:
-        errors.append("LingLong1.4 joint / actuator count or order mismatch")
-    if len(joints) == 26:
-        def joint_name(name):
-            return name[:-6] if name.endswith("_joint") else name
-        names = [joint_name(joints[expected_map[bus]].get("name")) for bus in policy_to_bus]
-        trained_names = [joint_name(name) for name in metadata["joint_names"].split(",")]
-        if names != trained_names:
-            errors.append("Policy and model anatomical joint names differ")
+    joint_by_name = {j.get("name"): j for j in joints}
+    if len(joints) != 34 or len(motors) != 26:
+        errors.append("Expected 26 actuators, 26 anatomical joints, 4 motor hinges and 4 passive balls")
+    def anatomical(name):
+        return name.replace("_ankle_motor_long", "_ankle_pitch").replace("_ankle_motor_short", "_ankle_roll").removesuffix("_joint")
+    if len(motors) == 26:
+        names = [anatomical(motors[expected_map[bus]].get("joint", "")) for bus in policy_to_bus]
+        trained = [n.removesuffix("_joint") for n in metadata["joint_names"].split(",")]
+        if names != trained:
+            errors.append("Policy bus axes differ from closed-chain actuator mapping")
+    for motor in motors:
+        joint = joint_by_name.get(motor.get("joint"))
+        if joint is None or joint.get("type", "hinge") != "hinge":
+            errors.append("Motor must bind a scalar hinge")
+    closures = {c.get("name"): c for c in robot.findall("equality/connect")}
+    for side in ("left", "right"):
+        for length in ("short", "long"):
+            name = side + "_ankle_" + length
+            c = closures.get(name + "_closure")
+            if c is None or c.get("body1") != name + "_rod" or c.get("body2") != side + "_ankle_roll_link":
+                errors.append("Missing physical linkage closure: " + name)
+            ball = joint_by_name.get(name + "_ball")
+            if ball is None or ball.get("type") != "ball":
+                errors.append("Missing passive ball joint: " + name)
+        for logical, mechanical in (("pitch", "long"), ("roll", "short")):
+            if any(m.get("joint") == side + "_ankle_" + logical for m in motors):
+                errors.append("Anatomical ankle must be passive; actuate motor shafts")
+    map_ini = configparser.ConfigParser(inline_comment_prefixes=(";", "#"))
+    map_ini.read(sim / "runtime/config/joint_map.ini")
+    for side in ("left", "right"):
+        if map_ini.get("ankle", side + "LegMotorOrder", fallback="").replace(" ", "") != "1,0":
+            errors.append("Expected long/short ankle motor ordering: " + side)
+    for field in ("pitchLower", "pitchUpper", "rollLower", "rollUpper"):
+        if not map_ini.has_option("limit", field):
+            errors.append("Explicit model limits required in joint_map.ini: " + field)
+    library = sim / "runtime/module/loong_driver_sdk/libjoint_map_x64.so"
+    header = library.read_bytes()[:20]
+    if header[:6] != b"\x7fELF\x02\x01" or struct.unpack_from("<H", header, 18)[0] != 62:
+        errors.append("Closed-chain joint map must be an x86_64 ELF library")
     for name in ("pyproject.toml", "uv.lock", "LICENSE", "src/mjlab/tasks/amp/rl/runner.py"):
         if not (root / "training_walking" / name).is_file():
             errors.append(f"Missing training file: {name}")
@@ -240,7 +270,7 @@ def check(root):
     if errors:
         raise SystemExit("\n".join(errors))
     modes = "; GUI walking/dance/parkour runtime profiles" if profiles else ""
-    print(f"OK: {len(inventory)} hashes; simulator binary; unified LingLong 26-DoF SDK runtime; 3 training source trees; ONNX model{modes}; no LFS pointers")
+    print(f"OK: {len(inventory)} hashes; simulator binary; unified LingLong 26-axis runtime with physical closed-chain ankles; 3 training source trees; ONNX model{modes}; no LFS pointers")
 
 
 if __name__ == "__main__":
